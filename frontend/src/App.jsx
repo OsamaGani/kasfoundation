@@ -37,7 +37,7 @@ import LucknowTeam from "./pages/LucknowTeam";
 import BastiTeam from "./pages/BastiTeam";
 import AzamgarhTeam from "./pages/AzamgarhTeam";
 
-import Achievements from "./pages/Achievements";
+import Achievements from "./pages/achievements";
 
 import News from "./pages/News";
 import NewsArticle from "./pages/NewsArticle";
