@@ -167,7 +167,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>
           © Khel Aur Shiksha Foundation. All Rights Reserved – Develop by{" "}
-          <a href="#">Anas Rasheed</a>
+          <a href="#">Usama Gani</a>
         </p>
       </div>
     </footer>
