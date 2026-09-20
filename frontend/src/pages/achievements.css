@@ -1,0 +1,1759 @@
+/* =========================================================
+   ACHIEVEMENTS PAGE — PREMIUM UI
+========================================================= */
+
+.achievements-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+  color: #050505;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.achievements-hero {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  padding: 105px 30px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% -30%,
+      rgba(255, 255, 255, 0.18),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #052b82 0%, #0637a5 50%, #04276f 100%);
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.achievements-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  top: -410px;
+  left: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+
+  transform: translateX(-50%);
+  animation: heroOrbit 14s linear infinite;
+}
+
+.achievements-hero::after {
+  content: "";
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -130px;
+  bottom: -180px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+
+  animation: heroPulse 5s ease-in-out infinite;
+}
+
+.achievements-hero-content {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  max-width: 900px;
+
+  text-align: center;
+
+  animation: heroContentReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.achievements-hero-icon {
+  width: 48px;
+  height: 48px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.06);
+
+  animation:
+    heroIconReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
+    heroIconFloat 4s ease-in-out 1.2s infinite;
+}
+
+.achievements-hero-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.achievements-hero h1 {
+  margin: 0 0 9px;
+
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+  animation: heroTitleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.achievements-hero p {
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+
+  animation: heroTextReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+/* =========================================================
+   FEATURE
+========================================================= */
+
+.achievement-feature-section {
+  width: 100%;
+  padding: 75px 30px 90px;
+
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(6, 55, 165, 0.035),
+      transparent 30%
+    ),
+    #ffffff;
+}
+
+.achievement-feature-container {
+  width: 100%;
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.95fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+/* =========================================================
+   FEATURE IMAGE
+========================================================= */
+
+.achievement-feature-image-wrap {
+  position: relative;
+
+  width: 100%;
+
+  animation: featureImageReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.achievement-feature-image-wrap::before {
+  content: "";
+
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  left: 12%;
+  top: 12%;
+
+  background: rgba(6, 55, 165, 0.14);
+
+  filter: blur(60px);
+
+  z-index: 0;
+}
+
+.achievement-image-glow {
+  position: absolute;
+
+  width: 80%;
+  height: 80%;
+
+  left: 10%;
+  top: 10%;
+
+  background: rgba(6, 55, 165, 0.1);
+
+  filter: blur(55px);
+
+  z-index: 0;
+}
+
+.achievement-feature-image {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-height: 620px;
+
+  display: block;
+
+  object-fit: contain;
+
+  border-radius: 4px;
+
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s ease;
+}
+
+.achievement-feature-image-wrap:hover .achievement-feature-image {
+  transform: scale(1.025) translateY(-4px);
+  filter: brightness(1.03);
+}
+
+.achievement-image-badge {
+  position: absolute;
+
+  left: 20px;
+  bottom: 20px;
+
+  z-index: 4;
+
+  padding: 10px 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #0637a5;
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+
+  animation: badgeFloat 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   FEATURE CONTENT
+========================================================= */
+
+.achievement-feature-content {
+  animation: featureContentReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.achievement-section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 15px;
+
+  color: #0637a5;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+.achievement-label-line {
+  width: 32px;
+  height: 2px;
+
+  background: #0637a5;
+}
+
+.achievement-country {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 10px;
+
+  color: #0637a5;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.country-flag {
+  font-size: 23px;
+  line-height: 1;
+}
+
+.achievement-feature-content h2 {
+  margin: 0;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  line-height: 1.08;
+  font-weight: 600;
+
+  letter-spacing: -1.5px;
+}
+
+.achievement-blue-line {
+  position: relative;
+
+  width: 58px;
+  height: 4px;
+
+  margin: 23px 0 27px;
+
+  background: #0637a5;
+
+  overflow: hidden;
+}
+
+.achievement-blue-line::after {
+  content: "";
+
+  position: absolute;
+
+  width: 25px;
+  height: 100%;
+
+  top: 0;
+  left: -35px;
+
+  background: #ffffff;
+
+  animation: lineShine 2.2s ease-in-out infinite;
+}
+
+/* =========================================================
+   PLAYER LIST
+========================================================= */
+
+.achievement-player-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.achievement-player {
+  position: relative;
+
+  padding: 5px 0 5px 17px;
+
+  border-left: 2px solid #e7eaf0;
+
+  animation: playerReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--player-delay) both;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    padding-left 0.35s ease;
+}
+
+.achievement-player::before {
+  content: "";
+
+  position: absolute;
+
+  left: -2px;
+  top: 0;
+
+  width: 2px;
+  height: 0;
+
+  background: #0637a5;
+
+  transition: height 0.4s ease;
+}
+
+.achievement-player:hover {
+  transform: translateX(6px);
+  border-color: #e7eaf0;
+}
+
+.achievement-player:hover::before {
+  height: 100%;
+}
+
+.achievement-player h3 {
+  margin: 0 0 3px;
+
+  color: #111111;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.achievement-player p {
+  margin: 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.achievement-section-heading {
+  width: 100%;
+  max-width: 850px;
+
+  margin: 0 auto 45px;
+
+  text-align: center;
+
+  animation: sectionHeadingReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.achievement-section-heading span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #0637a5;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.achievement-section-heading h2 {
+  margin: 0;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 600;
+
+  letter-spacing: -1.5px;
+}
+
+.achievement-section-heading p {
+  max-width: 580px;
+
+  margin: 13px auto 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   U16 / LARGE CARDS
+========================================================= */
+
+.achievement-cards-section {
+  width: 100%;
+
+  padding: 80px 30px 95px;
+
+  background: linear-gradient(180deg, #f8f7f5 0%, #ffffff 100%);
+}
+
+.achievement-two-grid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 65px;
+}
+
+.achievement-large-card {
+  width: 100%;
+
+  animation: cardReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--achievement-delay) both;
+
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.achievement-large-card:hover {
+  transform: translateY(-9px);
+}
+
+.achievement-large-image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1.02;
+
+  overflow: hidden;
+
+  background: #e9ebf5;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.achievement-large-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.18));
+
+  pointer-events: none;
+}
+
+.achievement-large-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s ease;
+}
+
+.achievement-large-card:hover .achievement-large-image img {
+  transform: scale(1.045);
+  filter: brightness(1.04);
+}
+
+.achievement-card-shine {
+  position: absolute;
+
+  z-index: 2;
+
+  top: 0;
+  left: -130%;
+
+  width: 65%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.9s ease;
+}
+
+.achievement-large-card:hover .achievement-card-shine {
+  left: 140%;
+}
+
+.achievement-large-info {
+  padding-top: 23px;
+
+  text-align: center;
+}
+
+.achievement-large-info h3 {
+  margin: 0 0 7px;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.achievement-large-info p {
+  max-width: 510px;
+
+  margin: 0 auto;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   U20
+========================================================= */
+
+.achievement-u20-section {
+  width: 100%;
+
+  padding: 85px 30px 95px;
+
+  background: #ffffff;
+}
+
+.u20-heading {
+  margin-bottom: 48px;
+}
+
+.achievement-u20-grid {
+  max-width: 1100px;
+}
+
+.achievement-u20-card {
+  animation: cardReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--achievement-delay) both;
+
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.achievement-u20-card:hover {
+  transform: translateY(-9px);
+}
+
+.achievement-u20-image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: #e9ebf5;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.achievement-u20-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s ease;
+}
+
+.achievement-u20-card:hover .achievement-u20-image img {
+  transform: scale(1.05);
+  filter: brightness(1.03);
+}
+
+.achievement-u20-overlay {
+  position: absolute;
+
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+
+  padding: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  background: rgba(0, 0, 0, 0.78);
+
+  backdrop-filter: blur(9px);
+
+  animation: overlayReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.achievement-country-badge {
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.achievement-vs {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.achievement-u20-info {
+  padding-top: 21px;
+
+  text-align: center;
+}
+
+.achievement-u20-info h3 {
+  margin: 0 0 7px;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.achievement-u20-info p {
+  margin: 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   CHALLENGE CUP
+========================================================= */
+
+.achievement-challenge-section {
+  width: 100%;
+
+  padding: 85px 30px 100px;
+
+  background: linear-gradient(180deg, #f8f7f5 0%, #ffffff 100%);
+}
+
+.challenge-grid {
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+}
+
+.challenge-card {
+  animation: cardReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--achievement-delay) both;
+
+  transition: transform 0.4s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-9px);
+}
+
+.challenge-image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 0.78 / 1;
+
+  overflow: hidden;
+
+  background: #e9ebf5;
+
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.challenge-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
+}
+
+.challenge-card:hover .challenge-image img {
+  transform: scale(1.065);
+  filter: brightness(1.04);
+}
+
+.challenge-number {
+  position: absolute;
+
+  top: 13px;
+  right: 13px;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #0637a5;
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.35s ease;
+}
+
+.challenge-card:hover .challenge-number {
+  transform: rotate(12deg) scale(1.08);
+}
+
+.challenge-info {
+  padding: 20px 8px 0;
+
+  text-align: center;
+}
+
+.challenge-info h3 {
+  margin: 0 0 7px;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.challenge-info p {
+  margin: 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   BOTTOM ACHIEVEMENT BANNER
+========================================================= */
+
+.achievement-bottom-banner {
+  position: relative;
+
+  width: 100%;
+
+  padding: 55px 30px;
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(255, 255, 255, 0.1),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #052b82, #0637a5, #04276f);
+
+  overflow: hidden;
+}
+
+.achievement-bottom-banner::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -300px;
+  right: -100px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+
+  animation: bannerCircleRotate 12s linear infinite;
+}
+
+.achievement-bottom-banner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  left: -90px;
+  bottom: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.achievement-banner-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 23px;
+
+  animation: bannerReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.achievement-banner-icon {
+  width: 60px;
+  height: 60px;
+
+  flex: 0 0 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  animation: bannerIconFloat 3.5s ease-in-out infinite;
+}
+
+.achievement-banner-content span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.achievement-banner-content h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 29px;
+  line-height: 1.1;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+/* =========================================================
+   FLOATING CONTACT
+========================================================= */
+
+.achievements-floating-contact {
+  position: fixed;
+
+  right: 20px;
+  bottom: 20px;
+
+  z-index: 8000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 10px;
+}
+
+.achievements-phone {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #0637a5;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+  animation:
+    phoneEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1s both,
+    phoneFloat 3.5s ease-in-out 2s infinite;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.achievements-phone:hover {
+  transform: scale(1.1);
+
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+}
+
+.achievements-whatsapp {
+  min-width: 255px;
+  height: 42px;
+
+  padding: 0 17px;
+
+  border-radius: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  background: #20d366;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+  animation: whatsappEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s both;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.achievements-whatsapp span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.achievements-whatsapp:hover {
+  transform: translateY(-4px) scale(1.02);
+
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes heroContentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-45px);
+    filter: blur(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroIconReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-30deg);
+  }
+
+  70% {
+    transform: scale(1.08) rotate(5deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes heroIconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes heroTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    letter-spacing: 8px;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -1px;
+  }
+}
+
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroOrbit {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes heroPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+@keyframes featureImageReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-80px) scale(0.94);
+    filter: blur(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes featureContentReveal {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes playerReveal {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sectionHeadingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(65px) scale(0.94);
+    filter: blur(5px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.01);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlayReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes badgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes lineShine {
+  0%,
+  45% {
+    left: -35px;
+  }
+
+  70%,
+  100% {
+    left: 110%;
+  }
+}
+
+@keyframes bannerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bannerIconFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+
+@keyframes bannerCircleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes phoneEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(80px) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes phoneFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes whatsappEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(100px) scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+  .achievements-hero {
+    min-height: 195px;
+    padding: 70px 30px 30px;
+  }
+
+  .achievements-hero h1 {
+    font-size: 34px;
+  }
+
+  .achievement-feature-container {
+    gap: 48px;
+  }
+
+  .achievement-feature-content h2 {
+    font-size: 34px;
+  }
+
+  .achievement-player-list {
+    gap: 12px;
+  }
+
+  .achievement-player p {
+    font-size: 11.5px;
+  }
+
+  .challenge-grid {
+    gap: 22px;
+  }
+
+  .achievement-banner-content h2 {
+    font-size: 27px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .achievements-hero {
+    min-height: 185px;
+    padding: 68px 25px 30px;
+  }
+
+  .achievements-hero h1 {
+    font-size: 32px;
+  }
+
+  .achievement-feature-section {
+    padding: 65px 25px 75px;
+  }
+
+  .achievement-feature-container {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .achievement-feature-image {
+    max-height: 600px;
+  }
+
+  .achievement-feature-content h2 {
+    font-size: 36px;
+  }
+
+  .achievement-cards-section,
+  .achievement-u20-section,
+  .achievement-challenge-section {
+    padding: 70px 25px 80px;
+  }
+
+  .achievement-two-grid {
+    gap: 35px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .achievement-bottom-banner {
+    padding: 45px 25px;
+  }
+
+  .achievement-banner-content h2 {
+    font-size: 24px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .achievements-hero {
+    min-height: 270px;
+    padding: 160px 15px 35px;
+  }
+
+  .achievements-hero-icon {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 10px;
+  }
+
+  .achievements-hero-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .achievements-hero h1 {
+    font-size: 25px;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+  }
+
+  .achievements-hero p {
+    max-width: 310px;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .achievement-feature-section {
+    padding: 48px 15px 58px;
+  }
+
+  .achievement-feature-container {
+    gap: 35px;
+  }
+
+  .achievement-image-badge {
+    left: 10px;
+    bottom: 10px;
+
+    padding: 7px 9px;
+
+    font-size: 7px;
+  }
+
+  .achievement-feature-content h2 {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+  }
+
+  .achievement-section-label {
+    font-size: 7px;
+  }
+
+  .achievement-country {
+    font-size: 10px;
+  }
+
+  .country-flag {
+    font-size: 19px;
+  }
+
+  .achievement-player-list {
+    gap: 12px;
+  }
+
+  .achievement-player {
+    padding-left: 11px;
+  }
+
+  .achievement-player h3 {
+    font-size: 12px;
+  }
+
+  .achievement-player p {
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+
+  .achievement-cards-section,
+  .achievement-u20-section,
+  .achievement-challenge-section {
+    padding: 55px 15px 65px;
+  }
+
+  .achievement-section-heading {
+    margin-bottom: 32px;
+  }
+
+  .achievement-section-heading span {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
+  .achievement-section-heading h2 {
+    font-size: 26px;
+    letter-spacing: -0.7px;
+  }
+
+  .achievement-section-heading p {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .achievement-two-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .achievement-large-info,
+  .achievement-u20-info {
+    padding-top: 16px;
+  }
+
+  .achievement-large-info h3,
+  .achievement-u20-info h3 {
+    font-size: 14px;
+  }
+
+  .achievement-large-info p,
+  .achievement-u20-info p {
+    font-size: 11px;
+  }
+
+  .achievement-u20-overlay {
+    left: 9px;
+    right: 9px;
+    bottom: 9px;
+
+    padding: 8px 6px;
+
+    gap: 5px;
+  }
+
+  .achievement-country-badge {
+    font-size: 7px;
+  }
+
+  .achievement-vs {
+    font-size: 7px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 13px;
+  }
+
+  .challenge-info {
+    padding-top: 13px;
+  }
+
+  .challenge-info h3 {
+    font-size: 11px;
+  }
+
+  .challenge-info p {
+    font-size: 10px;
+  }
+
+  .challenge-number {
+    width: 28px;
+    height: 28px;
+    font-size: 8px;
+  }
+
+  .achievement-bottom-banner {
+    padding: 32px 15px;
+  }
+
+  .achievement-banner-content {
+    gap: 13px;
+  }
+
+  .achievement-banner-icon {
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+  }
+
+  .achievement-banner-icon svg {
+    width: 19px;
+  }
+
+  .achievement-banner-content span {
+    margin-bottom: 5px;
+    font-size: 6.5px;
+    letter-spacing: 1px;
+  }
+
+  .achievement-banner-content h2 {
+    font-size: 16px;
+    line-height: 1.15;
+  }
+
+  .achievements-floating-contact {
+    right: 12px;
+    bottom: 15px;
+    gap: 8px;
+  }
+
+  .achievements-phone {
+    width: 50px;
+    height: 50px;
+  }
+
+  .achievements-whatsapp {
+    min-width: 205px;
+    height: 40px;
+
+    padding: 0 13px;
+    gap: 8px;
+  }
+
+  .achievements-whatsapp span {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .achievements-hero {
+    min-height: 165px;
+    padding: 70px 12px 27px;
+  }
+
+  .achievements-hero h1 {
+    font-size: 23px;
+  }
+
+  .achievements-hero p {
+    font-size: 10px;
+  }
+
+  .achievement-feature-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .achievement-feature-content h2 {
+    font-size: 25px;
+  }
+
+  .achievement-player h3 {
+    font-size: 11px;
+  }
+
+  .achievement-player p {
+    font-size: 10px;
+  }
+
+  .achievement-section-heading h2 {
+    font-size: 23px;
+  }
+
+  .challenge-grid {
+    gap: 20px 11px;
+  }
+
+  .challenge-info h3 {
+    font-size: 10px;
+  }
+
+  .challenge-info p {
+    font-size: 9px;
+  }
+
+  .achievements-phone {
+    width: 48px;
+    height: 48px;
+  }
+
+  .achievements-whatsapp {
+    min-width: 190px;
+    height: 38px;
+  }
+
+  .achievements-whatsapp span {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .achievements-page *,
+  .achievements-page *::before,
+  .achievements-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

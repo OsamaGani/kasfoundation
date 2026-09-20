@@ -1,0 +1,553 @@
+/* =========================================
+   GLOBAL PAGE FIX
+========================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f8f7f5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   OUR TEAM PAGE
+========================================= */
+
+.our-team-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f7f5;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.our-team-header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 110px 30px 58px;
+  text-align: center;
+}
+
+.our-team-header h1 {
+  margin: 0 0 28px;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 600;
+
+  letter-spacing: -2px;
+}
+
+.our-team-header p {
+  width: 100%;
+  max-width: 760px;
+
+  margin: 0 auto;
+  padding: 0 10px;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+
+  text-align: center;
+
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+/* =========================================
+   TEAM SECTION
+========================================= */
+
+.our-team-section {
+  width: 100%;
+  padding: 0 30px 90px;
+}
+
+.our-team-grid {
+  width: 100%;
+  max-width: 1295px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  column-gap: 30px;
+  row-gap: 34px;
+}
+
+/* =========================================
+   TEAM CARD
+========================================= */
+
+.team-card {
+  width: 100%;
+
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+
+  animation: teamCardReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  animation-delay: var(--card-delay);
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================================
+   CARD IMAGE
+========================================= */
+
+.team-card-image {
+  width: 100%;
+  height: 400px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: #e9ebf5;
+
+  position: relative;
+}
+
+.team-card-image::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent 35%);
+
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
+}
+
+.team-card:hover .team-card-image::after {
+  opacity: 1;
+}
+
+.team-card-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center top;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease;
+}
+
+.team-card:hover .team-card-image img {
+  transform: scale(1.045);
+
+  filter: brightness(1.02);
+}
+
+/* =========================================
+   CARD TEXT
+========================================= */
+
+.team-card-info {
+  padding-top: 24px;
+}
+
+.team-card-info h2 {
+  margin: 0 0 9px;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  letter-spacing: -0.3px;
+}
+
+.team-card-info p {
+  margin: 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 400;
+
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* =========================================
+   CARD ANIMATION
+========================================= */
+
+@keyframes teamCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(70px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   FLOATING CONTACT
+========================================= */
+
+.our-team-floating-contact {
+  position: fixed;
+
+  right: 20px;
+  bottom: 20px;
+
+  z-index: 8000;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.our-team-phone,
+.our-team-whatsapp {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.our-team-phone {
+  background: #0637a5;
+}
+
+.our-team-whatsapp {
+  background: #20d366;
+}
+
+.our-team-phone:hover,
+.our-team-whatsapp:hover {
+  transform: scale(1.08);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* =========================================
+   LARGE LAPTOP
+========================================= */
+
+@media (max-width: 1200px) {
+  .our-team-header {
+    padding: 100px 30px 55px;
+  }
+
+  .our-team-grid {
+    column-gap: 25px;
+  }
+
+  .team-card-image {
+    height: 390px;
+  }
+}
+
+/* =========================================
+   LARGE TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .our-team-header {
+    padding: 95px 30px 55px;
+  }
+
+  .our-team-header h1 {
+    font-size: 33px;
+  }
+
+  .our-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+
+    column-gap: 25px;
+  }
+
+  .team-card-image {
+    height: 390px;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+  .our-team-header {
+    max-width: 720px;
+
+    padding: 90px 25px 45px;
+  }
+
+  .our-team-header h1 {
+    font-size: 46px;
+
+    margin-bottom: 24px;
+  }
+
+  .our-team-header p {
+    max-width: 680px;
+
+    padding: 0 5px;
+
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .our-team-section {
+    padding: 0 22px 70px;
+  }
+
+  .our-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    column-gap: 25px;
+    row-gap: 35px;
+  }
+
+  .team-card-image {
+    height: 430px;
+
+    border-radius: 18px;
+  }
+
+  .team-card-info {
+    padding-top: 20px;
+  }
+
+  .team-card-info h2 {
+    font-size: 16px;
+  }
+
+  .team-card-info p {
+    font-size: 15px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .our-team-header {
+    padding: 90px 20px 40px;
+  }
+
+  .our-team-header h1 {
+    font-size: 38px;
+
+    line-height: 1.15;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 22px;
+  }
+
+  .our-team-header p {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 0;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    text-align: center;
+
+    word-break: normal;
+
+    overflow-wrap: normal;
+  }
+
+  .our-team-section {
+    padding: 0 15px 55px;
+  }
+
+  .our-team-grid {
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+  }
+
+  .team-card {
+    width: 100%;
+  }
+
+  .team-card-image {
+    width: 100%;
+
+    height: 470px;
+
+    border-radius: 18px;
+  }
+
+  .team-card-info {
+    padding-top: 18px;
+  }
+
+  .team-card-info h2 {
+    font-size: 16px;
+
+    margin-bottom: 7px;
+  }
+
+  .team-card-info p {
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+  /* =====================================
+     FLOATING BUTTONS
+  ===================================== */
+
+  .our-team-floating-contact {
+    right: 12px;
+
+    bottom: 15px;
+
+    gap: 8px;
+  }
+
+  .our-team-phone,
+  .our-team-whatsapp {
+    width: 50px;
+
+    height: 50px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .our-team-header {
+    padding: 80px 15px 35px;
+  }
+
+  .our-team-header h1 {
+    font-size: 30px;
+
+    margin-top: 24px;
+
+    line-height: 1.15;
+  }
+
+  .our-team-header p {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 0;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  .our-team-section {
+    padding-left: 12px;
+
+    padding-right: 12px;
+  }
+
+  .team-card-image {
+    height: 400px;
+  }
+
+  .team-card-info h2 {
+    font-size: 15px;
+  }
+
+  .team-card-info p {
+    font-size: 13px;
+  }
+
+  .our-team-phone,
+  .our-team-whatsapp {
+    width: 48px;
+
+    height: 48px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card {
+    animation: none;
+  }
+
+  .team-card:hover {
+    transform: none;
+  }
+
+  .team-card-image img {
+    transition: none;
+  }
+}

@@ -1,0 +1,615 @@
+/* =========================================================
+   EDUCATION PROGRAM PAGE
+========================================================= */
+
+.education-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font-family: "Montserrat", sans-serif;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   PAGE HERO
+========================================================= */
+
+.education-page-hero {
+  width: 100%;
+
+  height: 280px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  background: #0637a5;
+
+  position: relative;
+}
+
+.education-page-hero-content {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.education-page-hero h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 42px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
+
+  transform: none;
+
+  transform: translateY(35px);
+}
+
+/* =========================================================
+   COMMON CONTENT SECTION
+========================================================= */
+
+.education-content-section {
+  width: 100%;
+
+  padding: 50px 30px;
+
+  background: #ffffff;
+}
+
+/* =========================================================
+   CONTENT CONTAINER
+========================================================= */
+
+.education-content-container {
+  width: 100%;
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 60px;
+
+  align-items: center;
+
+  opacity: 0;
+
+  transform: translateY(90px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================
+   SCROLL ANIMATION
+========================================================= */
+
+.education-section-visible .education-content-container {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.education-video-wrapper {
+  width: 100%;
+
+  height: 390px;
+
+  overflow: hidden;
+
+  background: #000000;
+
+  border-radius: 0;
+
+  position: relative;
+}
+
+.education-video {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  background: #000000;
+}
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.education-text-content {
+  width: 100%;
+}
+
+.education-text-content h2 {
+  margin: 0 0 25px;
+
+  color: #111111;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  letter-spacing: -0.8px;
+}
+
+.education-text-content p {
+  width: 100%;
+  margin: 0 0 20px;
+  color: #3f4a5a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: justify;
+  text-align-last: left;
+  word-spacing: normal;
+  overflow-wrap: break-word;
+}
+
+.education-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   REVERSE SECTION
+========================================================= */
+
+.education-reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* =========================================================
+   INTRO SECTION
+========================================================= */
+
+.education-intro-section {
+  padding-top: 50px;
+}
+
+/* =========================================================
+   MORE CONTENT
+========================================================= */
+
+.education-more-section {
+  width: 100%;
+
+  padding: 70px 30px 90px;
+
+  background: #ffffff;
+
+  opacity: 0;
+
+  transform: translateY(80px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.education-more-section.education-section-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.education-more-container {
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.education-more-container h2 {
+  margin: 0 0 28px;
+
+  color: #111111;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.education-more-container p {
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto 22px;
+
+  color: #3f4a5a;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+
+  text-align: center;
+
+  overflow-wrap: break-word;
+}
+
+.education-more-container p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .education-page-hero {
+    height: 230px;
+  }
+
+  .education-page-hero h1 {
+    font-size: 36px;
+    transform: translateY(25px);
+  }
+
+  .education-content-section {
+    padding: 45px 25px;
+  }
+
+  .education-content-container {
+    gap: 40px;
+  }
+
+  .education-video-wrapper {
+    height: 350px;
+  }
+
+  .education-text-content h2 {
+    font-size: 25px;
+  }
+
+  .education-text-content p {
+    font-size: 14px;
+    line-height: 1.7;
+
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 800px) {
+  .education-content-section {
+    padding: 45px 25px;
+  }
+
+  .education-content-container,
+  .education-reverse {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+
+    align-items: stretch;
+  }
+
+  /* VIDEO ALWAYS FIRST */
+
+  .education-video-wrapper {
+    order: 1;
+
+    width: 100%;
+
+    height: 400px;
+
+    flex-shrink: 0;
+  }
+
+  /* CONTENT ALWAYS SECOND */
+
+  .education-text-content {
+    order: 2;
+
+    width: 100%;
+  }
+
+  .education-reverse .education-video-wrapper {
+    order: 1;
+  }
+
+  .education-reverse .education-text-content {
+    order: 2;
+  }
+
+  .education-text-content h2 {
+    font-size: 27px;
+
+    margin-bottom: 20px;
+
+    text-align: left;
+  }
+
+  .education-text-content p {
+    width: 100%;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 550px) {
+  .education-page-hero {
+    height: 190px;
+
+    padding: 0;
+  }
+
+  .education-page-hero h1 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    transform: translateY(25px);
+  }
+
+  .education-content-section {
+    width: 100%;
+
+    padding: 35px 18px;
+  }
+
+  .education-intro-section {
+    padding-top: 35px;
+  }
+
+  /*
+
+    VIDEO
+      ↓
+    CONTENT
+      ↓
+    VIDEO
+      ↓
+    CONTENT
+
+  */
+
+  .education-content-container,
+  .education-reverse {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    align-items: stretch;
+  }
+
+  /* VIDEO FIRST */
+
+  .education-video-wrapper {
+    order: 1;
+
+    width: 100%;
+
+    height: 280px;
+
+    border-radius: 0;
+  }
+
+  /* CONTENT SECOND */
+
+  .education-text-content {
+    order: 2;
+
+    width: 100%;
+  }
+
+  .education-reverse .education-video-wrapper {
+    order: 1;
+  }
+
+  .education-reverse .education-text-content {
+    order: 2;
+  }
+
+  .education-text-content h2 {
+    width: 100%;
+
+    margin: 0 0 18px;
+
+    font-size: 23px;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.4px;
+
+    text-align: left;
+  }
+
+  .education-text-content p {
+    width: 100%;
+
+    margin: 0 0 17px;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* =====================================================
+     MORE CONTENT
+  ===================================================== */
+
+  .education-more-section {
+    width: 100%;
+
+    padding: 50px 18px 65px;
+
+    background: #ffffff;
+  }
+
+  .education-more-container {
+    width: 100%;
+  }
+
+  .education-more-container h2 {
+    font-size: 25px;
+
+    margin-bottom: 20px;
+  }
+
+  .education-more-container p {
+    width: 100%;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .education-page-hero {
+    height: 175px;
+  }
+
+  .education-page-hero h1 {
+    font-size: 24px;
+  }
+
+  .education-content-section {
+    padding: 32px 15px;
+  }
+
+  .education-content-container,
+  .education-reverse {
+    gap: 22px;
+  }
+
+  .education-video-wrapper {
+    width: 100%;
+
+    height: 240px;
+  }
+
+  .education-text-content {
+    width: 100%;
+  }
+
+  .education-text-content h2 {
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    margin-bottom: 16px;
+
+    text-align: left;
+  }
+
+  .education-text-content p {
+    width: 100%;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+  }
+
+  .education-more-section {
+    padding: 45px 15px 60px;
+  }
+
+  .education-more-container h2 {
+    font-size: 23px;
+  }
+
+  .education-more-container p {
+    font-size: 12px;
+
+    line-height: 1.75;
+
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+  }
+}

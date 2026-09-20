@@ -1,0 +1,332 @@
+.location-team-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f7f5;
+  overflow: hidden;
+}
+
+.location-team-hero {
+  width: 100%;
+  padding: 115px 30px 80px;
+}
+
+.location-team-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.location-team-back {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 45px;
+
+  color: #0637a5;
+  text-decoration: none;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  transition: gap 0.3s ease;
+}
+
+.location-team-back:hover {
+  gap: 8px;
+}
+
+.location-team-heading {
+  text-align: center;
+  margin-bottom: 55px;
+
+  animation: locationHeadingReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.location-team-badge {
+  width: fit-content;
+  margin: 0 auto 22px;
+
+  padding: 9px 20px;
+
+  background: #0637a5;
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  font-style: italic;
+
+  transform: skew(-8deg);
+}
+
+.location-team-heading h1 {
+  margin: 0;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 600;
+
+  letter-spacing: -2px;
+}
+
+.location-team-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.location-team-card {
+  min-height: 430px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  animation: locationCardReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--location-delay) both;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.location-team-card:hover {
+  transform: translateY(-10px);
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+}
+
+.location-team-image {
+  width: 100%;
+  height: 350px;
+
+  background: #e9ebf5;
+  overflow: hidden;
+}
+
+.location-team-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.location-team-card:hover .location-team-image img {
+  transform: scale(1.06);
+}
+
+.location-team-card-info {
+  min-height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.location-team-card-info h2 {
+  margin: 0;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.location-team-floating-contact {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 8000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.location-team-phone {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #0637a5;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+  animation: locationPhone 3s ease-in-out infinite;
+}
+
+.location-team-whatsapp {
+  min-width: 255px;
+  height: 42px;
+
+  padding: 0 17px;
+
+  border-radius: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: #20d366;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.location-team-whatsapp span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+@keyframes locationHeadingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+    filter: blur(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes locationCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(70px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes locationPhone {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 1000px) {
+  .location-team-heading h1 {
+    font-size: 44px;
+  }
+
+  .location-team-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .location-team-hero {
+    padding: 90px 20px 60px;
+  }
+
+  .location-team-heading {
+    margin-bottom: 40px;
+  }
+
+  .location-team-heading h1 {
+    font-size: 34px;
+  }
+
+  .location-team-gallery {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .location-team-image {
+    height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .location-team-hero {
+    padding: 85px 15px 50px;
+  }
+
+  .location-team-back {
+    margin-bottom: 32px;
+    font-size: 10px;
+  }
+
+  .location-team-heading h1 {
+    font-size: 29px;
+  }
+
+  .location-team-image {
+    height: 330px;
+  }
+
+  .location-team-floating-contact {
+    right: 12px;
+    bottom: 15px;
+    gap: 8px;
+  }
+
+  .location-team-phone {
+    width: 50px;
+    height: 50px;
+  }
+
+  .location-team-whatsapp {
+    min-width: 205px;
+    height: 40px;
+  }
+
+  .location-team-whatsapp span {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .location-team-heading,
+  .location-team-card,
+  .location-team-phone {
+    animation: none;
+  }
+
+  .location-team-card,
+  .location-team-image img {
+    transition: none;
+  }
+}

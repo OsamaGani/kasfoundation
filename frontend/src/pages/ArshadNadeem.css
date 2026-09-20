@@ -1,0 +1,298 @@
+.member-page {
+  min-height: 100vh;
+  background: #f8f7f5;
+  overflow: hidden;
+}
+
+.member-hero {
+  padding: 115px 30px 90px;
+}
+
+.member-hero-content {
+  max-width: 1295px;
+  margin: auto;
+}
+
+.member-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 45px;
+  color: #0637a5;
+  text-decoration: none;
+  font:
+    800 12px "Montserrat",
+    sans-serif;
+  letter-spacing: 0.4px;
+  transition: gap 0.3s ease;
+}
+
+.member-back:hover {
+  gap: 14px;
+}
+
+.member-profile {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.member-image-box {
+  height: 650px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #e9ebf5;
+  animation: memberImageReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.member-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.7s ease;
+}
+
+.member-image-box:hover img {
+  transform: scale(1.035);
+}
+
+.member-details {
+  animation: memberContentReveal 0.9s 0.12s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.member-label {
+  display: block;
+  margin-bottom: 20px;
+  color: #0637a5;
+  font:
+    800 12px "Montserrat",
+    sans-serif;
+  letter-spacing: 1.6px;
+}
+
+.member-details h1 {
+  margin: 0 0 13px;
+  color: #050505;
+  font:
+    800 58px/1 "Montserrat",
+    sans-serif;
+  font-weight: 600 !important;
+  font-size: 30px !important;
+  letter-spacing: -2px;
+}
+
+.member-details h2 {
+  margin: 0;
+  color: #35445a;
+  font:
+    500 20px/1.4 "Montserrat",
+    sans-serif;
+}
+
+.member-line {
+  width: 65px;
+  height: 4px;
+  margin: 28px 0;
+  background: #0637a5;
+}
+
+.member-details p {
+  max-width: 610px;
+  margin: 0 0 20px;
+  color: #35445a;
+  font:
+    400 16px/1.75 "Montserrat",
+    sans-serif;
+  text-align: justify;
+}
+
+.member-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 145px;
+  height: 48px;
+  margin-top: 12px;
+  padding: 0 25px;
+  background: #0637a5;
+  color: #fff;
+  text-decoration: none;
+  font:
+    800 11px "Montserrat",
+    sans-serif;
+  transition: 0.3s ease;
+}
+
+.member-contact-button:hover {
+  background: #050505;
+  transform: translateY(-3px);
+}
+
+.member-floating-contact {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 8000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.member-phone,
+.member-whatsapp {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  transition: 0.3s ease;
+}
+
+.member-phone {
+  background: #0637a5;
+}
+
+.member-whatsapp {
+  background: #20d366;
+}
+
+.member-phone:hover,
+.member-whatsapp:hover {
+  transform: scale(1.08);
+}
+
+@keyframes memberImageReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes memberContentReveal {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .member-hero {
+    padding: 105px 30px 80px;
+  }
+
+  .member-profile {
+    gap: 50px;
+  }
+
+  .member-image-box {
+    height: 600px;
+  }
+
+  .member-details h1 {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 900px) {
+  .member-hero {
+    padding: 95px 25px 70px;
+  }
+
+  .member-profile {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .member-image-box {
+    height: 560px;
+  }
+
+  .member-details h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .member-hero {
+    padding: 90px 15px 55px;
+  }
+
+  .member-back {
+    margin-bottom: 30px;
+    font-size: 10px;
+  }
+
+  .member-profile {
+    gap: 35px;
+  }
+
+  .member-image-box {
+    height: 470px;
+    border-radius: 18px;
+  }
+
+  .member-label {
+    margin-bottom: 14px;
+    font-size: 9px;
+  }
+
+  .member-details h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .member-details h2 {
+    font-size: 16px;
+  }
+
+  .member-line {
+    width: 50px;
+    height: 3px;
+    margin: 22px 0;
+  }
+
+  .member-details p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .member-floating-contact {
+    right: 12px;
+    bottom: 15px;
+    gap: 8px;
+  }
+
+  .member-phone,
+  .member-whatsapp {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 380px) {
+  .member-image-box {
+    height: 410px;
+  }
+
+  .member-details h1 {
+    font-size: 31px;
+  }
+
+  .member-details p {
+    font-size: 13px;
+  }
+}

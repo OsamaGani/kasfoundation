@@ -1,0 +1,327 @@
+.team-member-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f7f5;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   PROFILE SECTION
+========================================= */
+
+.team-member-profile {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 115px 30px 70px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.team-member-badge {
+  width: fit-content;
+  margin: 0 auto 25px;
+  padding: 7px 25px;
+  background: #0637a5;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.2px;
+  border-radius: 3px;
+  transform: skew(-8deg);
+  text-align: center;
+}
+
+/* =========================================
+   IMAGE + DESCRIPTION
+========================================= */
+
+.team-member-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+.team-member-image-wrap {
+  width: 100%;
+  height: 530px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e5e5e5;
+}
+
+.team-member-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.team-member-description {
+  width: 100%;
+  min-height: 530px;
+  padding: 42px 40px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team-member-description p {
+  margin: 0 0 18px;
+  color: #24344d;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.58;
+  font-weight: 400;
+}
+
+.team-member-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   JOIN OUR COMMUNITY
+========================================= */
+
+.team-member-cta {
+  width: 100%;
+  min-height: 150px;
+  background: #0637a5;
+
+  display: flex;
+  align-items: center;
+}
+
+.team-member-cta-content {
+  width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.team-member-cta-content h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+
+.team-member-cta-button {
+  min-width: 158px;
+  height: 46px;
+  padding: 0 25px;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+}
+
+.team-member-cta-button:hover {
+  background: #ffffff;
+  color: #0637a5;
+}
+
+/* =========================================
+   LARGE TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .team-member-profile {
+    max-width: 950px;
+    padding: 105px 25px 60px;
+  }
+
+  .team-member-grid {
+    gap: 25px;
+  }
+
+  .team-member-image-wrap {
+    height: 500px;
+  }
+
+  .team-member-description {
+    min-height: 500px;
+    padding: 35px;
+  }
+
+  .team-member-description p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .team-member-cta-content h2 {
+    font-size: 42px;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+  .team-member-profile {
+    max-width: 100%;
+    padding: 95px 20px 55px;
+  }
+
+  .team-member-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .team-member-image-wrap {
+    height: 520px;
+  }
+
+  .team-member-description {
+    min-height: auto;
+    padding: 35px 32px;
+  }
+
+  .team-member-description p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .team-member-cta {
+    min-height: 140px;
+  }
+
+  .team-member-cta-content {
+    padding: 28px 25px;
+  }
+
+  .team-member-cta-content h2 {
+    font-size: 38px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .team-member-profile {
+    padding: 75px 15px 45px;
+  }
+
+  .team-member-badge {
+    margin-bottom: 20px;
+    margin-top: 50px;
+    padding: 7px 22px;
+    font-size: 10px;
+  }
+
+  .team-member-grid {
+    gap: 20px;
+  }
+
+  .team-member-image-wrap {
+    height: 430px;
+    border-radius: 16px;
+  }
+
+  .team-member-image {
+    object-position: center center;
+  }
+
+  .team-member-description {
+    padding: 27px 22px;
+    border-radius: 16px;
+  }
+
+  .team-member-description p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 17px;
+  }
+
+  .team-member-cta {
+    min-height: 175px;
+  }
+
+  .team-member-cta-content {
+    padding: 30px 20px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 22px;
+  }
+
+  .team-member-cta-content h2 {
+    font-size: 21px;
+    letter-spacing: -0.8px;
+  }
+
+  .team-member-cta-button {
+    min-width: 145px;
+    height: 44px;
+    padding: 0 20px;
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .team-member-profile {
+    padding: 65px 12px 40px;
+  }
+
+  .team-member-image-wrap {
+    height: 350px;
+    border-radius: 14px;
+  }
+
+  .team-member-description {
+    padding: 23px 18px;
+    border-radius: 14px;
+  }
+
+  .team-member-description p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .team-member-cta-content {
+    padding: 28px 18px;
+  }
+
+  .team-member-cta-content h2 {
+    font-size: 22px;
+  }
+}
