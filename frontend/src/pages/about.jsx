@@ -7,10 +7,10 @@ import Footer from "../components/Footer";
 
 import "./about.css";
 
-import aboutLeft from "../assets/images/about-left.webp";
-import aboutRight from "../assets/images/about-right.webp";
-import aboutLeft1 from "../assets/images/about-left1.webp";
-import aboutRight1 from "../assets/images/about-right1.webp";
+import aboutLeft from "../assets/images/about-left.jpeg"
+import aboutRight from "../assets/images/about-right.jpeg";
+import aboutLeft1 from "../assets/images/about-left1.jpeg";
+import aboutRight1 from "../assets/images/about-right1.jpeg";
 import logo from "../assets/images/logo.png";
 import aboutVideo from "../assets/videos/about-video.mp4";
 

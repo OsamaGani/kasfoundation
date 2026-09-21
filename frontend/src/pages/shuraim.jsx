@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 
 import "./TeamMember.css";
 
-import abdulRahim from "../assets/images/abdul-rahim.webp";
+import shuraim from "../assets/images/shuraim.jpeg";
 
-function AbdulRahim() {
+function Shuraim() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,30 +19,30 @@ function AbdulRahim() {
 
       <main className="team-member-page">
         <section className="team-member-profile">
-          <div className="team-member-badge">STRIKER</div>
+          <div className="team-member-badge">DEFENDER</div>
 
           <div className="team-member-grid">
             <div className="team-member-image-wrap">
               <img
-                src={abdulRahim}
-                alt="Abdul Rahim"
+                src={shuraim}
+                alt="Shuraim"
                 className="team-member-image"
               />
             </div>
 
             <div className="team-member-description">
               <p>
-                Abdul Rahim is an attacking player who brings energy, movement,
-                and determination to the forward line. His attacking mindset
-                allows him to create opportunities and put pressure on opposing
-                defences.
+                Shuraim, 13 years old, is a talented left back known for
+                his pace and defensive awareness. He combines solid
+                tackling with the ability to support attacks down the flank,
+                making him a versatile presence on the field.
               </p>
 
               <p>
-                Rahim continues to improve his finishing, movement, and overall
-                attacking play through focused training. His confidence and
-                willingness to work for the team make him an important option in
-                the attacking third.
+                Shuraim shows great stamina, discipline, and commitment to
+                his role, proving to be a reliable option for both defense
+                and build-up play. His energy and determination make him an
+                important part of the team's backline.
               </p>
             </div>
           </div>
@@ -64,4 +64,4 @@ function AbdulRahim() {
   );
 }
 
-export default AbdulRahim;
+export default Shuraim;

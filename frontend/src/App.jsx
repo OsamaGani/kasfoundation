@@ -15,9 +15,9 @@ import SaudYousaf from "./pages/SaudYousaf";
 import ZohairAltafGondal from "./pages/ZohairAltafGondal";
 import ArshadNadeem from "./pages/ArshadNadeem";
 
-import MuhammadHaris from "./pages/MuhammadHaris";
-import MuhammadNoor from "./pages/MuhammadNoor";
-import AbdulRahim from "./pages/AbdulRahim";
+import Shuraim from "./pages/shuraim";
+import IrfanYousuf from "./pages/irfanYousuf";
+import Sameer from "./pages/Sameer";
 
 import Ramzan from "./pages/Ramzan";
 import Walid from "./pages/Walid";
@@ -26,7 +26,7 @@ import Rehan from "./pages/Rehan";
 import Talha from "./pages/Talha";
 import Kashif from "./pages/Kashif";
 
-import ShahbazAli from "./pages/ShahbazAli";
+import MoosaYousuf from "./pages/Moosa";
 
 import Gallery from "./pages/gallery";
 
@@ -86,11 +86,11 @@ function App() {
 
         <Route path="/team/arshad-nadeem/" element={<ArshadNadeem />} />
 
-        <Route path="/team/muhammad-haris/" element={<MuhammadHaris />} />
+        <Route path="/team/shuraim/" element={<Shuraim />} />
 
-        <Route path="/team/muhammad-noor/" element={<MuhammadNoor />} />
+        <Route path="/team/irfan-yousuf/" element={<IrfanYousuf />} />
 
-        <Route path="/team/abdul-rahim/" element={<AbdulRahim />} />
+        <Route path="/team/sameer/" element={<Sameer />} />
 
         <Route path="/team/ramzan/" element={<Ramzan />} />
 
@@ -104,7 +104,7 @@ function App() {
 
         <Route path="/team/kashif/" element={<Kashif />} />
 
-        <Route path="/team/shahbaz-ali/" element={<ShahbazAli />} />
+        <Route path="/team/moosa-yousuf/" element={<MoosaYousuf />} />
 
         {/* =========================================
             CONTACT

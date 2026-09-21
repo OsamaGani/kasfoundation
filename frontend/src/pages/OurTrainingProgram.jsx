@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import "./OurTrainingProgram.css";
 
-import programImage from "../assets/images/about-left1.webp";
-import trainingImage from "../assets/images/about-right1.webp";
+import programImage from "../assets/images/about-left1.jpeg";
+import trainingImage from "../assets/images/about-right1.jpeg";
 
 function OurTrainingProgram() {
   const sectionsRef = useRef([]);

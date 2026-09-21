@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 
 import "./TeamMember.css";
 
-import shahbazAli from "../assets/images/shahbaz-ali.webp";
+import sameer from "../assets/images/sameer.jpeg";
 
-function ShahbazAli() {
+function Sameer() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,29 +19,30 @@ function ShahbazAli() {
 
       <main className="team-member-page">
         <section className="team-member-profile">
-          <div className="team-member-badge">CENTRE BACK</div>
+          <div className="team-member-badge">STOPPER</div>
 
           <div className="team-member-grid">
             <div className="team-member-image-wrap">
               <img
-                src={shahbazAli}
-                alt="Shahbaz Ali"
+                src={sameer}
+                alt="Sameer"
                 className="team-member-image"
               />
             </div>
 
             <div className="team-member-description">
               <p>
-                Shahbaz Ali is a committed centre back who focuses on defensive
-                positioning, strength, and maintaining composure on the field.
-                His approach helps provide stability to the defensive unit.
+                Sameer is an attacking player who brings energy, movement,
+                and determination to the forward line. His attacking mindset
+                allows him to create opportunities and put pressure on opposing
+                defences.
               </p>
 
               <p>
-                Shahbaz continues to build his football abilities through
-                consistent training and teamwork. His discipline, determination,
-                and defensive awareness support his development as a dependable
-                player at the back.
+                Sameer continues to improve his finishing, movement, and overall
+                attacking play through focused training. His confidence and
+                willingness to work for the team make him an important option in
+                the attacking third.
               </p>
             </div>
           </div>
@@ -63,4 +64,4 @@ function ShahbazAli() {
   );
 }
 
-export default ShahbazAli;
+export default Sameer;

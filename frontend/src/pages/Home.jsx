@@ -2,22 +2,22 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Phone, ArrowRight, Check } from "lucide-react";
 
-import aboutLeft from "../assets/images/about-left.webp";
-import aboutRight from "../assets/images/about-right.webp";
+import aboutLeft from "../assets/images/about-left.jpeg";
+import aboutRight from "../assets/images/about-right.jpeg";
 
-import programLeft from "../assets/images/about-left1.webp";
-import programRight from "../assets/images/about-right1.webp";
+import programLeft from "../assets/images/about-left1.jpeg";
+import programRight from "../assets/images/about-right1.jpeg";
 
 import footballImage from "../assets/images/football.png";
 import handImage from "../assets/images/hand.png";
-import nextGeneration from "../assets/images/next-generation.webp";
-import footballCamp from "../assets/images/football-camp.webp";
+import nextGeneration from "../assets/images/next-generation.jpeg";
+import footballCamp from "../assets/images/football-camp.jpeg";
 import footballField from "../assets/images/football-field.jpg";
 
-import muhammadHaris from "../assets/images/muhammad-haris.webp";
-import muhammadNoor from "../assets/images/muhammad-noor.webp";
-import abdulRahim from "../assets/images/abdul-rahim.webp";
-import shahbazAli from "../assets/images/shahbaz-ali.webp";
+import shuraim from "../assets/images/shuraim.jpeg";
+import irfanYousuf from "../assets/images/irfanyousuf.jpeg";
+import sameer from "../assets/images/sameer.jpeg";
+import moosa from "../assets/images/moosa.jpeg";
 
 import heroVideo from "../assets/videos/hero-video.mp4";
 
@@ -279,12 +279,10 @@ function Home() {
             <h2>WHO WE ARE</h2>
 
             <p>
-              The Grassroots Foundation was established with a simple belief,
-              football has the power to transform lives. Founded by Mohammad
-              Saud Yousaf, the foundation is dedicated to discovering and
-              nurturing young talent in Pakistan, especially from
-              underprivileged communities who lack access to resources and
-              opportunities.
+
+             Khel Aur Shiksha Foundation was established with a simple belief: sports and education have the power to transform lives. Founded by two brothers, <b>Kaleem A. Yousuf</b> and<b> Shameem M. Yousuf</b>, the foundation is dedicated to empowering young people through access to quality education and sports.
+
+We work especially with children and youth from underprivileged communities, helping them build confidence, discipline, teamwork, and the skills needed for a brighter future
             </p>
 
             <Link to="/about" className="about-home-button">
@@ -524,49 +522,49 @@ function Home() {
           </div>
 
           <div className="home-team-grid">
-            <Link to="/team/muhammad-haris/" className="home-team-card">
+            <Link to="/team/shuraim/" className="home-team-card">
               <div className="home-team-image">
-                <img src={muhammadHaris} alt="Muhammad Haris" />
+                <img src={shuraim} alt="M Shuraim" />
               </div>
 
               <div className="home-team-info">
-                <h3>MUHAMMAD HARIS</h3>
-                <p>Left Back</p>
+                <h3>M Shuraim</h3>
+                <p>DEFENDER</p>
               </div>
             </Link>
 
-            <Link to="/team/muhammad-noor/" className="home-team-card">
+            <Link to="/team/irfan-yousuf/" className="home-team-card">
               <div className="home-team-image">
-                <img src={muhammadNoor} alt="Muhammad Noor" />
+                <img src={irfanYousuf} alt="Irfan Yousuf" />
               </div>
 
               <div className="home-team-info">
-                <h3>MUHAMMAD NOOR</h3>
-                <p>Centre Back</p>
+                <h3>Irfan Yousuf</h3>
+                <p>Attacker</p>
               </div>
             </Link>
 
-            <Link to="/team/abdul-rahim/" className="home-team-card">
-              <div className="home-team-image">
-                <img src={abdulRahim} alt="Abdul Rahim" />
-              </div>
+            <Link to="/team/sameer/" className="home-team-card">
+  <div className="home-team-image">
+    <img src={sameer} alt="Sameer" />
+  </div>
 
-              <div className="home-team-info">
-                <h3>ABDUL RAHIM</h3>
-                <p>Striker</p>
-              </div>
-            </Link>
+  <div className="home-team-info">
+    <h3>SAMEER</h3>
+    <p>Stopper</p>
+  </div>
+</Link>
 
-            <Link to="/team/shahbaz-ali/" className="home-team-card">
-              <div className="home-team-image">
-                <img src={shahbazAli} alt="Shahbaz Ali" />
-              </div>
+           <Link to="/team/moosa-yousuf/" className="home-team-card">
+  <div className="home-team-image">
+    <img src={moosa} alt="Moosa Yousuf" />
+  </div>
 
-              <div className="home-team-info">
-                <h3>SHAHBAZ ALI</h3>
-                <p>Centre Back</p>
-              </div>
-            </Link>
+  <div className="home-team-info">
+    <h3>MOOSA YOUSUF</h3>
+    <p>Attacker</p>
+  </div>
+</Link>
           </div>
         </div>
       </section>

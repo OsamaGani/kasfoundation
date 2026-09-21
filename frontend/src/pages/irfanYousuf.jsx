@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 
 import "./TeamMember.css";
 
-import muhammadHaris from "../assets/images/muhammad-haris.webp";
+import irfanYousuf from "../assets/images/irfanyousuf.jpeg";
 
-function MuhammadHaris() {
+function IrfanYousuf() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,30 +19,29 @@ function MuhammadHaris() {
 
       <main className="team-member-page">
         <section className="team-member-profile">
-          <div className="team-member-badge">LEFT BACK</div>
+          <div className="team-member-badge">ATTACKER</div>
 
           <div className="team-member-grid">
             <div className="team-member-image-wrap">
               <img
-                src={muhammadHaris}
-                alt="Muhammad Haris"
+                src={irfanYousuf}
+                alt="Irfan Yousuf"
                 className="team-member-image"
               />
             </div>
 
             <div className="team-member-description">
               <p>
-                Muhammad Haris, 13 years old, is a talented left back known for
-                his pace and defensive awareness. He combines solid tackling
-                with the ability to support attacks down the flank, making him a
-                versatile presence on the field.
+                Muhammad Noor is a dedicated centre back who brings strength,
+                focus, and determination to the defensive line. His ability to
+                read the game helps him respond quickly to attacking situations.
               </p>
 
               <p>
-                Haris shows great stamina, discipline, and commitment to his
-                role, proving to be a reliable option for both defense and
-                build-up play. His energy and determination make him an
-                important part of the team's backline.
+                Noor continues to develop his defensive skills through regular
+                training, teamwork, and match experience. His commitment and
+                discipline make him a valuable presence at the heart of the
+                team's defence.
               </p>
             </div>
           </div>
@@ -64,4 +63,4 @@ function MuhammadHaris() {
   );
 }
 
-export default MuhammadHaris;
+export default IrfanYousuf;

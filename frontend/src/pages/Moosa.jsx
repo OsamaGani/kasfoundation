@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 
 import "./TeamMember.css";
 
-import muhammadNoor from "../assets/images/muhammad-noor.webp";
+import moosa from "../assets/images/moosa.jpeg";
 
-function MuhammadNoor() {
+function MoosaYousuf() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,29 +19,30 @@ function MuhammadNoor() {
 
       <main className="team-member-page">
         <section className="team-member-profile">
-          <div className="team-member-badge">CENTRE BACK</div>
+          <div className="team-member-badge">ATTACKER</div>
 
           <div className="team-member-grid">
             <div className="team-member-image-wrap">
               <img
-                src={muhammadNoor}
-                alt="Muhammad Noor"
+                src={moosa}
+                alt="Moosa Yousuf"
                 className="team-member-image"
               />
             </div>
 
             <div className="team-member-description">
               <p>
-                Muhammad Noor is a dedicated centre back who brings strength,
-                focus, and determination to the defensive line. His ability to
-                read the game helps him respond quickly to attacking situations.
+                Moosa Yousuf is a committed centre back who focuses on
+                defensive positioning, strength, and maintaining composure on
+                the field. His approach helps provide stability to the
+                defensive unit.
               </p>
 
               <p>
-                Noor continues to develop his defensive skills through regular
-                training, teamwork, and match experience. His commitment and
-                discipline make him a valuable presence at the heart of the
-                team's defence.
+                Moosa continues to build his football abilities through
+                consistent training and teamwork. His discipline,
+                determination, and defensive awareness support his development
+                as a dependable player at the back.
               </p>
             </div>
           </div>
@@ -63,4 +64,4 @@ function MuhammadNoor() {
   );
 }
 
-export default MuhammadNoor;
+export default MoosaYousuf;
