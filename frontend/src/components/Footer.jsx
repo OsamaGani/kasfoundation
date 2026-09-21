@@ -13,7 +13,7 @@ const Footer = () => {
           </div>
 
           <p className="footer-description">
-            The Grassroots Foundation is dedicated to empowering youth through
+            Khel Aur Shiksha Foundation is dedicated to empowering youth through
             football, education, and community initiatives, helping every child
             dream bigger.
           </p>
@@ -69,21 +69,21 @@ const Footer = () => {
         <div className="footer-column footer-contact">
           <h3>Contacts</h3>
 
-          <a href="tel:+923263900818" className="footer-contact-link">
-            +92 326 3900818
+          <a href="tel:+919004630950" className="footer-contact-link">
+            9004630950
           </a>
 
           <a
-            href="mailto:info@thegrassrootsfoundation.co"
+            href="mailto:mailnow.kasf@gmail.com"
             className="footer-contact-link"
           >
-            info@thegrassrootsfoundation.co
+            mailnow.kasf@gmail.com
           </a>
 
           <p>
-            70 – CCA sector A commercial phase 9 town
+            Sadullah Nagar,
             <br />
-            Dha Lahore
+            Balrampur, Uttar Pradesh
           </p>
 
           {/* SOCIAL ICONS */}
@@ -99,7 +99,13 @@ const Footer = () => {
             </a>
 
             {/* Instagram */}
-            <a href="#" aria-label="Instagram" className="social-icon">
+            <a
+              href="https://www.instagram.com/kasfindia?stkn=MWM1MDdweWl5eW9scQ=="
+              aria-label="Instagram"
+              className="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <svg viewBox="0 0 24 24">
                 <rect
                   x="3"
@@ -166,8 +172,14 @@ const Footer = () => {
       {/* COPYRIGHT */}
       <div className="footer-bottom">
         <p>
-          © Khel Aur Shiksha Foundation. All Rights Reserved – Develop by{" "}
-          <a href="https://www.instagram.com/__osm037____?stkn=eW1oOW12a3N2ODRx">Usama Gani</a>
+          © Khel Aur Shiksha Foundation. All Rights Reserved – Developed by{" "}
+          <a
+            href="https://www.instagram.com/__osm037____?stkn=eW1oOW12a3N2ODRx"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Usama Gani
+          </a>
         </p>
       </div>
     </footer>
