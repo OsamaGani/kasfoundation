@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import JoinCommunity from "../components/JoinCommunity";
 
 import "./News.css";
@@ -153,9 +152,12 @@ function News() {
                     LEFT HALF - IMAGE
                     IMAGE CODE KEPT COMMENTED
                 ========================================= */}
-                <Link to={`/news/${article.slug}/`} className="news-image-link">
+                <Link
+                  to={`/news/${article.slug}/`}
+                  className="news-image-link"
+                >
                   <div className="news-image-wrapper">
-                    {/*
+                    {/* 
                     <img
                       src={article.image}
                       alt={article.title}
@@ -199,31 +201,6 @@ function News() {
 
         <JoinCommunity />
       </main>
-
-      {/* =========================================
-          FLOATING CONTACT
-      ========================================= */}
-      <div className="news-floating-contact">
-        <a
-          href="tel:+0000000000"
-          className="news-floating-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="news-floating-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle size={28} strokeWidth={2.5} />
-        </a>
-      </div>
-
-      <Footer />
     </>
   );
 }

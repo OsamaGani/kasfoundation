@@ -1,7 +1,7 @@
 import { Phone } from "lucide-react";
 
-const PHONE_NUMBER = "+919999999999";
-const WHATSAPP_NUMBER = "919999999999";
+const PHONE_NUMBER = "+919004630950";
+const WHATSAPP_NUMBER = "919004630950";
 
 const WHATSAPP_MESSAGE =
   "Hello KAS Foundation, I would like to know more about your foundation.";

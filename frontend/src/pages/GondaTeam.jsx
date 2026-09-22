@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowLeft, Phone, MessageCircle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -48,26 +48,6 @@ function GondaTeam() {
 
         <JoinCommunity />
       </main>
-
-      <div className="location-team-floating-contact">
-        <a
-          href="tel:+0000000000"
-          className="location-team-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="location-team-whatsapp"
-        >
-          <MessageCircle size={27} />
-          <span>How can I help you?</span>
-        </a>
-      </div>
 
       <Footer />
     </>

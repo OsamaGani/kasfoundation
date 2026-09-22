@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { Phone, MessageCircle, Trophy, Globe2 } from "lucide-react";
+import { Trophy, Globe2 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import JoinCommunity from "../components/JoinCommunity";
 
 import "./achievements.css";
@@ -221,7 +220,9 @@ function Achievements() {
 
             <h2>India U20 National Team</h2>
 
-            <p>Representing India on the international stage against Nepal.</p>
+            <p>
+              Representing India on the international stage against Nepal.
+            </p>
           </div>
 
           <div className="achievement-two-grid achievement-u20-grid">
@@ -237,11 +238,15 @@ function Achievements() {
                   <img src={item.image} alt={item.title} />
 
                   <div className="achievement-u20-overlay">
-                    <span className="achievement-country-badge">🇮🇳 INDIA</span>
+                    <span className="achievement-country-badge">
+                      🇮🇳 INDIA
+                    </span>
 
                     <span className="achievement-vs">VS</span>
 
-                    <span className="achievement-country-badge">🇳🇵 NEPAL</span>
+                    <span className="achievement-country-badge">
+                      🇳🇵 NEPAL
+                    </span>
                   </div>
                 </div>
 
@@ -276,7 +281,9 @@ function Achievements() {
                 <div className="challenge-image">
                   <img src={player.image} alt={player.title} />
 
-                  <div className="challenge-number">0{index + 1}</div>
+                  <div className="challenge-number">
+                    0{index + 1}
+                  </div>
                 </div>
 
                 <div className="challenge-info">
@@ -307,33 +314,6 @@ function Achievements() {
 
         <JoinCommunity />
       </main>
-
-      {/* =========================================
-          FLOATING CONTACT
-      ========================================= */}
-
-      <div className="achievements-floating-contact">
-        <a
-          href="tel:+0000000000"
-          className="achievements-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="achievements-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle size={27} strokeWidth={2.5} />
-          <span>How can I help you?</span>
-        </a>
-      </div>
-
-      <Footer />
     </>
   );
 }

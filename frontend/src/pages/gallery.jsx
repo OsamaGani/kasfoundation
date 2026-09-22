@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import { Phone, MessageCircle } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import JoinCommunity from "../components/JoinCommunity";
 
 import "./gallery.css";
@@ -88,31 +86,6 @@ function Gallery() {
         {/* JOIN COMMUNITY */}
         <JoinCommunity />
       </main>
-
-      {/* FLOATING CONTACT */}
-      <div className="gallery-floating-contact">
-        <a
-          href="tel:+0000000000"
-          className="gallery-floating-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="gallery-floating-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle size={27} strokeWidth={2.5} />
-
-          <span>How can I help you?</span>
-        </a>
-      </div>
-
-      <Footer />
     </>
   );
 }

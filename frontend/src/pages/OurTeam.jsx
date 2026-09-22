@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Phone, MessageCircle } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import JoinCommunity from "../components/JoinCommunity";
 
 import "./OurTeam.css";
@@ -146,29 +144,7 @@ function OurTeam() {
         </section>
       </main>
 
-      <div className="our-team-floating-contact">
-        <a
-          href="tel:+0000000000"
-          className="our-team-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="our-team-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle size={28} strokeWidth={2.5} />
-        </a>
-      </div>
-
       <JoinCommunity />
-
-      <Footer />
     </>
   );
 }

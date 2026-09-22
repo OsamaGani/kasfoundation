@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { Phone, MessageCircle, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import JoinCommunity from "../components/JoinCommunity";
 
 import "./contact.css";
@@ -129,32 +128,7 @@ function Contact() {
         </section>
       </main>
 
-      {/* ================================
-          FLOATING CONTACT
-      ================================= */}
-      <div className="contact-floating-buttons">
-        <a
-          href="tel:+0000000000"
-          className="contact-floating-phone"
-          aria-label="Call us"
-        >
-          <Phone size={22} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="contact-floating-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle size={25} strokeWidth={2.5} />
-
-          <span>How can I help you?</span>
-        </a>
-      </div>
       <JoinCommunity />
-      <Footer />
     </>
   );
 }

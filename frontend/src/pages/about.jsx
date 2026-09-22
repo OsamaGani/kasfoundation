@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 import "./about.css";
 
@@ -234,30 +233,6 @@ function About() {
           </div>
         )}
       </main>
-
-      {/* =========================================
-          FLOATING CONTACT
-      ========================================= */}
-      <div className="about-floating-contact">
-        <a
-          href="tel:+0000000000"
-          className="about-floating-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="#"
-          className="about-floating-whatsapp"
-          aria-label="WhatsApp"
-          onClick={(event) => event.preventDefault()}
-        >
-          <MessageCircle size={28} strokeWidth={2.5} />
-        </a>
-      </div>
-
-      <Footer />
     </>
   );
 }

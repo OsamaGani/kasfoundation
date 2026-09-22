@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Phone, MessageCircle, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
@@ -58,22 +58,6 @@ function Ramzan() {
           </div>
         </section>
       </main>
-
-      <div className="member-floating-contact">
-        <a href="tel:+0000000000" className="member-phone" aria-label="Call us">
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/0000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="member-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle size={28} strokeWidth={2.5} />
-        </a>
-      </div>
 
       <Footer />
     </>
