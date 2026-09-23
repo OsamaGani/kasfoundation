@@ -1,87 +1,291 @@
+/* =========================================================
+   TEAM MEMBER DETAIL PAGE
+========================================================= */
+
 .team-member-page {
   width: 100%;
   min-height: 100vh;
+
   background: #f8f7f5;
+
   overflow-x: hidden;
+
+  box-sizing: border-box;
+
+  position: relative;
 }
 
-/* =========================================
-   PROFILE SECTION
-========================================= */
-
-.team-member-profile {
-  width: 100%;
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 115px 30px 70px;
-  position: relative;
+.team-member-page *,
+.team-member-page *::before,
+.team-member-page *::after {
   box-sizing: border-box;
 }
 
-.team-member-badge {
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.team-member-container {
+  width: min(1150px, 100%);
+
+  margin: 0 auto;
+
+  /*
+    Navbar ke neeche proper space
+  */
+  padding: 115px 30px 75px;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+/* =========================================================
+   DESIGNATION BADGE
+========================================================= */
+
+.team-member-designation {
   width: fit-content;
-  margin: 0 auto 25px;
+  min-width: 90px;
+
+  margin: 0 auto 24px;
+
   padding: 7px 25px;
+
   background: #0637a5;
   color: #ffffff;
+
   font-family: "Montserrat", sans-serif;
+
   font-size: 11px;
   font-weight: 800;
   font-style: italic;
-  letter-spacing: 0.2px;
-  border-radius: 3px;
-  transform: skew(-8deg);
+
+  line-height: 1.2;
+
+  letter-spacing: 0.25px;
+
   text-align: center;
+  text-transform: uppercase;
+
+  border-radius: 2px;
+
+  transform: skew(-8deg);
+
+  position: relative;
+  z-index: 2;
 }
 
-/* =========================================
-   IMAGE + DESCRIPTION
-========================================= */
+/* =========================================================
+   MAIN CONTENT GRID
+========================================================= */
 
-.team-member-grid {
+.team-member-layout {
   width: 100%;
+
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 30px;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 24px;
+
   align-items: stretch;
 }
 
-.team-member-image-wrap {
+/* =========================================================
+   IMAGE CARD
+========================================================= */
+
+.team-member-image-card {
   width: 100%;
-  height: 530px;
+
+  height: 500px;
+
   overflow: hidden;
-  border-radius: 20px;
-  background: #e5e5e5;
+
+  background: #e9ebf5;
+
+  border-radius: 18px;
+
+  position: relative;
 }
 
-.team-member-image {
+.team-member-image-card img {
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
+
   object-position: center center;
+
+  border: 0;
 }
+
+/* =========================================================
+   IMAGE PLACEHOLDER
+========================================================= */
+
+.team-member-image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  background: #e9ebf5;
+
+  color: #718096;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.team-member-image-placeholder svg {
+  color: #0637a5;
+}
+
+/* =========================================================
+   CONTENT CARD
+========================================================= */
+
+.team-member-content-card {
+  width: 100%;
+
+  min-height: 500px;
+
+  padding: 42px 38px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   CONTENT INNER
+========================================================= */
+
+.team-member-content-inner {
+  width: 100%;
+}
+
+/* =========================================================
+   FOUNDATION LABEL
+========================================================= */
+
+.team-member-label {
+  display: block;
+
+  margin-bottom: 11px;
+
+  color: #0637a5;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.3px;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MEMBER NAME
+========================================================= */
+
+.team-member-content-inner h1 {
+  margin: 0 0 17px;
+
+  color: #111111;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 34px;
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  word-break: break-word;
+}
+
+/* =========================================================
+   BLUE LINE
+========================================================= */
+
+.team-member-blue-line {
+  width: 55px;
+  height: 4px;
+
+  margin-bottom: 22px;
+
+  background: #0637a5;
+
+  border-radius: 3px;
+}
+
+/* =========================================================
+   SHORT DESCRIPTION
+========================================================= */
+
+.team-member-short-description {
+  margin: 0 0 18px;
+
+  color: #24344d;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   FULL DESCRIPTION
+========================================================= */
 
 .team-member-description {
   width: 100%;
-  min-height: 530px;
-  padding: 42px 40px;
-  box-sizing: border-box;
-
-  background: #ffffff;
-  border-radius: 20px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .team-member-description p {
   margin: 0 0 18px;
+
   color: #24344d;
+
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  line-height: 1.58;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+
   font-weight: 400;
 }
 
@@ -89,239 +293,612 @@
   margin-bottom: 0;
 }
 
-/* =========================================
-   JOIN OUR COMMUNITY
-========================================= */
+/* =========================================================
+   NO DESCRIPTION
+========================================================= */
 
-.team-member-cta {
-  width: 100%;
-  min-height: 150px;
-  background: #0637a5;
-
-  display: flex;
-  align-items: center;
-}
-
-.team-member-cta-content {
-  width: 100%;
-  padding: 30px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.team-member-cta-content h2 {
+.team-member-no-description {
   margin: 0;
-  color: #ffffff;
+
+  color: #68778a;
+
   font-family: "Montserrat", sans-serif;
-  font-size: 31px;
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -1.5px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
 }
 
-.team-member-cta-button {
-  min-width: 158px;
-  height: 46px;
-  padding: 0 25px;
-  box-sizing: border-box;
+/* =========================================================
+   BACK BUTTON WRAPPER
+========================================================= */
+
+.team-member-back-wrapper {
+  width: 100%;
+
+  margin-top: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.team-member-back-button {
+  width: fit-content;
+
+  min-width: 0;
+
+  min-height: 44px;
+
+  padding: 0 20px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #ffffff;
+  gap: 8px;
+
+  border: 1px solid #0637a5;
+
   background: transparent;
-  color: #ffffff;
+
+  color: #0637a5;
 
   text-decoration: none;
 
   font-family: "Montserrat", sans-serif;
+
   font-size: 12px;
+
   font-weight: 700;
 
-  transition: all 0.3s ease;
+  line-height: 1;
+
+  white-space: nowrap;
+
+  border-radius: 2px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.team-member-cta-button:hover {
-  background: #ffffff;
+.team-member-back-button:hover {
+  background: #0637a5;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   LOADING / ERROR
+========================================================= */
+
+.team-member-state {
+  width: min(900px, 100%);
+
+  min-height: 500px;
+
+  margin: 0 auto;
+
+  padding: 120px 30px 60px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.team-member-state h2 {
+  margin: 18px 0 8px;
+
+  color: #111111;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 28px;
+
+  font-weight: 800;
+}
+
+.team-member-state p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.team-member-state-icon {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+
+  background: #eef3ff;
+
   color: #0637a5;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 }
 
-/* =========================================
-   LARGE TABLET
-========================================= */
+.team-member-spinner {
+  color: #0637a5;
 
-@media (max-width: 1000px) {
-  .team-member-profile {
-    max-width: 950px;
-    padding: 105px 25px 60px;
+  animation: teamMemberSpin 1s linear infinite;
+}
+
+@keyframes teamMemberSpin {
+  from {
+    transform: rotate(0deg);
   }
 
-  .team-member-grid {
-    gap: 25px;
-  }
-
-  .team-member-image-wrap {
-    height: 500px;
-  }
-
-  .team-member-description {
-    min-height: 500px;
-    padding: 35px;
-  }
-
-  .team-member-description p {
-    font-size: 15px;
-    line-height: 1.55;
-  }
-
-  .team-member-cta-content h2 {
-    font-size: 42px;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* =========================================
-   TABLET
-========================================= */
+.team-member-error .team-member-back-button {
+  margin-top: 25px;
+}
 
-@media (max-width: 800px) {
-  .team-member-profile {
-    max-width: 100%;
-    padding: 95px 20px 55px;
+/* =========================================================
+   LARGE DESKTOP
+   1201px+
+========================================================= */
+
+@media (min-width: 1201px) {
+  .team-member-container {
+    padding: 115px 30px 75px;
   }
 
-  .team-member-grid {
-    grid-template-columns: 1fr;
+  .team-member-layout {
     gap: 24px;
   }
 
-  .team-member-image-wrap {
-    height: 520px;
+  .team-member-image-card {
+    height: 500px;
   }
 
-  .team-member-description {
-    min-height: auto;
-    padding: 35px 32px;
-  }
-
-  .team-member-description p {
-    font-size: 15px;
-    line-height: 1.65;
-  }
-
-  .team-member-cta {
-    min-height: 140px;
-  }
-
-  .team-member-cta-content {
-    padding: 28px 25px;
-  }
-
-  .team-member-cta-content h2 {
-    font-size: 38px;
+  .team-member-content-card {
+    min-height: 500px;
   }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* =========================================================
+   DESKTOP
+   1001px - 1200px
+========================================================= */
 
-@media (max-width: 600px) {
-  .team-member-profile {
-    padding: 75px 15px 45px;
+@media (max-width: 1200px) and (min-width: 1001px) {
+  .team-member-container {
+    padding: 110px 28px 70px;
   }
 
-  .team-member-badge {
-    margin-bottom: 20px;
-    margin-top: 50px;
-    padding: 7px 22px;
-    font-size: 10px;
-  }
-
-  .team-member-grid {
-    gap: 20px;
-  }
-
-  .team-member-image-wrap {
-    height: 430px;
-    border-radius: 16px;
-  }
-
-  .team-member-image {
-    object-position: center center;
-  }
-
-  .team-member-description {
-    padding: 27px 22px;
-    border-radius: 16px;
-  }
-
-  .team-member-description p {
-    font-size: 14px;
-    line-height: 1.65;
-    margin-bottom: 17px;
-  }
-
-  .team-member-cta {
-    min-height: 175px;
-  }
-
-  .team-member-cta-content {
-    padding: 30px 20px;
-
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
+  .team-member-layout {
     gap: 22px;
   }
 
-  .team-member-cta-content h2 {
-    font-size: 21px;
-    letter-spacing: -0.8px;
+  .team-member-image-card {
+    height: 480px;
   }
 
-  .team-member-cta-button {
-    min-width: 145px;
-    height: 44px;
-    padding: 0 20px;
-    font-size: 11px;
+  .team-member-content-card {
+    min-height: 480px;
+
+    padding: 38px 34px;
+  }
+
+  .team-member-content-inner h1 {
+    font-size: 31px;
+  }
+
+  .team-member-description p,
+  .team-member-short-description {
+    font-size: 14px;
+
+    line-height: 1.6;
   }
 }
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* =========================================================
+   LARGE TABLET
+   801px - 1000px
+========================================================= */
 
-@media (max-width: 380px) {
-  .team-member-profile {
-    padding: 65px 12px 40px;
+@media (max-width: 1000px) and (min-width: 801px) {
+  .team-member-container {
+    padding: 105px 24px 65px;
   }
 
-  .team-member-image-wrap {
-    height: 350px;
-    border-radius: 14px;
+  .team-member-designation {
+    margin-bottom: 22px;
   }
 
-  .team-member-description {
-    padding: 23px 18px;
-    border-radius: 14px;
+  .team-member-layout {
+    gap: 20px;
+  }
+
+  .team-member-image-card {
+    height: 450px;
+
+    border-radius: 16px;
+  }
+
+  .team-member-content-card {
+    min-height: 450px;
+
+    padding: 32px;
+  }
+
+  .team-member-content-inner h1 {
+    font-size: 28px;
+  }
+
+  .team-member-label {
+    font-size: 10px;
+  }
+
+  .team-member-short-description {
+    font-size: 14px;
+
+    line-height: 1.6;
   }
 
   .team-member-description p {
     font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+  }
+
+  .team-member-back-button {
+    min-height: 43px;
+
+    padding: 0 18px;
+
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   601px - 800px
+========================================================= */
+
+@media (max-width: 800px) and (min-width: 601px) {
+  .team-member-container {
+    padding: 95px 22px 60px;
+  }
+
+  .team-member-designation {
+    margin-bottom: 20px;
+
+    padding: 7px 23px;
+
+    font-size: 10px;
+  }
+
+  .team-member-layout {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .team-member-image-card {
+    width: 100%;
+
+    height: 500px;
+
+    border-radius: 17px;
+  }
+
+  .team-member-content-card {
+    min-height: auto;
+
+    padding: 38px 32px;
+
+    border-radius: 17px;
+  }
+
+  .team-member-content-inner h1 {
+    font-size: 30px;
+  }
+
+  .team-member-short-description {
+    font-size: 15px;
+
+    line-height: 1.65;
+  }
+
+  .team-member-description p {
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  .team-member-back-wrapper {
+    margin-top: 22px;
+  }
+
+  .team-member-back-button {
+    width: fit-content;
+
+    min-height: 43px;
+
+    padding: 0 18px;
+
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   381px - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+  .team-member-container {
+    padding: 85px 15px 50px;
+  }
+
+  .team-member-designation {
+    width: fit-content;
+
+    max-width: 92%;
+
+    margin: 0 auto 18px;
+
+    padding: 7px 20px;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+  }
+
+  .team-member-layout {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .team-member-image-card {
+    width: 100%;
+
+    height: 430px;
+
+    border-radius: 15px;
+  }
+
+  .team-member-image-card img {
+    object-position: center center;
+  }
+
+  .team-member-content-card {
+    min-height: auto;
+
+    padding: 30px 22px;
+
+    border-radius: 15px;
+  }
+
+  .team-member-label {
+    margin-bottom: 8px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.2px;
+  }
+
+  .team-member-content-inner h1 {
+    margin-bottom: 14px;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+  }
+
+  .team-member-blue-line {
+    width: 45px;
+
+    height: 3px;
+
+    margin-bottom: 18px;
+  }
+
+  .team-member-short-description {
+    margin-bottom: 17px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  .team-member-description p {
+    margin-bottom: 17px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  /* -----------------------------------------
+     COMPACT MOBILE BACK BUTTON
+  ----------------------------------------- */
+
+  .team-member-back-wrapper {
+    width: 100%;
+
+    margin-top: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+  }
+
+  .team-member-back-button {
+    width: fit-content;
+
+    min-width: 0;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    flex: 0 0 auto;
+  }
+
+  .team-member-state {
+    min-height: 500px;
+
+    padding: 100px 20px 50px;
+  }
+
+  .team-member-state h2 {
+    font-size: 23px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   0px - 380px
+========================================================= */
+
+@media (max-width: 380px) {
+  .team-member-container {
+    padding: 80px 12px 40px;
+  }
+
+  .team-member-designation {
+    margin-bottom: 16px;
+
+    padding: 6px 17px;
+
+    font-size: 9px;
+  }
+
+  .team-member-layout {
+    gap: 14px;
+  }
+
+  .team-member-image-card {
+    height: 350px;
+
+    border-radius: 13px;
+  }
+
+  .team-member-content-card {
+    padding: 24px 18px;
+
+    border-radius: 13px;
+  }
+
+  .team-member-label {
+    font-size: 8px;
+  }
+
+  .team-member-content-inner h1 {
+    font-size: 21px;
+  }
+
+  .team-member-short-description {
+    font-size: 13px;
+
     line-height: 1.6;
   }
 
-  .team-member-cta-content {
-    padding: 28px 18px;
+  .team-member-description p {
+    font-size: 13px;
+
+    line-height: 1.6;
   }
 
-  .team-member-cta-content h2 {
-    font-size: 22px;
+  /* Compact button — NEVER full width */
+  .team-member-back-button {
+    width: fit-content;
+
+    min-width: 0;
+
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    font-size: 10px;
+
+    gap: 6px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL DEVICES
+   320px and below
+========================================================= */
+
+@media (max-width: 320px) {
+  .team-member-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .team-member-image-card {
+    height: 310px;
+  }
+
+  .team-member-content-card {
+    padding: 22px 15px;
+  }
+
+  .team-member-content-inner h1 {
+    font-size: 19px;
+  }
+
+  .team-member-description p,
+  .team-member-short-description {
+    font-size: 12px;
+  }
+
+  .team-member-back-button {
+    width: fit-content;
+
+    min-width: 0;
+
+    padding: 0 13px;
+
+    font-size: 10px;
   }
 }

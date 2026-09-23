@@ -1,0 +1,813 @@
+/* =========================================
+   GALLERY ALBUM PAGE
+========================================= */
+
+.gallery-album-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+
+  /*
+    Navbar ke neeche proper spacing
+  */
+  padding-top: 25px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HERO
+   Currently JSX se removed hai,
+   future use ke liye CSS available hai.
+========================================= */
+
+.gallery-album-hero {
+  position: relative;
+
+  min-height: 430px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #071b33 0%,
+      #0b3156 50%,
+      #0d4f6f 100%
+    );
+}
+
+.gallery-album-hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.08),
+      transparent 35%
+    );
+}
+
+.gallery-album-hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1180px, 92%);
+
+  text-align: center;
+
+  color: #ffffff;
+
+  padding: 100px 20px 70px;
+
+  box-sizing: border-box;
+}
+
+.gallery-album-back-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.gallery-album-back-link:hover {
+  color: #ffffff;
+
+  transform: translateX(-4px);
+}
+
+.gallery-album-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 8px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 18px;
+}
+
+.gallery-album-hero h1 {
+  margin: 0;
+
+  font-size: clamp(40px, 7vw, 78px);
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+  text-transform: uppercase;
+
+  word-break: break-word;
+}
+
+.gallery-album-hero p {
+  margin: 20px 0 0;
+
+  font-size: 16px;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* =========================================
+   PHOTO SECTION
+========================================= */
+
+.gallery-album-section {
+  width: min(1320px, 96%);
+
+  margin: 80px auto 0;
+
+  padding: 0 24px 50px;
+font-weight: 600;
+  box-sizing: border-box;
+}
+
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.gallery-album-heading {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 40px;
+}
+
+.gallery-album-eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #0b6385;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.gallery-album-heading h2 {
+  margin: 0;
+
+  font-size: clamp(30px, 4vw, 48px);
+
+  line-height: 1.1;
+
+  color: #122033;
+
+  font-weight: 800;
+
+  word-break: break-word;
+}
+
+.gallery-album-count {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  background: #f1f6f8;
+
+  color: #0b6385;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   PHOTO GRID
+========================================= */
+
+.gallery-album-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+
+  width: 100%;
+}
+
+
+/* =========================================
+   PHOTO CARD
+   ORIGINAL HEIGHT
+========================================= */
+
+.gallery-album-photo {
+  position: relative;
+
+  min-height: 300px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: #edf2f4;
+
+  box-shadow:
+    0 12px 35px rgba(15, 35, 50, 0.1);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation:
+    galleryPhotoReveal
+    0.6s
+    ease
+    forwards;
+
+  animation-delay:
+    var(--gallery-photo-delay);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   PHOTO IMAGE
+========================================= */
+
+.gallery-album-photo img {
+  width: 100%;
+
+  height: 100%;
+
+  min-height: 300px;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease;
+}
+
+.gallery-album-photo:hover img {
+  transform: scale(1.06);
+}
+
+
+/* =========================================
+   PHOTO OVERLAY
+========================================= */
+
+.gallery-album-photo-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: flex-end;
+
+  padding: 16px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.5),
+      transparent 35%
+    );
+
+  pointer-events: none;
+}
+
+.gallery-album-photo-overlay span {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 34px;
+
+  height: 34px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.9);
+
+  color: #122033;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   EMPTY / ERROR / LOADING
+========================================= */
+
+.gallery-album-loading,
+.gallery-album-error,
+.gallery-album-empty {
+  width: min(900px, 92%);
+
+  margin: 0 auto;
+
+  min-height: 500px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  text-align: center;
+
+  padding: 30px 20px;
+
+  box-sizing: border-box;
+}
+
+.gallery-album-loading p,
+.gallery-album-error p,
+.gallery-album-empty p {
+  margin: 14px 0 0;
+
+  color: #687786;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+.gallery-album-spinner {
+  animation:
+    galleryAlbumSpin
+    1s
+    linear
+    infinite;
+
+  color: #0b6385;
+}
+
+.gallery-album-error-icon,
+.gallery-album-empty-icon {
+  width: 78px;
+
+  height: 78px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #edf5f7;
+
+  color: #0b6385;
+
+  margin-bottom: 18px;
+}
+
+.gallery-album-error h1,
+.gallery-album-empty h3 {
+  margin: 0;
+
+  color: #122033;
+
+  font-weight: 800;
+}
+
+.gallery-album-error h1 {
+  font-size: 34px;
+}
+
+.gallery-album-empty h3 {
+  font-size: 28px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.gallery-album-back-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 13px 20px;
+
+  border-radius: 10px;
+
+  background: #0b6385;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition: 0.3s ease;
+}
+
+.gallery-album-back-button:hover {
+  transform: translateY(-2px);
+
+  background: #084d68;
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.gallery-album-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0 20px 80px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes galleryPhotoReveal {
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes galleryAlbumSpin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   LARGE DESKTOP
+   1200px+
+========================================= */
+
+@media (min-width: 1200px) {
+
+  .gallery-album-page {
+    padding-top: 30px;
+  }
+
+  .gallery-album-section {
+    width: min(1320px, 96%);
+
+    padding:
+      55px 24px 50px;
+  }
+
+  .gallery-album-grid {
+    gap: 22px;
+  }
+
+  .gallery-album-photo,
+  .gallery-album-photo img {
+    min-height: 300px;
+  }
+
+}
+
+
+/* =========================================
+   LAPTOP
+   901px - 1199px
+========================================= */
+
+@media (min-width: 901px)
+  and (max-width: 1199px) {
+
+  .gallery-album-page {
+    padding-top: 25px;
+  }
+
+  .gallery-album-section {
+    width: 94%;
+
+    padding:
+      50px 18px 45px;
+  }
+
+  .gallery-album-grid {
+    gap: 18px;
+  }
+
+  .gallery-album-photo,
+  .gallery-album-photo img {
+    min-height: 300px;
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+   601px - 900px
+========================================= */
+
+@media (max-width: 900px) {
+
+  .gallery-album-page {
+    padding-top: 20px;
+  }
+
+  .gallery-album-section {
+    width: 94%;
+
+    padding:
+      45px 16px 45px;
+  }
+
+  .gallery-album-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+  }
+
+  .gallery-album-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+  }
+
+  .gallery-album-count {
+    align-self: flex-start;
+  }
+
+  .gallery-album-photo,
+  .gallery-album-photo img {
+    min-height: 300px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+   481px - 600px
+========================================= */
+
+@media (max-width: 600px) {
+
+  .gallery-album-page {
+    padding-top: 15px;
+  }
+
+  .gallery-album-section {
+    width: 92%;
+
+    padding:
+      40px 0 40px;
+  }
+
+  .gallery-album-heading {
+    gap: 13px;
+
+    margin-bottom: 25px;
+  }
+
+  .gallery-album-eyebrow {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 6px;
+  }
+
+  .gallery-album-heading h2 {
+    font-size: 32px;
+  }
+
+  .gallery-album-count {
+    padding:
+      8px 13px;
+
+    font-size: 12px;
+  }
+
+  .gallery-album-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .gallery-album-photo,
+  .gallery-album-photo img {
+    min-height: 260px;
+  }
+
+  .gallery-album-photo {
+    border-radius: 15px;
+  }
+
+  .gallery-album-photo-overlay {
+    padding: 13px;
+  }
+
+  .gallery-album-photo-overlay span {
+    width: 32px;
+
+    height: 32px;
+  }
+
+  .gallery-album-bottom {
+    padding:
+      0 15px 55px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   360px - 480px
+========================================= */
+
+@media (max-width: 480px) {
+
+  .gallery-album-page {
+    padding-top: 12px;
+  }
+
+  .gallery-album-section {
+    width: 92%;
+
+    padding:
+      35px 0 35px;
+  }
+
+  .gallery-album-heading h2 {
+    font-size: 29px;
+  }
+
+  .gallery-album-count {
+    padding:
+      7px 11px;
+
+    font-size: 11px;
+  }
+
+  .gallery-album-grid {
+    gap: 14px;
+  }
+
+  .gallery-album-photo,
+  .gallery-album-photo img {
+    min-height: 260px;
+  }
+
+  .gallery-album-photo {
+    border-radius: 13px;
+  }
+
+  .gallery-album-bottom {
+    padding-bottom: 45px;
+  }
+
+  .gallery-album-back-button {
+    padding:
+      11px 17px;
+
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   Below 360px
+========================================= */
+
+@media (max-width: 359px) {
+
+  .gallery-album-page {
+    padding-top: 10px;
+  }
+
+  .gallery-album-section {
+    width: 91%;
+
+    padding:
+      30px 0 30px;
+  }
+
+  .gallery-album-heading h2 {
+    font-size: 26px;
+  }
+
+  .gallery-album-eyebrow {
+    font-size: 9px;
+  }
+
+  .gallery-album-count {
+    font-size: 10px;
+  }
+
+  .gallery-album-grid {
+    gap: 13px;
+  }
+
+  .gallery-album-photo,
+  .gallery-album-photo img {
+    min-height: 260px;
+  }
+
+}

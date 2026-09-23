@@ -1,320 +1,680 @@
-import { useEffect } from "react";
-import { Trophy, Globe2 } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
-import Navbar from "../components/Navbar";
+import {
+  Trophy,
+  MapPin,
+  Award,
+} from "lucide-react";
+
 import JoinCommunity from "../components/JoinCommunity";
 
 import "./achievements.css";
 
-const u17Players = [
-  {
-    name: "SAMAR RAZZAQ",
-    text: "Selected for the India U17 National Team for the SAFF U17 Championship & 2026 AFC U17 Asian Cup Qualifiers.",
-  },
-  {
-    name: "KHALIL JIBRAN",
-    text: "Selected for the India U17 National Team for the SAFF U17 Championship.",
-  },
-  {
-    name: "SHAHZAI B NAWAZ",
-    text: "Selected for the India U17 National Team Camp.",
-  },
-  {
-    name: "ALI KHAN",
-    text: "Selected for the India U17 National Team Camp.",
-  },
-  {
-    name: "SHAHID ANJUM",
-    text: "Selected for the India U17 National Team for the SAFF U17 Championship & 2026 AFC U17 Asian Cup Qualifiers.",
-  },
-  {
-    name: "NADEEM HUSSAIN",
-    text: "Selected for the India U17 National Team for the SAFF U17 Championship & 2026 AFC U17 Asian Cup Qualifiers.",
-  },
-  {
-    name: "SUMRA MAHER AHMED",
-    text: "Selected for the India U17 National Team Camp.",
-  },
-  {
-    name: "SYED SHAHRUM",
-    text: "Selected for the India U17 National Team for the SAFF U17 Championship & 2026 AFC U17 Asian Cup Qualifiers.",
-  },
+const API_URL =
+  "http://localhost:5000/api/achievements";
+
+const LEVEL_ORDER = [
+  "Local",
+  "City",
+  "District",
+  "State",
+  "National",
+  "International",
 ];
 
-const u16Achievements = [
-  {
-    title: "ABDULLAH TAHIR",
-    description:
-      "India U17 National Team player and Top Scorer at the SAFF U17 Championship with 6 goals.",
-    image: "/assets/images/achievement-abdullah-tahir.webp",
-  },
-  {
-    title: "INDIA U16 NATIONAL TEAM – ABDUL RAHEEM",
-    description: "Represented India in the UEFA U16 Development Tournament.",
-    image: "/assets/images/achievement-abdul-raheem.webp",
-  },
-];
+const LEVEL_FLAGS = {
+  Local: "📍",
+  City: "🏙️",
+  District: "🏘️",
+  State: "🇮🇳",
+  National: "🇮🇳",
+  International: "🌍",
+};
 
-const u20Achievements = [
-  {
-    title: "KASHIF KHAN",
-    description: "Represented India U20 internationally against Nepal.",
-    image: "/assets/images/achievement-kashif-khan.webp",
-    country: "NEPAL",
-  },
-  {
-    title: "SYED SHAHRUM",
-    description: "Represented India U20 internationally against Nepal.",
-    image: "/assets/images/achievement-syed-shahrum.webp",
-    country: "NEPAL",
-  },
-];
+function formatLocation(item) {
+  const location = [
+    item.city,
+    item.district,
+    item.state,
+    item.country,
+  ].filter(Boolean);
 
-const challengeCupPlayers = [
-  {
-    title: "SYED SHAHRUM",
-    club: "Pak Airforce",
-    image: "/assets/images/challenge-syed-shahrum.webp",
-  },
-  {
-    title: "MUHAMMAD KHALIL",
-    club: "SA Gardens",
-    image: "/assets/images/challenge-muhammad-khalil.webp",
-  },
-  {
-    title: "SHAHZAIB NAWAZ",
-    club: "SA Gardens",
-    image: "/assets/images/challenge-shahzaib-nawaz.webp",
-  },
-  {
-    title: "MUHAMMAD ABDULLAH",
-    club: "Wapda",
-    image: "/assets/images/challenge-muhammad-abdullah.webp",
-  },
-];
+  return location.join(", ");
+}
 
 function Achievements() {
+  const [achievements, setAchievements] =
+    useState([]);
+
+  const [loading, setLoading] =
+    useState(true);
+
+  const [error, setError] =
+    useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const fetchAchievements =
+      async () => {
+        try {
+          setLoading(true);
+          setError("");
+
+          const response =
+            await fetch(API_URL);
+
+          const data =
+            await response.json();
+
+          if (!response.ok) {
+            throw new Error(
+              data.message ||
+                "Failed to fetch achievements."
+            );
+          }
+
+          setAchievements(
+            data.achievements || []
+          );
+        } catch (err) {
+          console.error(
+            "Achievements fetch error:",
+            err
+          );
+
+          setError(
+            err.message ||
+              "Unable to load achievements."
+          );
+        } finally {
+          setLoading(false);
+        }
+      };
+
+    fetchAchievements();
   }, []);
 
+  const featuredAchievements =
+    useMemo(() => {
+      return achievements.filter(
+        (item) => item.isFeatured
+      );
+    }, [achievements]);
+
+  const normalAchievements =
+    useMemo(() => {
+      return achievements.filter(
+        (item) => !item.isFeatured
+      );
+    }, [achievements]);
+
+  const groupedAchievements =
+    useMemo(() => {
+      const groups = {};
+
+      normalAchievements.forEach(
+        (item) => {
+          const key =
+            item.sectionTitle?.trim() ||
+            item.level ||
+            "Other Achievements";
+
+          if (!groups[key]) {
+            groups[key] = {
+              title: key,
+
+              label:
+                item.sectionLabel ||
+                `${item.level || "LOCAL"} ACHIEVEMENTS`,
+
+              description:
+                item.sectionDescription ||
+                "",
+
+              level:
+                item.level ||
+                "Local",
+
+              items: [],
+            };
+          }
+
+          groups[key].items.push(item);
+        }
+      );
+
+      return Object.values(groups).sort(
+        (a, b) => {
+          const levelA =
+            LEVEL_ORDER.indexOf(a.level);
+
+          const levelB =
+            LEVEL_ORDER.indexOf(b.level);
+
+          if (
+            levelA !== -1 &&
+            levelB !== -1 &&
+            levelA !== levelB
+          ) {
+            return levelA - levelB;
+          }
+
+          return 0;
+        }
+      );
+    }, [normalAchievements]);
+
+  const getImageURL = (item) => {
+    if (!item.image?.fileId) {
+      return null;
+    }
+
+    return `${API_URL}/image/${item.image.fileId}`;
+  };
+
   return (
-    <>
-      <Navbar />
+    <main className="achievements-page">
 
-      <main className="achievements-page">
-        {/* =========================================
-            HERO
-        ========================================= */}
+      {/* =========================================
+          HERO
+      ========================================= */}
 
-        <section className="achievements-hero">
-          <div className="achievements-hero-content">
-            <div className="achievements-hero-icon">
-              <Trophy size={30} strokeWidth={1.8} />
-            </div>
+      <section className="achievements-hero">
 
-            <h1>OUR ACHIEVEMENTS</h1>
+        <div className="achievements-hero-content">
 
-            <p>
-              Celebrating the dedication, talent and remarkable journeys of
-              players who continue to represent their teams and countries.
-            </p>
-          </div>
-        </section>
+          {/* TROPHY IN PLACE OF OUR JOURNEY */}
+          <span
+            className="achievements-hero-trophy"
+            aria-label="Achievements"
+            title="Achievements"
+          >
+            <Trophy
+              size={38}
+              strokeWidth={2}
+            />
+          </span>
 
-        {/* =========================================
-            U17 SECTION
-        ========================================= */}
+          <h1>
+            OUR ACHIEVEMENTS
+          </h1>
 
-        <section className="achievement-feature-section">
-          <div className="achievement-feature-container">
-            <div className="achievement-feature-image-wrap">
-              <div className="achievement-image-glow"></div>
+          <p>
+            Celebrating the achievements,
+            milestones, and football journeys
+            of KAS Foundation players and teams
+            at local, city, district, state,
+            national, and international levels.
+          </p>
 
-              <img
-                src="/assets/images/achievement-u17.webp"
-                alt="U17 National Team Call Up"
-                className="achievement-feature-image"
-              />
+        </div>
 
-              <div className="achievement-image-badge">
-                <Globe2 size={18} />
-                <span>U17 NATIONAL TEAM</span>
-              </div>
-            </div>
+      </section>
 
-            <div className="achievement-feature-content">
-              <div className="achievement-section-label">
-                <span className="achievement-label-line"></span>
-                NATIONAL TEAM SELECTION
-              </div>
 
-              <div className="achievement-country">
-                <span className="country-flag">🇮🇳</span>
-                <span>INDIA</span>
-              </div>
+      {/* =========================================
+          LOADING
+      ========================================= */}
 
-              <h2>India U17 National Team</h2>
-
-              <div className="achievement-blue-line"></div>
-
-              <div className="achievement-player-list">
-                {u17Players.map((player, index) => (
-                  <div
-                    className="achievement-player"
-                    key={player.name}
-                    style={{
-                      "--player-delay": `${index * 0.08}s`,
-                    }}
-                  >
-                    <h3>{player.name}</h3>
-                    <p>{player.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================
-            U16 ACHIEVEMENTS
-        ========================================= */}
-
+      {loading && (
         <section className="achievement-cards-section">
+
           <div className="achievement-section-heading">
-            <span>INTERNATIONAL ACHIEVEMENTS</span>
-            <h2>India U16 National Team</h2>
+
+            <span>
+              ACHIEVEMENTS
+            </span>
+
+            <h2>
+              Loading achievements...
+            </h2>
+
           </div>
 
-          <div className="achievement-two-grid">
-            {u16Achievements.map((item, index) => (
-              <article
-                className="achievement-large-card"
-                key={item.title}
-                style={{
-                  "--achievement-delay": `${index * 0.15}s`,
-                }}
-              >
-                <div className="achievement-large-image">
-                  <img src={item.image} alt={item.title} />
-
-                  <div className="achievement-card-shine"></div>
-                </div>
-
-                <div className="achievement-large-info">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
         </section>
+      )}
 
-        {/* =========================================
-            U20 SECTION
-        ========================================= */}
 
-        <section className="achievement-u20-section">
-          <div className="achievement-section-heading u20-heading">
-            <span>INTERNATIONAL REPRESENTATION</span>
+      {/* =========================================
+          ERROR
+      ========================================= */}
 
-            <h2>India U20 National Team</h2>
+      {!loading && error && (
+        <section className="achievement-cards-section">
+
+          <div className="achievement-section-heading">
+
+            <span>
+              ACHIEVEMENTS
+            </span>
+
+            <h2>
+              Unable to load achievements
+            </h2>
 
             <p>
-              Representing India on the international stage against Nepal.
+              {error}
             </p>
+
           </div>
 
-          <div className="achievement-two-grid achievement-u20-grid">
-            {u20Achievements.map((item, index) => (
-              <article
-                className="achievement-u20-card"
-                key={item.title}
-                style={{
-                  "--achievement-delay": `${index * 0.15}s`,
-                }}
-              >
-                <div className="achievement-u20-image">
-                  <img src={item.image} alt={item.title} />
-
-                  <div className="achievement-u20-overlay">
-                    <span className="achievement-country-badge">
-                      🇮🇳 INDIA
-                    </span>
-
-                    <span className="achievement-vs">VS</span>
-
-                    <span className="achievement-country-badge">
-                      🇳🇵 NEPAL
-                    </span>
-                  </div>
-                </div>
-
-                <div className="achievement-u20-info">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
         </section>
+      )}
 
-        {/* =========================================
-            CHALLENGE CUP
-        ========================================= */}
 
-        <section className="achievement-challenge-section">
-          <div className="achievement-section-heading">
-            <span>NATIONAL COMPETITION</span>
-            <h2>31st National Challenge Cup</h2>
-          </div>
+      {/* =========================================
+          EMPTY
+      ========================================= */}
 
-          <div className="challenge-grid">
-            {challengeCupPlayers.map((player, index) => (
-              <article
-                className="challenge-card"
-                key={player.title}
-                style={{
-                  "--achievement-delay": `${index * 0.12}s`,
-                }}
-              >
-                <div className="challenge-image">
-                  <img src={player.image} alt={player.title} />
+      {!loading &&
+        !error &&
+        achievements.length === 0 && (
+          <section className="achievement-cards-section">
 
-                  <div className="challenge-number">
-                    0{index + 1}
-                  </div>
-                </div>
+            <div className="achievement-section-heading">
 
-                <div className="challenge-info">
-                  <h3>{player.title}</h3>
-                  <p>{player.club}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+              <span>
+                ACHIEVEMENTS
+              </span>
 
-        {/* =========================================
-            ACHIEVEMENT BANNER
-        ========================================= */}
+              <h2>
+                Our achievement journey is
+                growing.
+              </h2>
 
-        <section className="achievement-bottom-banner">
-          <div className="achievement-banner-content">
-            <div className="achievement-banner-icon">
-              <Trophy size={30} />
+              <p>
+                New achievements will be
+                published here as our teams and
+                players continue to compete.
+              </p>
+
             </div>
 
-            <div>
-              <span>BUILDING FUTURES THROUGH FOOTBALL</span>
-              <h2>MORE DREAMS. MORE OPPORTUNITIES.</h2>
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <JoinCommunity />
-      </main>
-    </>
+
+      {/* =========================================
+          FEATURED ACHIEVEMENTS
+      ========================================= */}
+
+      {!loading &&
+        !error &&
+        featuredAchievements.length >
+          0 && (
+          <section className="achievement-feature-section">
+
+            <div className="achievement-feature-wrapper">
+
+              <div className="achievement-feature-image">
+
+                {getImageURL(
+                  featuredAchievements[0]
+                ) ? (
+                  <img
+                    src={getImageURL(
+                      featuredAchievements[0]
+                    )}
+                    alt={
+                      featuredAchievements[0]
+                        .title
+                    }
+                  />
+                ) : (
+                  <div className="achievement-image-placeholder"></div>
+                )}
+
+                <div className="achievement-feature-badge">
+
+                  <Trophy size={20} />
+
+                  <span>
+                    FEATURED ACHIEVEMENT
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div className="achievement-feature-content">
+
+                <div className="achievement-section-label">
+
+                  <span className="achievement-label-line"></span>
+
+                  {featuredAchievements[0]
+                    .sectionLabel ||
+                    "FEATURED ACHIEVEMENT"}
+
+                </div>
+
+
+                <div className="achievement-country">
+
+                  <span className="country-flag">
+                    {
+                      LEVEL_FLAGS[
+                        featuredAchievements[0]
+                          .level
+                      ]
+                    }
+                  </span>
+
+                  <span>
+                    {(
+                      featuredAchievements[0]
+                        .level ||
+                      "LOCAL"
+                    ).toUpperCase()}
+                  </span>
+
+                </div>
+
+
+                <h2>
+                  {
+                    featuredAchievements[0]
+                      .sectionTitle ||
+                    featuredAchievements[0]
+                      .title
+                  }
+                </h2>
+
+
+                <div className="achievement-blue-line"></div>
+
+
+                {featuredAchievements[0]
+                  .sectionDescription && (
+                  <p>
+                    {
+                      featuredAchievements[0]
+                        .sectionDescription
+                    }
+                  </p>
+                )}
+
+
+                <div className="achievement-player-list">
+
+                  {featuredAchievements.map(
+                    (item, index) => (
+                      <div
+                        className="achievement-player"
+                        key={item._id}
+                        style={{
+                          "--player-delay": `${
+                            index * 0.08
+                          }s`,
+                        }}
+                      >
+
+                        <h3>
+                          {item.playerName ||
+                            item.teamName ||
+                            item.title}
+                        </h3>
+
+                        <p>
+
+                          {item.result && (
+                            <>
+                              <strong>
+                                {item.result}
+                              </strong>
+
+                              {" • "}
+                            </>
+                          )}
+
+                          {item.description ||
+                            item.competition ||
+                            ""}
+
+                        </p>
+
+
+                        {formatLocation(
+                          item
+                        ) && (
+                          <small>
+
+                            <MapPin
+                              size={13}
+                            />
+
+                            {formatLocation(
+                              item
+                            )}
+
+                          </small>
+                        )}
+
+                      </div>
+                    )
+                  )}
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+        )}
+
+
+      {/* =========================================
+          DYNAMIC ACHIEVEMENT SECTIONS
+      ========================================= */}
+
+      {!loading &&
+        !error &&
+        groupedAchievements.map(
+          (group, groupIndex) => (
+            <section
+              className="achievement-cards-section"
+              key={group.title}
+            >
+
+              <div className="achievement-section-heading">
+
+                <span>
+                  {group.label}
+                </span>
+
+                <h2>
+                  {group.title}
+                </h2>
+
+                {group.description && (
+                  <p>
+                    {group.description}
+                  </p>
+                )}
+
+              </div>
+
+
+              <div className="achievement-two-grid">
+
+                {group.items.map(
+                  (item, index) => {
+                    const imageURL =
+                      getImageURL(item);
+
+                    return (
+                      <article
+                        className="achievement-large-card"
+                        key={item._id}
+                        style={{
+                          "--achievement-delay": `${
+                            index * 0.15
+                          }s`,
+                        }}
+                      >
+
+                        <div className="achievement-large-image">
+
+                          {imageURL ? (
+                            <img
+                              src={imageURL}
+                              alt={item.title}
+                            />
+                          ) : (
+                            <div className="achievement-image-placeholder"></div>
+                          )}
+
+                          <div className="achievement-card-shine"></div>
+
+                        </div>
+
+
+                        <div className="achievement-large-info">
+
+                          <div className="achievement-card-meta">
+
+                            <span>
+                              {LEVEL_FLAGS[
+                                item.level
+                              ]}{" "}
+                              {(
+                                item.level ||
+                                "LOCAL"
+                              ).toUpperCase()}
+                            </span>
+
+                            {item.year && (
+                              <span>
+                                {item.year}
+                              </span>
+                            )}
+
+                          </div>
+
+
+                          <h3>
+                            {item.title}
+                          </h3>
+
+
+                          {item.competition && (
+                            <p>
+                              <strong>
+                                {item.competition}
+                              </strong>
+                            </p>
+                          )}
+
+
+                          {item.result && (
+                            <p>
+                              {item.result}
+                            </p>
+                          )}
+
+
+                          {item.description && (
+                            <p>
+                              {item.description}
+                            </p>
+                          )}
+
+
+                          {formatLocation(
+                            item
+                          ) && (
+                            <div className="achievement-location">
+
+                              <MapPin
+                                size={15}
+                              />
+
+                              <span>
+                                {formatLocation(
+                                  item
+                                )}
+                              </span>
+
+                            </div>
+                          )}
+
+
+                          {item.playerName && (
+                            <div className="achievement-person">
+
+                              <Award
+                                size={16}
+                              />
+
+                              <span>
+                                {item.playerName}
+                              </span>
+
+                            </div>
+                          )}
+
+
+                          {item.teamName &&
+                            !item.playerName && (
+                              <div className="achievement-person">
+
+                                <Trophy
+                                  size={16}
+                                />
+
+                                <span>
+                                  {item.teamName}
+                                </span>
+
+                              </div>
+                            )}
+
+                        </div>
+
+                      </article>
+                    );
+                  }
+                )}
+
+              </div>
+
+            </section>
+          )
+        )}
+
+
+      {/* =========================================
+          BOTTOM BANNER
+      ========================================= */}
+
+      <section className="achievement-bottom-banner">
+
+        <div className="achievement-bottom-content">
+
+          <span>
+            EVERY MATCH MATTERS
+          </span>
+
+          <h2>
+            BUILDING FUTURES THROUGH
+            FOOTBALL
+          </h2>
+
+          <p>
+            MORE DREAMS. MORE OPPORTUNITIES.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <JoinCommunity />
+
+    </main>
   );
 }
 
