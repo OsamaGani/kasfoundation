@@ -41,7 +41,7 @@ function ForgotPassword() {
       ========================================= */
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/forgot-password",
+        `${import.meta.env.VITE_API_URL}/api/admin/forgot-password`,
         {
           method: "POST",
 

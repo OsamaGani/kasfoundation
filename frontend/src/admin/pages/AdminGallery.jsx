@@ -12,7 +12,7 @@ import {
   Loader2,
 } from "lucide-react";
 
-const API_URL = "http://10.171.57.75:5000/api";
+const API_URL = "import.meta.env.VITE_API_URL/api";
 
 function AdminGallery() {
   const [galleries, setGalleries] = useState([]);

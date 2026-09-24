@@ -8,7 +8,7 @@ import JoinCommunity from "../components/JoinCommunity";
 import "./News.css";
 
 const API_URL =
-  "http://10.171.57.75:5000/api/news";
+  "import.meta.env.VITE_API_URL/api/news";
 
 function News() {
   const [newsArticles, setNewsArticles] = useState([]);

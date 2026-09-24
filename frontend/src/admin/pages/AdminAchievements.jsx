@@ -10,7 +10,7 @@ import {
 
 import "./AdminAchievements.css";
 
-const API_URL = "http://10.171.57.75:5000/api/achievements";
+const API_URL = "import.meta.env.VITE_API_URL/api/achievements";
 
 const initialForm = {
   title: "",

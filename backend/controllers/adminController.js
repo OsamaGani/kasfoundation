@@ -179,7 +179,7 @@ const forgotPassword = async (req, res) => {
 ========================================= */
 
 const resetUrl =
-  `http://10.171.57.75:5173/admin/reset-password/${resetToken}`;
+  `${process.env.FRONTEND_URL}/admin/reset-password/${resetToken}`;
 
     /* =========================================
        SEND EMAIL

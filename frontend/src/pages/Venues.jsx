@@ -10,7 +10,7 @@ import "./Venues.css";
 
 import venueImage from "../assets/images/venue-image.webp";
 
-const API_URL = "http://10.171.57.75:5000/api/venues";
+const API_URL = "import.meta.env.VITE_API_URL/api/venues";
 
 function Venues() {
   const navigate = useNavigate();

@@ -53,8 +53,8 @@ function AdminLogin() {
       ========================================= */
 
       const response = await fetch(
-  "http://10.171.57.75:5000/api/admin/login",
-  
+  "import.meta.env.VITE_API_URL/api/admin/login",
+
         {
           method: "POST",
 

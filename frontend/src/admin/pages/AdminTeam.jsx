@@ -15,7 +15,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
-const API_URL = "http://10.171.57.75:5000/api";
+const API_URL = "import.meta.env.VITE_API_URL/api";
 
 const EMPTY_FORM = {
   name: "",
