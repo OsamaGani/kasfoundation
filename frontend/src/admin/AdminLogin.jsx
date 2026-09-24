@@ -1,28 +1,44 @@
 import { useState } from "react";
-import { Eye, EyeOff, LockKeyhole, LogIn } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import {
+  Eye,
+  EyeOff,
+  LockKeyhole,
+  LogIn,
+} from "lucide-react";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
 
 import "./AdminLogin.css";
 
 function AdminLogin() {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setError("");
 
-    if (!username.trim()) {
-      setError("Please enter username.");
+    /* =========================================
+       EMAIL VALIDATION
+    ========================================= */
+
+    if (!email.trim()) {
+      setError("Please enter email.");
       return;
     }
+
+    /* =========================================
+       PASSWORD VALIDATION
+    ========================================= */
 
     if (!password) {
       setError("Please enter password.");
@@ -31,35 +47,70 @@ function AdminLogin() {
 
     setLoading(true);
 
-    /*
-      Temporary admin login.
+    try {
+      /* =========================================
+         BACKEND ADMIN LOGIN API
+      ========================================= */
 
-      You can change these credentials later
-      when we connect proper backend authentication.
-    */
+      const response = await fetch(
+  "http://10.171.57.75:5000/api/admin/login",
+  
+        {
+          method: "POST",
 
-    const ADMIN_USERNAME = "admin";
-    const ADMIN_PASSWORD = "admin123";
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-    setTimeout(() => {
-      if (
-        username.trim() === ADMIN_USERNAME &&
-        password === ADMIN_PASSWORD
-      ) {
+          body: JSON.stringify({
+            email: email.trim(),
+            password: password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      /* =========================================
+         LOGIN SUCCESS
+      ========================================= */
+
+      if (response.ok && data.success) {
+        localStorage.setItem(
+          "kas_admin_token",
+          data.token
+        );
+
         localStorage.setItem(
           "kas_admin_logged_in",
           "true"
         );
 
         navigate("/admin/dashboard");
-      } else {
-        setError(
-          "Invalid username or password."
-        );
+
+        return;
       }
 
+      /* =========================================
+         LOGIN FAILED
+      ========================================= */
+
+      setError(
+        data.message ||
+          "Email or password is incorrect"
+      );
+    } catch (error) {
+      console.error(
+        "Admin login error:",
+        error
+      );
+
+      setError(
+        "Unable to connect to server. Please try again."
+      );
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   return (
@@ -130,7 +181,9 @@ function AdminLogin() {
           </div>
 
 
-          {/* ERROR */}
+          {/* =========================================
+              ERROR
+          ========================================= */}
 
           {error && (
             <div className="admin-login-error">
@@ -139,37 +192,43 @@ function AdminLogin() {
           )}
 
 
-          {/* FORM */}
+          {/* =========================================
+              FORM
+          ========================================= */}
 
           <form
             className="admin-login-form"
             onSubmit={handleSubmit}
           >
 
-            {/* USERNAME */}
+            {/* =====================================
+                EMAIL
+            ===================================== */}
 
             <div className="admin-login-field">
 
-              <label htmlFor="admin-username">
-                Username
+              <label htmlFor="admin-email">
+                Email
               </label>
 
               <input
-                id="admin-username"
-                type="text"
-                value={username}
+                id="admin-email"
+                type="email"
+                value={email}
                 onChange={(event) =>
-                  setUsername(event.target.value)
+                  setEmail(event.target.value)
                 }
-                placeholder="Enter username"
-                autoComplete="username"
+                placeholder="Enter email"
+                autoComplete="email"
                 disabled={loading}
               />
 
             </div>
 
 
-            {/* PASSWORD */}
+            {/* =====================================
+                PASSWORD
+            ===================================== */}
 
             <div className="admin-login-field">
 
@@ -221,7 +280,22 @@ function AdminLogin() {
             </div>
 
 
-            {/* LOGIN BUTTON */}
+            {/* =====================================
+                FORGOT PASSWORD
+            ===================================== */}
+
+            <div className="admin-login-forgot">
+
+              <Link to="/admin/forgot-password">
+                Forgot Password?
+              </Link>
+
+            </div>
+
+
+            {/* =====================================
+                LOGIN BUTTON
+            ===================================== */}
 
             <button
               type="submit"
@@ -246,24 +320,9 @@ function AdminLogin() {
           </form>
 
 
-          {/* DEMO CREDENTIALS */}
-
-          <div className="admin-login-demo">
-
-            <span>
-              Admin Access
-            </span>
-
-            <p>
-              Username: <strong>admin</strong>
-            </p>
-
-            <p>
-              Password: <strong>admin123</strong>
-            </p>
-
-          </div>
-
+          {/* =========================================
+              FOOTER
+          ========================================= */}
 
           <div className="admin-login-footer">
             © {new Date().getFullYear()} Khel Aur

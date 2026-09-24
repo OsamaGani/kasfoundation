@@ -52,6 +52,8 @@ import AdminTeam from "./admin/pages/AdminTeam";
 import AdminNews from "./admin/pages/AdminNews";
 import AdminAchievements from "./admin/pages/AdminAchievements";
 import AdminVenues from "./admin/pages/AdminVenues";
+import ForgotPassword from "./admin/ForgotPassword";
+import ResetPassword from "./admin/ResetPassword";
 
 /* =========================================
    PAGE TITLE
@@ -339,6 +341,15 @@ function App() {
           path="/admin/login"
           element={<AdminLogin />}
         />
+        <Route
+  path="/admin/forgot-password"
+  element={<ForgotPassword />}
+/>
+
+<Route
+  path="/admin/reset-password/:token"
+  element={<ResetPassword />}
+/>
 
         {/* =========================================
             PROTECTED ADMIN PANEL

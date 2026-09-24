@@ -11,7 +11,8 @@ import JoinCommunity from "../components/JoinCommunity";
 import "./achievements.css";
 
 const API_URL =
-  "https://kasfoundation.onrender.com/api/achievements";
+  "http://10.171.57.75:5000/api/achievements";
+  
 
 const LEVEL_ORDER = [
   "Local",

@@ -10,7 +10,7 @@ import {
 
 import "./AdminAchievements.css";
 
-const API_URL = "https://kasfoundation.onrender.com/api/achievements";
+const API_URL = "http://10.171.57.75:5000/api/achievements";
 
 const initialForm = {
   title: "",

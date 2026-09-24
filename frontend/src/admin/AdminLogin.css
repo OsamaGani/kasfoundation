@@ -431,3 +431,24 @@
     font-size: 29px;
   }
 }
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.admin-login-forgot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.admin-login-forgot a {
+  color: #374151;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.admin-login-forgot a:hover {
+  color: #111827;
+}

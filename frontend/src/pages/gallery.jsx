@@ -6,7 +6,8 @@ import JoinCommunity from "../components/JoinCommunity";
 
 import "./gallery.css";
 
-const API_URL = "https://kasfoundation.onrender.com/api";
+const API_URL =
+  "http://10.171.57.75:5000/api";
 
 function Gallery() {
   const [galleryCards, setGalleryCards] = useState([]);

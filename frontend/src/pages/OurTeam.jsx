@@ -7,7 +7,7 @@ import JoinCommunity from "../components/JoinCommunity";
 
 import "./OurTeam.css";
 
-const API_URL = "https://kasfoundation.onrender.com/api";
+const API_URL = "http://10.171.57.75:5000/api";
 
 function OurTeam() {
   const [teamMembers, setTeamMembers] = useState([]);
