@@ -44,6 +44,7 @@ import Venues from "./pages/Venues";
 ========================================= */
 
 import AdminLogin from "./admin/AdminLogin";
+import ProtectedRoute from "./admin/ProtectedRoute";
 import AdminLayout from "./admin/AdminLayout";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminGallery from "./admin/pages/AdminGallery";
@@ -340,52 +341,68 @@ function App() {
         />
 
         {/* =========================================
-            ADMIN PANEL
+            PROTECTED ADMIN PANEL
         ========================================= */}
 
-        <Route element={<AdminLayout />}>
+        <Route element={<ProtectedRoute />}>
 
-          {/* ADMIN DASHBOARD */}
+          <Route element={<AdminLayout />}>
 
-          <Route
-            path="/admin/dashboard"
-            element={<AdminDashboard />}
-          />
+            {/* =====================================
+                ADMIN DASHBOARD
+            ===================================== */}
 
-          {/* ADMIN GALLERY */}
+            <Route
+              path="/admin/dashboard"
+              element={<AdminDashboard />}
+            />
 
-          <Route
-            path="/admin/gallery"
-            element={<AdminGallery />}
-          />
+            {/* =====================================
+                ADMIN GALLERY
+            ===================================== */}
 
-          {/* ADMIN TEAM */}
+            <Route
+              path="/admin/gallery"
+              element={<AdminGallery />}
+            />
 
-          <Route
-            path="/admin/team"
-            element={<AdminTeam />}
-          />
+            {/* =====================================
+                ADMIN TEAM
+            ===================================== */}
 
-          {/* ADMIN NEWS */}
+            <Route
+              path="/admin/team"
+              element={<AdminTeam />}
+            />
 
-          <Route
-            path="/admin/news"
-            element={<AdminNews />}
-          />
+            {/* =====================================
+                ADMIN NEWS
+            ===================================== */}
 
-          {/* ADMIN ACHIEVEMENTS */}
+            <Route
+              path="/admin/news"
+              element={<AdminNews />}
+            />
 
-          <Route
-            path="/admin/achievements"
-            element={<AdminAchievements />}
-          />
+            {/* =====================================
+                ADMIN ACHIEVEMENTS
+            ===================================== */}
 
-          {/* ADMIN VENUES */}
+            <Route
+              path="/admin/achievements"
+              element={<AdminAchievements />}
+            />
 
-          <Route
-            path="/admin/venues"
-            element={<AdminVenues />}
-          />
+            {/* =====================================
+                ADMIN VENUES
+            ===================================== */}
+
+            <Route
+              path="/admin/venues"
+              element={<AdminVenues />}
+            />
+
+          </Route>
 
         </Route>
 
