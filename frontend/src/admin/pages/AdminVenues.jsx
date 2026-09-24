@@ -3,7 +3,7 @@ import { Edit, ImagePlus, Plus, Trash2, X } from "lucide-react";
 
 import "./AdminVenues.css";
 
-const API_URL = "http://localhost:5000/api/venues";
+const API_URL = "https://kasfoundation.onrender.com/api/venues";
 
 const initialForm = {
   label: "VENUES",

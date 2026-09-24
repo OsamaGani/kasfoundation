@@ -11,7 +11,7 @@ import JoinCommunity from "../components/JoinCommunity";
 
 import "./GalleryAlbum.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://kasfoundation.onrender.com/api";
 
 function GalleryAlbum() {
   const { slug } = useParams();

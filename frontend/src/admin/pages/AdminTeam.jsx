@@ -15,7 +15,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://kasfoundation.onrender.com/api";
 
 const EMPTY_FORM = {
   name: "",

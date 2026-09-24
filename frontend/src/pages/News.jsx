@@ -7,7 +7,7 @@ import JoinCommunity from "../components/JoinCommunity";
 
 import "./News.css";
 
-const API_URL = "http://localhost:5000/api/news";
+const API_URL = "https://kasfoundation.onrender.com/api/news";
 
 function News() {
   const [newsArticles, setNewsArticles] = useState([]);

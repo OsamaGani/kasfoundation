@@ -3,7 +3,7 @@ import { Edit, Trash2, Plus, X } from "lucide-react";
 
 import "./AdminNews.css";
 
-const API_URL = "http://localhost:5000/api/news";
+const API_URL = "https://kasfoundation.onrender.com/api/news";
 
 const initialForm = {
   title: "",

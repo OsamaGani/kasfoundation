@@ -17,7 +17,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://kasfoundation.usamagani030.workers.dev",
+    ],
     credentials: true,
   })
 );
