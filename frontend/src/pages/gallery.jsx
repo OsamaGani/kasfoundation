@@ -7,7 +7,7 @@ import JoinCommunity from "../components/JoinCommunity";
 import "./gallery.css";
 
 const API_URL =
-  "import.meta.env.VITE_API_URL/api";
+  `${import.meta.env.VITE_API_URL}/api`;
 
 function Gallery() {
   const [galleryCards, setGalleryCards] = useState([]);
