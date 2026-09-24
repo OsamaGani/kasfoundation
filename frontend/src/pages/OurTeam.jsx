@@ -7,7 +7,7 @@ import JoinCommunity from "../components/JoinCommunity";
 
 import "./OurTeam.css";
 
-const API_URL = "import.meta.env.VITE_API_URL/api";
+const API_URL = `${import.meta.env.VITE_API_URL}/api`;
 
 function OurTeam() {
   const [teamMembers, setTeamMembers] = useState([]);

@@ -13,7 +13,7 @@ import JoinCommunity from "../components/JoinCommunity";
 
 import "./NewsArticle.css";
 
-const API_URL = "https://kasfoundation.onrender.com/api/news";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/news`;
 
 function NewsArticle() {
   const { slug } = useParams();

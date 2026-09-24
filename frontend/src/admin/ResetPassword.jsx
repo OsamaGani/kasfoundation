@@ -70,7 +70,7 @@ function ResetPassword() {
 
     try {
       const response = await fetch(
-        `import.meta.env.VITE_API_URL/api/admin/reset-password/${token}`,
+  `${import.meta.env.VITE_API_URL}/api/admin/reset-password/${token}`,
         {
           method: "POST",
 

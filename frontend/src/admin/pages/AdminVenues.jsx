@@ -3,7 +3,7 @@ import { Edit, ImagePlus, Plus, Trash2, X } from "lucide-react";
 
 import "./AdminVenues.css";
 
-const API_URL = "import.meta.env.VITE_API_URL/api/venues";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/venues`;
 
 const initialForm = {
   label: "VENUES",

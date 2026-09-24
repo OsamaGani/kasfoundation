@@ -3,7 +3,7 @@ import { Edit, Trash2, Plus, X } from "lucide-react";
 
 import "./AdminNews.css";
 
-const API_URL = "import.meta.env.VITE_API_URL/api/news";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/news`;
 
 const initialForm = {
   title: "",

@@ -11,7 +11,7 @@ import JoinCommunity from "../components/JoinCommunity";
 import "./achievements.css";
 
 const API_URL =
-  "import.meta.env.VITE_API_URL/api/achievements";
+  `${import.meta.env.VITE_API_URL}/api/achievements`;
   
 
 const LEVEL_ORDER = [
