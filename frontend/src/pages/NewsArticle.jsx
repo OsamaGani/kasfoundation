@@ -66,6 +66,237 @@ function NewsArticle() {
   }, [slug]);
 
   /* =========================================
+     SEO
+  ========================================= */
+
+  useEffect(() => {
+    if (!article) {
+      return;
+    }
+
+    const siteName = "Khel Aur Shiksha Foundation";
+
+    const articleTitle =
+      article.title || "News Article";
+
+    const title = `${articleTitle} | Khel Aur Shiksha Foundation`;
+
+    const rawDescription =
+      article.shortDescription ||
+      article.description ||
+      "Read the latest news, stories, achievements and updates from Khel Aur Shiksha Foundation.";
+
+    const description = rawDescription
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 160);
+
+    const keywords =
+      `${articleTitle}, Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation news, Khel Aur Shiksha Foundation latest news, Khel Aur Shiksha Foundation stories, Khel Aur Shiksha Foundation football, Khel Aur Shiksha Foundation achievements, Khel Aur Shiksha Foundation community, Khel Aur Shiksha Foundation programs`;
+
+    const currentUrl = window.location.href;
+    const siteUrl = window.location.origin;
+
+    const imageUrl = article.image?.fileId
+      ? `${API_URL}/image/${article.image.fileId}`
+      : `${siteUrl}/logo.png`;
+
+    document.title = title;
+
+    const setMeta = (
+      attribute,
+      name,
+      content
+    ) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${name}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute(
+        "content",
+        content
+      );
+    };
+
+    const setLink = (rel, href) => {
+      let element = document.head.querySelector(
+        `link[rel="${rel}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("href", href);
+    };
+
+    setMeta(
+      "name",
+      "description",
+      description
+    );
+
+    setMeta(
+      "name",
+      "keywords",
+      keywords
+    );
+
+    setMeta(
+      "name",
+      "author",
+      siteName
+    );
+
+    setMeta(
+      "name",
+      "robots",
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
+
+    setMeta(
+      "property",
+      "og:title",
+      title
+    );
+
+    setMeta(
+      "property",
+      "og:description",
+      description
+    );
+
+    setMeta(
+      "property",
+      "og:type",
+      "article"
+    );
+
+    setMeta(
+      "property",
+      "og:url",
+      currentUrl
+    );
+
+    setMeta(
+      "property",
+      "og:site_name",
+      siteName
+    );
+
+    setMeta(
+      "property",
+      "og:image",
+      imageUrl
+    );
+
+    setMeta(
+      "name",
+      "twitter:card",
+      "summary_large_image"
+    );
+
+    setMeta(
+      "name",
+      "twitter:title",
+      title
+    );
+
+    setMeta(
+      "name",
+      "twitter:description",
+      description
+    );
+
+    setMeta(
+      "name",
+      "twitter:image",
+      imageUrl
+    );
+
+    setLink(
+      "canonical",
+      currentUrl
+    );
+
+    const existingSchema =
+      document.head.querySelector(
+        'script[data-seo="news-article"]'
+      );
+
+    if (existingSchema) {
+      existingSchema.remove();
+    }
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: articleTitle,
+      description,
+      url: currentUrl,
+      image: [imageUrl],
+      datePublished:
+        article.date || undefined,
+      dateModified:
+        article.date || undefined,
+      author: {
+        "@type": "Organization",
+        name: siteName,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: siteName,
+        url: siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/logo.png`,
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": currentUrl,
+      },
+    };
+
+    const schemaScript =
+      document.createElement("script");
+
+    schemaScript.type =
+      "application/ld+json";
+
+    schemaScript.setAttribute(
+      "data-seo",
+      "news-article"
+    );
+
+    schemaScript.textContent =
+      JSON.stringify(schema);
+
+    document.head.appendChild(
+      schemaScript
+    );
+
+    return () => {
+      const currentSchema =
+        document.head.querySelector(
+          'script[data-seo="news-article"]'
+        );
+
+      if (currentSchema) {
+        currentSchema.remove();
+      }
+    };
+  }, [article]);
+
+  /* =========================================
      LOADING
   ========================================= */
 

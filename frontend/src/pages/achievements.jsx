@@ -12,7 +12,6 @@ import "./achievements.css";
 
 const API_URL =
   `${import.meta.env.VITE_API_URL}/api/achievements`;
-  
 
 const LEVEL_ORDER = [
   "Local",
@@ -52,6 +51,239 @@ function Achievements() {
 
   const [error, setError] =
     useState("");
+
+  /* =====================================================
+     SEO
+  ===================================================== */
+
+  useEffect(() => {
+    const siteName =
+      "Khel Aur Shiksha Foundation";
+
+    const title =
+      "Our Achievements | Khel Aur Shiksha Foundation";
+
+    const description =
+      "Explore the achievements, milestones, awards and football journeys of players and teams associated with Khel Aur Shiksha Foundation at local, city, district, state, national and international levels.";
+
+    const keywords =
+      "Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation achievements, Khel Aur Shiksha Foundation awards, Khel Aur Shiksha Foundation football achievements, Khel Aur Shiksha Foundation players, Khel Aur Shiksha Foundation teams, Khel Aur Shiksha Foundation football, Khel Aur Shiksha Foundation milestones";
+
+    document.title = title;
+
+    const setMeta = (name, content) => {
+      let element = document.querySelector(
+        `meta[name="${name}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute("name", name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute(
+        "content",
+        content
+      );
+    };
+
+    const setPropertyMeta = (
+      property,
+      content
+    ) => {
+      let element = document.querySelector(
+        `meta[property="${property}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(
+          "property",
+          property
+        );
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute(
+        "content",
+        content
+      );
+    };
+
+    /* Basic SEO */
+
+    setMeta(
+      "description",
+      description
+    );
+
+    setMeta(
+      "keywords",
+      keywords
+    );
+
+    setMeta(
+      "author",
+      siteName
+    );
+
+    setMeta(
+      "robots",
+      "index, follow"
+    );
+
+    /* Open Graph */
+
+    setPropertyMeta(
+      "og:title",
+      title
+    );
+
+    setPropertyMeta(
+      "og:description",
+      description
+    );
+
+    setPropertyMeta(
+      "og:type",
+      "website"
+    );
+
+    setPropertyMeta(
+      "og:url",
+      `${window.location.origin}/achievements`
+    );
+
+    setPropertyMeta(
+      "og:site_name",
+      siteName
+    );
+
+    setPropertyMeta(
+      "og:image",
+      `${window.location.origin}/logo.png`
+    );
+
+    /* Twitter */
+
+    setMeta(
+      "twitter:card",
+      "summary_large_image"
+    );
+
+    setMeta(
+      "twitter:title",
+      title
+    );
+
+    setMeta(
+      "twitter:description",
+      description
+    );
+
+    setMeta(
+      "twitter:image",
+      `${window.location.origin}/logo.png`
+    );
+
+    /* Canonical */
+
+    const canonicalURL =
+      `${window.location.origin}/achievements`;
+
+    let canonical =
+      document.querySelector(
+        'link[rel="canonical"]'
+      );
+
+    if (!canonical) {
+      canonical =
+        document.createElement("link");
+
+      canonical.setAttribute(
+        "rel",
+        "canonical"
+      );
+
+      document.head.appendChild(
+        canonical
+      );
+    }
+
+    canonical.setAttribute(
+      "href",
+      canonicalURL
+    );
+
+    /* JSON-LD Structured Data */
+
+    const structuredData = {
+      "@context":
+        "https://schema.org",
+
+      "@type":
+        "CollectionPage",
+
+      name: title,
+
+      description:
+        description,
+
+      url:
+        canonicalURL,
+
+      publisher: {
+        "@type":
+          "Organization",
+
+        name:
+          siteName,
+      },
+    };
+
+    let script =
+      document.getElementById(
+        "achievements-schema"
+      );
+
+    if (!script) {
+      script =
+        document.createElement(
+          "script"
+        );
+
+      script.id =
+        "achievements-schema";
+
+      script.type =
+        "application/ld+json";
+
+      document.head.appendChild(
+        script
+      );
+    }
+
+    script.textContent =
+      JSON.stringify(
+        structuredData
+      );
+
+    return () => {
+      const schemaScript =
+        document.getElementById(
+          "achievements-schema"
+        );
+
+      if (schemaScript) {
+        schemaScript.remove();
+      }
+    };
+  }, []);
+
+  /* =====================================================
+     PAGE SETUP + FETCH ACHIEVEMENTS
+  ===================================================== */
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -141,29 +373,35 @@ function Achievements() {
             };
           }
 
-          groups[key].items.push(item);
+          groups[key].items.push(
+            item
+          );
         }
       );
 
-      return Object.values(groups).sort(
-        (a, b) => {
-          const levelA =
-            LEVEL_ORDER.indexOf(a.level);
+      return Object.values(
+        groups
+      ).sort((a, b) => {
+        const levelA =
+          LEVEL_ORDER.indexOf(
+            a.level
+          );
 
-          const levelB =
-            LEVEL_ORDER.indexOf(b.level);
+        const levelB =
+          LEVEL_ORDER.indexOf(
+            b.level
+          );
 
-          if (
-            levelA !== -1 &&
-            levelB !== -1 &&
-            levelA !== levelB
-          ) {
-            return levelA - levelB;
-          }
-
-          return 0;
+        if (
+          levelA !== -1 &&
+          levelB !== -1 &&
+          levelA !== levelB
+        ) {
+          return levelA - levelB;
         }
-      );
+
+        return 0;
+      });
     }, [normalAchievements]);
 
   const getImageURL = (item) => {
@@ -185,7 +423,6 @@ function Achievements() {
 
         <div className="achievements-hero-content">
 
-          {/* TROPHY IN PLACE OF OUR JOURNEY */}
           <span
             className="achievements-hero-trophy"
             aria-label="Achievements"
@@ -204,9 +441,10 @@ function Achievements() {
           <p>
             Celebrating the achievements,
             milestones, and football journeys
-            of KAS Foundation players and teams
-            at local, city, district, state,
-            national, and international levels.
+            of Khel Aur Shiksha Foundation
+            players and teams at local, city,
+            district, state, national, and
+            international levels.
           </p>
 
         </div>

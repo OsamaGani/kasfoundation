@@ -1,0 +1,421 @@
+/* =========================================
+   PRIVACY POLICY PAGE
+========================================= */
+
+.privacy-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f7f5;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.privacy-header {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 92px 30px 65px;
+  text-align: center;
+}
+
+.privacy-header-line {
+  width: 55px;
+  height: 4px;
+  margin: 0 auto 24px;
+
+  background: #0637a5;
+  border-radius: 50px;
+}
+
+.privacy-eyebrow {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: #0637a5;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.privacy-header h1 {
+  margin: 0;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 48px;
+  line-height: 1.05;
+  font-weight: 600;
+
+  letter-spacing: -1.8px;
+}
+
+.privacy-header p {
+  max-width: 690px;
+
+  margin: 22px auto 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* =========================================
+   CONTENT SECTION
+========================================= */
+
+.privacy-content-section {
+  width: 100%;
+  padding: 5px 30px 90px;
+}
+
+.privacy-content {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+
+  padding: 35px 0 50px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* =========================================
+   INTRO TEXT
+========================================= */
+
+.privacy-content > p:first-child {
+  margin-top: 0;
+  margin-bottom: 22px;
+
+  padding-left: 0;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* =========================================
+   CONTENT TEXT
+========================================= */
+
+.privacy-content p {
+  margin: 0 0 20px;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* =========================================
+   CONTENT BLOCK
+========================================= */
+
+.privacy-block {
+  margin-top: 45px;
+  padding-top: 0;
+
+  border-top: none;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.privacy-block h2 {
+  margin: 0 0 20px;
+
+  padding-left: 0;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 500;
+
+  letter-spacing: -0.3px;
+}
+
+/* =========================================
+   CONTACT HEADING
+========================================= */
+
+.privacy-block h3 {
+  margin: 25px 0 15px;
+
+  color: #050505;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* =========================================
+   LIST
+========================================= */
+
+.privacy-block ul {
+  margin: 0;
+  padding-left: 27px;
+}
+
+.privacy-block li {
+  margin-bottom: 14px;
+  padding-left: 3px;
+
+  color: #35445a;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.privacy-block li:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-block li strong {
+  color: #1b2b43;
+  font-weight: 600;
+}
+
+/* =========================================
+   LINKS
+========================================= */
+
+.privacy-content a {
+  color: #0637a5;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.privacy-content a:hover {
+  color: #050505;
+}
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.privacy-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.privacy-contact a {
+  width: fit-content;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .privacy-header {
+    padding: 85px 25px 55px;
+  }
+
+  .privacy-header h1 {
+    font-size: 40px;
+  }
+
+  .privacy-content-section {
+    padding: 5px 25px 75px;
+  }
+
+  .privacy-content {
+    padding: 25px 0 40px;
+  }
+
+  .privacy-block {
+    margin-top: 40px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .privacy-header {
+    padding: 82px 18px 45px;
+  }
+
+  .privacy-header-line {
+    width: 45px;
+    height: 3px;
+    margin-bottom: 20px;
+  }
+
+  .privacy-eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .privacy-header h1 {
+    font-size: 31px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .privacy-header p {
+    margin-top: 17px;
+
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  /* CONTENT */
+
+  .privacy-content-section {
+    padding: 0 18px 60px;
+  }
+
+  .privacy-content {
+    padding: 20px 0 35px;
+  }
+
+  /* TEXT */
+
+  .privacy-content > p:first-child {
+    padding-left: 0;
+
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+
+  .privacy-content p {
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+
+  /* BLOCKS */
+
+  .privacy-block {
+    margin-top: 35px;
+  }
+
+  .privacy-block h2 {
+    margin-bottom: 17px;
+
+    font-size: 19px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+
+  .privacy-block h3 {
+    margin-top: 22px;
+
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  /* LIST */
+
+  .privacy-block ul {
+    padding-left: 22px;
+  }
+
+  .privacy-block li {
+    margin-bottom: 12px;
+
+    padding-left: 2px;
+
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+
+  /* CONTACT */
+
+  .privacy-contact {
+    gap: 8px;
+    margin-top: 17px;
+  }
+
+  .privacy-contact a {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .privacy-header {
+    padding: 74px 14px 40px;
+  }
+
+  .privacy-header h1 {
+    font-size: 27px;
+  }
+
+  .privacy-header p {
+    font-size: 11.5px;
+  }
+
+  .privacy-content-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .privacy-content {
+    padding-top: 15px;
+  }
+
+  .privacy-content > p:first-child,
+  .privacy-content p,
+  .privacy-block li {
+    font-size: 12px;
+  }
+
+  .privacy-block h2 {
+    font-size: 17px;
+  }
+
+  .privacy-block h3 {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-content a {
+    transition: none;
+  }
+}

@@ -61,6 +61,210 @@ function GalleryAlbum() {
     }
   }, [slug]);
 
+  useEffect(() => {
+    if (!gallery) {
+      return;
+    }
+
+    const siteName = "Khel Aur Shiksha Foundation";
+
+    const galleryTitle =
+      gallery.title || "Gallery";
+
+    const title = `${galleryTitle} Gallery | Khel Aur Shiksha Foundation`;
+
+    const photoCount = (gallery.photos || []).length;
+
+    const description = `Explore ${galleryTitle} gallery from Khel Aur Shiksha Foundation featuring ${photoCount} ${
+      photoCount === 1 ? "photo" : "photos"
+    } from football activities, training sessions, events and community initiatives.`;
+
+    const keywords =
+      `${galleryTitle}, ${galleryTitle} gallery, ${galleryTitle} photos, Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation gallery, Khel Aur Shiksha Foundation photos, Khel Aur Shiksha Foundation football, Khel Aur Shiksha Foundation events, Khel Aur Shiksha Foundation training`;
+
+    const currentUrl = window.location.href;
+    const siteUrl = window.location.origin;
+
+    document.title = title;
+
+    const setMeta = (
+      attribute,
+      name,
+      content
+    ) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${name}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("content", content);
+    };
+
+    const setLink = (rel, href) => {
+      let element = document.head.querySelector(
+        `link[rel="${rel}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("href", href);
+    };
+
+    setMeta(
+      "name",
+      "description",
+      description
+    );
+
+    setMeta(
+      "name",
+      "keywords",
+      keywords
+    );
+
+    setMeta(
+      "name",
+      "author",
+      siteName
+    );
+
+    setMeta(
+      "name",
+      "robots",
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
+
+    setMeta(
+      "property",
+      "og:title",
+      title
+    );
+
+    setMeta(
+      "property",
+      "og:description",
+      description
+    );
+
+    setMeta(
+      "property",
+      "og:type",
+      "website"
+    );
+
+    setMeta(
+      "property",
+      "og:url",
+      currentUrl
+    );
+
+    setMeta(
+      "property",
+      "og:site_name",
+      siteName
+    );
+
+    setMeta(
+      "property",
+      "og:image",
+      `${siteUrl}/logo.png`
+    );
+
+    setMeta(
+      "name",
+      "twitter:card",
+      "summary_large_image"
+    );
+
+    setMeta(
+      "name",
+      "twitter:title",
+      title
+    );
+
+    setMeta(
+      "name",
+      "twitter:description",
+      description
+    );
+
+    setMeta(
+      "name",
+      "twitter:image",
+      `${siteUrl}/logo.png`
+    );
+
+    setLink(
+      "canonical",
+      currentUrl
+    );
+
+    const existingSchema =
+      document.head.querySelector(
+        'script[data-seo="gallery-album"]'
+      );
+
+    if (existingSchema) {
+      existingSchema.remove();
+    }
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      name: galleryTitle,
+      description,
+      url: currentUrl,
+      isPartOf: {
+        "@type": "WebSite",
+        name: siteName,
+        url: siteUrl,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: siteName,
+        url: siteUrl,
+      },
+    };
+
+    const schemaScript =
+      document.createElement("script");
+
+    schemaScript.type =
+      "application/ld+json";
+
+    schemaScript.setAttribute(
+      "data-seo",
+      "gallery-album"
+    );
+
+    schemaScript.textContent =
+      JSON.stringify(schema);
+
+    document.head.appendChild(
+      schemaScript
+    );
+
+    return () => {
+      const currentSchema =
+        document.head.querySelector(
+          'script[data-seo="gallery-album"]'
+        );
+
+      if (currentSchema) {
+        currentSchema.remove();
+      }
+    };
+  }, [gallery]);
+
   const getImageURL = (fileId) => {
     if (!fileId) {
       return "";

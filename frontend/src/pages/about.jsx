@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-
+import JoinCommunity from "../components/JoinCommunity";
 import "./about.css";
 
-import aboutLeft from "../assets/images/about-left.jpeg"
+import aboutLeft from "../assets/images/about-left.jpeg";
 import aboutRight from "../assets/images/about-right.jpeg";
 import aboutLeft1 from "../assets/images/about-left1.jpeg";
 import aboutRight1 from "../assets/images/about-right1.jpeg";
@@ -18,6 +18,119 @@ function About() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  /* =========================================================
+     SEO
+  ========================================================= */
+
+  useEffect(() => {
+    const siteName = "Khel Aur Shiksha Foundation";
+
+    const title =
+      "About Us | Khel Aur Shiksha Foundation";
+
+    const description =
+      "Learn about Khel Aur Shiksha Foundation, our mission, vision and commitment to developing young people through football, education, mentorship and community initiatives.";
+
+    const keywords =
+      "Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation about, Khel Aur Shiksha Foundation mission, Khel Aur Shiksha Foundation vision, Khel Aur Shiksha Foundation football, Khel Aur Shiksha Foundation education, Khel Aur Shiksha Foundation youth development, Khel Aur Shiksha Foundation football training, Khel Aur Shiksha Foundation community";
+
+    const currentUrl = window.location.href;
+    const siteUrl = window.location.origin;
+
+    document.title = title;
+
+    const setMeta = (attribute, name, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${name}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("content", content);
+    };
+
+    const setLink = (rel, href) => {
+      let element = document.head.querySelector(
+        `link[rel="${rel}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("href", href);
+    };
+
+    /* Basic SEO */
+    setMeta("name", "description", description);
+    setMeta("name", "keywords", keywords);
+    setMeta("name", "author", siteName);
+    setMeta(
+      "name",
+      "robots",
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
+
+    /* Open Graph */
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:url", currentUrl);
+    setMeta("property", "og:site_name", siteName);
+    setMeta("property", "og:image", `${siteUrl}${logo}`);
+
+    /* Twitter */
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", `${siteUrl}${logo}`);
+
+    /* Canonical */
+    setLink("canonical", currentUrl);
+
+    /* Structured Data */
+    let structuredData = document.getElementById(
+      "kas-foundation-about-structured-data"
+    );
+
+    if (!structuredData) {
+      structuredData = document.createElement("script");
+      structuredData.id = "kas-foundation-about-structured-data";
+      structuredData.type = "application/ld+json";
+      document.head.appendChild(structuredData);
+    }
+
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: title,
+      url: currentUrl,
+      description: description,
+      isPartOf: {
+        "@type": "Organization",
+        name: siteName,
+        url: siteUrl,
+        logo: `${siteUrl}${logo}`,
+      },
+    });
+
+    return () => {
+      const existingStructuredData = document.getElementById(
+        "kas-foundation-about-structured-data"
+      );
+
+      if (existingStructuredData) {
+        existingStructuredData.remove();
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -39,7 +152,10 @@ function About() {
         <section className="about-intro-section">
           <div className="about-intro-container">
             <div className="about-intro-image">
-              <img src={aboutLeft} alt="Khel Aur Shiksha Foundation" />
+              <img
+                src={aboutLeft}
+                alt="Khel Aur Shiksha Foundation"
+              />
             </div>
 
             <div className="about-intro-content">
@@ -51,31 +167,37 @@ function About() {
               </h1>
 
               <p>
-                When I founded The Khel Aur Shiksha Foundations Foundation, my
-                vision was clear — to give every child in Pakistan, regardless
-                of their background, the opportunity to dream through football.
-                I have witnessed how this game can transform lives, instill
-                discipline, and open doors to possibilities that once seemed out
+                When I founded Khel Aur Shiksha Foundation, my
+                vision was clear — to give every child in Pakistan,
+                regardless of their background, the opportunity to
+                dream through football. I have witnessed how this
+                game can transform lives, instill discipline, and
+                open doors to possibilities that once seemed out
                 of reach.
               </p>
 
               <p>
-                At TGF, we are not only developing footballers but nurturing
-                confident, educated, and empowered individuals who can lead
-                communities and inspire the next generation. Our goal goes far
-                beyond local impact — we are building a foundation that can
-                stand on a global level, creating pathways for young players to
-                reach the top-tier leagues of the world and put Pakistan on the
-                map of footballing world.
+                At Khel Aur Shiksha Foundation, we are not only
+                developing footballers but nurturing confident,
+                educated, and empowered individuals who can lead
+                communities and inspire the next generation. Our
+                goal goes far beyond local impact — we are building
+                a foundation that can stand on a global level,
+                creating pathways for young players to reach
+                the top-tier leagues of the world and put Pakistan
+                on the map of footballing world.
               </p>
 
               <p>
-                This is just the beginning of our journey. With passion,
-                perseverance, and purpose, we are determined to make football a
-                true force for change in Pakistan and beyond.
+                This is just the beginning of our journey. With
+                passion, perseverance, and purpose, we are determined
+                to make football a true force for change in Pakistan
+                and beyond.
               </p>
 
-              <strong className="about-founder">– Saud Yousaf, Founder</strong>
+              <strong className="about-founder">
+                – Saud Yousaf, Founder
+              </strong>
             </div>
           </div>
         </section>
@@ -89,17 +211,21 @@ function About() {
               <h2>OUR MISSION</h2>
 
               <p>
-                Transform lives through football by providing underprivileged
-                youth with access to world-class training, education, and
-                mentorship. We aim to nurture talent from the Khel Aur Shiksha
-                Foundations to the elite level, creating opportunities for
-                players to succeed locally and globally, and to represent
-                Pakistan with pride on the world stage.
+                Transform lives through football by providing
+                underprivileged youth with access to world-class
+                training, education, and mentorship. We aim to
+                nurture talent from Khel Aur Shiksha Foundation
+                to the elite level, creating opportunities for
+                players to succeed locally and globally, and to
+                represent Pakistan with pride on the world stage.
               </p>
             </div>
 
             <div className="about-mission-image">
-              <img src={aboutRight} alt="Young football players" />
+              <img
+                src={aboutRight}
+                alt="Young football players"
+              />
             </div>
           </div>
         </section>
@@ -110,19 +236,23 @@ function About() {
         <section className="about-vision-section">
           <div className="about-mission-container">
             <div className="about-mission-image">
-              <img src={aboutRight1} alt="Football players" />
+              <img
+                src={aboutRight1}
+                alt="Football players"
+              />
             </div>
 
             <div className="about-mission-content">
               <h2>OUR VISION</h2>
 
               <p>
-                To create a future where every young person has access to
-                football, education, mentorship, and meaningful opportunities to
-                grow. We envision a strong football community that develops
-                talented players, builds confident individuals, and creates
-                pathways for young athletes to represent Pakistan at the highest
-                level.
+                To create a future where every young person has
+                access to football, education, mentorship, and
+                meaningful opportunities to grow. We envision a
+                strong football community that develops talented
+                players, builds confident individuals, and creates
+                pathways for young athletes to represent Pakistan
+                at the highest level.
               </p>
             </div>
           </div>
@@ -181,27 +311,44 @@ function About() {
           {/* LEFT CONTENT */}
           <div className="about-community-content">
             <div className="about-community-logo">
-              <img src={logo} alt="The Khel Aur Shiksha Foundation" />
+              <img
+                src={logo}
+                alt="Khel Aur Shiksha Foundation"
+              />
             </div>
 
             <h3>Khel Aur Shiksha Foundation</h3>
 
             <p>
-              At The Khel Aur Shiksha Foundations Foundation, we go beyond
-              training athletes — we build a community. Through football, we
-              connect people, inspire dreams, and create a space where every
-              child has the chance to grow, belong, and succeed.
+              At Khel Aur Shiksha Foundation, we go beyond training
+              athletes — we build a community. Through football, we
+              connect people, inspire dreams, and create a space
+              where every child has the chance to grow, belong,
+              and succeed.
             </p>
 
-            <Link to="/contact" className="about-community-contact">
+            <Link
+              to="/contact"
+              className="about-community-contact"
+            >
               CONTACT US
             </Link>
           </div>
 
           {/* RIGHT VIDEO */}
           <div className="about-community-video">
-            <video autoPlay muted loop playsInline controls preload="auto">
-              <source src={aboutVideo} type="video/mp4" />
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              preload="auto"
+            >
+              <source
+                src={aboutVideo}
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -228,10 +375,15 @@ function About() {
               className="about-image-modal-content"
               onClick={(event) => event.stopPropagation()}
             >
-              <img src={selectedImage} alt="Khel Aur Shiksha Foundation" />
+              <img
+                src={selectedImage}
+                alt="Khel Aur Shiksha Foundation"
+              />
             </div>
           </div>
         )}
+
+        <JoinCommunity />
       </main>
     </>
   );

@@ -31,6 +31,7 @@
   box-sizing: border-box;
 }
 
+
 .venues-header-inner {
   width: 100%;
 
@@ -59,6 +60,7 @@
 
   margin: 0 auto;
 }
+
 
 .venues-title-badge span {
   color: #ffffff;
@@ -120,6 +122,7 @@
   box-sizing: border-box;
 }
 
+
 .venues-wrapper {
   width: 100%;
 
@@ -173,6 +176,7 @@
 
   background: #dededb;
 }
+
 
 .venue-image-box img {
   display: block;
@@ -279,6 +283,7 @@
   margin-bottom: 2px;
 }
 
+
 .venue-info-content h2 {
   margin: 0 0 13px;
 
@@ -299,6 +304,7 @@
 
   text-transform: uppercase;
 }
+
 
 .venue-info-content p {
   width: 100%;
@@ -355,6 +361,7 @@
   background: #f7f6f3;
 }
 
+
 .venue-training-content {
   width: 100%;
 
@@ -386,6 +393,7 @@
   align-self: center;
 }
 
+
 .venue-training-left h2 {
   margin: 0 0 39px;
 
@@ -406,6 +414,7 @@
 
   text-transform: uppercase;
 }
+
 
 .venue-training-left p {
   width: 100%;
@@ -428,9 +437,11 @@
   line-height: 1.55;
 }
 
+
 .venue-training-left p strong {
   font-weight: 700;
 }
+
 
 .venue-training-left button {
   display: inline-flex;
@@ -586,6 +597,7 @@
   pointer-events: none;
 }
 
+
 .venue-player-placeholder img {
   display: block;
 
@@ -634,13 +646,16 @@
       70px;
   }
 
+
   .venues-header h1 {
     font-size: 36px;
   }
 
+
   .venue-item {
     grid-template-columns: 1fr;
   }
+
 
   .venue-image-box {
     height: 360px;
@@ -648,17 +663,20 @@
     min-height: 360px;
   }
 
+
   .venue-info {
     height: 300px;
 
     min-height: 300px;
   }
 
+
   .venue-info::before {
     left: 0;
 
     top: -30px;
   }
+
 
   .venue-training-content {
     min-height: auto;
@@ -672,9 +690,11 @@
     gap: 50px;
   }
 
+
   .venue-training-right {
     height: 450px;
   }
+
 
   .venue-training-star {
     width: 360px;
@@ -682,11 +702,13 @@
     height: 360px;
   }
 
+
   .venue-training-star::before {
     width: 360px;
 
     height: 360px;
   }
+
 
   .venue-player-placeholder {
     width: 400px;
@@ -710,15 +732,18 @@
       55px;
   }
 
+
   .venues-title-badge {
     width: 125px;
 
     height: 33px;
   }
 
+
   .venues-title-badge span {
     font-size: 13px;
   }
+
 
   .venues-header h1 {
     margin-top: 20px;
@@ -728,6 +753,7 @@
     line-height: 1.08;
   }
 
+
   .venues-section {
     padding:
       0
@@ -735,13 +761,16 @@
       55px;
   }
 
+
   .venues-wrapper {
     gap: 22px;
   }
 
+
   .venue-item {
     border-radius: 14px;
   }
+
 
   .venue-image-box {
     height: 280px;
@@ -749,8 +778,15 @@
     min-height: 280px;
   }
 
+
+  /*
+    FIX:
+    Mobile par venue description ke liye
+    fixed height nahi rakhenge.
+    Content jitna hoga card utna expand hoga.
+  */
   .venue-info {
-    height: 300px;
+    height: auto;
 
     min-height: 300px;
 
@@ -758,21 +794,46 @@
       25px
       24px
       30px;
+
+    overflow: visible;
   }
+
 
   .venue-info-label {
     font-size: 11px;
   }
 
+
+  /*
+    Mobile par content ko label ke neeche
+    proper spacing dena hai.
+  */
+  .venue-info-content {
+    margin-top: 28px;
+
+    margin-bottom: 0;
+  }
+
+
   .venue-info-content h2 {
     font-size: 27px;
+
+    margin-bottom: 13px;
   }
+
 
   .venue-info-content p {
     font-size: 14px;
 
     line-height: 1.5;
+
+    width: 100%;
+
+    max-width: none;
+
+    overflow: visible;
   }
+
 
   .venue-training-content {
     padding:
@@ -783,19 +844,23 @@
     gap: 30px;
   }
 
+
   .venue-training-left h2 {
     margin-bottom: 30px;
 
     font-size: 39px;
   }
 
+
   .venue-training-left p {
     font-size: 15px;
   }
 
+
   .venue-training-right {
     height: 380px;
   }
+
 
   .venue-training-star {
     width: 300px;
@@ -803,11 +868,13 @@
     height: 300px;
   }
 
+
   .venue-training-star::before {
     width: 300px;
 
     height: 300px;
   }
+
 
   .venue-player-placeholder {
     width: 330px;
@@ -840,6 +907,7 @@
       );
 }
 
+
 .venue-reveal-active {
   opacity: 1;
 
@@ -865,6 +933,7 @@
         1
       );
 }
+
 
 .venue-item.venue-reveal-active
 .venue-image-box {
@@ -893,6 +962,7 @@
       )
       var(--venue-delay, 0ms);
 }
+
 
 .venue-item.venue-reveal-active
 .venue-info {
@@ -923,12 +993,14 @@
       0.15s;
 }
 
+
 .venue-training.venue-reveal-active
 .venue-training-left {
   opacity: 1;
 
   transform: translateX(0);
 }
+
 
 .venue-training-right {
   opacity: 0;
@@ -948,6 +1020,7 @@
       )
       0.25s;
 }
+
 
 .venue-training.venue-reveal-active
 .venue-training-right {
@@ -971,35 +1044,42 @@
       scale(0.98);
   }
 
+
   .venue-reveal-active {
     transform:
       translateY(0)
       scale(1);
   }
 
+
   .venue-item .venue-info {
     transform: translateY(25px);
   }
+
 
   .venue-item.venue-reveal-active
   .venue-info {
     transform: translateY(0);
   }
 
+
   .venue-training-left {
     transform: translateY(30px);
   }
+
 
   .venue-training.venue-reveal-active
   .venue-training-left {
     transform: translateY(0);
   }
 
+
   .venue-training-right {
     transform:
       translateY(30px)
       scale(0.92);
   }
+
 
   .venue-training.venue-reveal-active
   .venue-training-right {

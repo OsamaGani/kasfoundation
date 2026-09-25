@@ -39,7 +39,7 @@
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   font-size: 42px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -1px;
 }
@@ -286,7 +286,7 @@
 
   .training-page-hero h1 {
     font-size: 36px;
-
+    font-weight: 500;
     transform: translateY(25px);
   }
 
@@ -406,7 +406,7 @@
 
   .training-page-hero h1 {
     font-size: 28px;
-
+    font-weight: 500;
     letter-spacing: -0.5px;
 
     transform: translateY(15px);
@@ -555,7 +555,7 @@
 
   .training-page-hero h1 {
     font-size: 24px;
-
+padding-top: 60px;
     transform: translateY(12px);
   }
 

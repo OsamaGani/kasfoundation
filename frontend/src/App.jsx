@@ -36,7 +36,9 @@ import Achievements from "./pages/achievements";
 
 import News from "./pages/News";
 import NewsArticle from "./pages/NewsArticle";
-
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import FAQ from "./pages/FAQ";
 import Venues from "./pages/Venues";
 
 /* =========================================
@@ -241,6 +243,11 @@ function App() {
             path="/team/:slug"
             element={<TeamMember />}
           />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+          <Route path="/terms-and-condition" element={<Terms />} />
+          
+          <Route path="/faqs" element={<FAQ />} />
 
           {/* =====================================
               CONTACT

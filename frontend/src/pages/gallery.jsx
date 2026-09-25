@@ -14,6 +14,239 @@ function Gallery() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  /* =====================================================
+     SEO
+  ===================================================== */
+
+  useEffect(() => {
+    const siteName =
+      "Khel Aur Shiksha Foundation";
+
+    const title =
+      "Gallery | Khel Aur Shiksha Foundation";
+
+    const description =
+      "Explore the football gallery of Khel Aur Shiksha Foundation featuring training sessions, football events, community activities, players, teams and memorable moments.";
+
+    const keywords =
+      "Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation gallery, Khel Aur Shiksha Foundation photos, Khel Aur Shiksha Foundation football gallery, Khel Aur Shiksha Foundation football photos, Khel Aur Shiksha Foundation training, Khel Aur Shiksha Foundation events, Khel Aur Shiksha Foundation players, Khel Aur Shiksha Foundation teams";
+
+    document.title = title;
+
+    const setMeta = (name, content) => {
+      let element = document.querySelector(
+        `meta[name="${name}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute("name", name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute(
+        "content",
+        content
+      );
+    };
+
+    const setPropertyMeta = (
+      property,
+      content
+    ) => {
+      let element = document.querySelector(
+        `meta[property="${property}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(
+          "property",
+          property
+        );
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute(
+        "content",
+        content
+      );
+    };
+
+    /* Basic SEO */
+
+    setMeta(
+      "description",
+      description
+    );
+
+    setMeta(
+      "keywords",
+      keywords
+    );
+
+    setMeta(
+      "author",
+      siteName
+    );
+
+    setMeta(
+      "robots",
+      "index, follow"
+    );
+
+    /* Open Graph */
+
+    setPropertyMeta(
+      "og:title",
+      title
+    );
+
+    setPropertyMeta(
+      "og:description",
+      description
+    );
+
+    setPropertyMeta(
+      "og:type",
+      "website"
+    );
+
+    setPropertyMeta(
+      "og:url",
+      `${window.location.origin}/gallery`
+    );
+
+    setPropertyMeta(
+      "og:site_name",
+      siteName
+    );
+
+    setPropertyMeta(
+      "og:image",
+      `${window.location.origin}/logo.png`
+    );
+
+    /* Twitter */
+
+    setMeta(
+      "twitter:card",
+      "summary_large_image"
+    );
+
+    setMeta(
+      "twitter:title",
+      title
+    );
+
+    setMeta(
+      "twitter:description",
+      description
+    );
+
+    setMeta(
+      "twitter:image",
+      `${window.location.origin}/logo.png`
+    );
+
+    /* Canonical */
+
+    const canonicalURL =
+      `${window.location.origin}/gallery`;
+
+    let canonical =
+      document.querySelector(
+        'link[rel="canonical"]'
+      );
+
+    if (!canonical) {
+      canonical =
+        document.createElement("link");
+
+      canonical.setAttribute(
+        "rel",
+        "canonical"
+      );
+
+      document.head.appendChild(
+        canonical
+      );
+    }
+
+    canonical.setAttribute(
+      "href",
+      canonicalURL
+    );
+
+    /* JSON-LD Structured Data */
+
+    const structuredData = {
+      "@context":
+        "https://schema.org",
+
+      "@type":
+        "CollectionPage",
+
+      name: title,
+
+      description:
+        description,
+
+      url:
+        canonicalURL,
+
+      publisher: {
+        "@type":
+          "Organization",
+
+        name:
+          siteName,
+      },
+    };
+
+    let script =
+      document.getElementById(
+        "gallery-schema"
+      );
+
+    if (!script) {
+      script =
+        document.createElement(
+          "script"
+        );
+
+      script.id =
+        "gallery-schema";
+
+      script.type =
+        "application/ld+json";
+
+      document.head.appendChild(
+        script
+      );
+    }
+
+    script.textContent =
+      JSON.stringify(
+        structuredData
+      );
+
+    return () => {
+      const schemaScript =
+        document.getElementById(
+          "gallery-schema"
+        );
+
+      if (schemaScript) {
+        schemaScript.remove();
+      }
+    };
+  }, []);
+
+  /* =====================================================
+     FETCH GALLERY
+  ===================================================== */
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -30,11 +263,14 @@ function Gallery() {
 
         if (!response.ok) {
           throw new Error(
-            data.message || "Failed to fetch gallery."
+            data.message ||
+              "Failed to fetch gallery."
           );
         }
 
-        setGalleryCards(data.gallery || []);
+        setGalleryCards(
+          data.gallery || []
+        );
       } catch (err) {
         console.error(
           "Gallery fetch error:",
@@ -192,6 +428,7 @@ function Gallery() {
                           />
                         ) : (
                           <div className="gallery-image-placeholder">
+
                             <ImageIcon
                               size={45}
                             />
@@ -199,6 +436,7 @@ function Gallery() {
                             <span>
                               No Cover Image
                             </span>
+
                           </div>
                         )}
 

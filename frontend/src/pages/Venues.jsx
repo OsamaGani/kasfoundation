@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import "./Venues.css";
 
 import venueImage from "../assets/images/venue-image.webp";
+import logo from "../assets/images/logo.png";
+import JoinCommunity from "../components/JoinCommunity";
 
 const API_URL = `${import.meta.env.VITE_API_URL}/api/venues`;
 
@@ -19,6 +21,119 @@ function Venues() {
   const [loading, setLoading] = useState(true);
 
   const pageRef = useRef(null);
+
+  /* =====================================
+     SEO
+  ===================================== */
+
+  useEffect(() => {
+    const siteName = "Khel Aur Shiksha Foundation";
+
+    const title =
+      "Our Venues | Khel Aur Shiksha Foundation";
+
+    const description =
+      "Explore football training venues of Khel Aur Shiksha Foundation, offering quality fields and facilities for football training, coaching and player development.";
+
+    const keywords =
+      "Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation venues, Khel Aur Shiksha Foundation football venues, Khel Aur Shiksha Foundation training venues, Khel Aur Shiksha Foundation football training, Khel Aur Shiksha Foundation football coaching, Khel Aur Shiksha Foundation football academy, Khel Aur Shiksha Foundation player development";
+
+    const currentUrl = window.location.href;
+    const siteUrl = window.location.origin;
+
+    document.title = title;
+
+    const setMeta = (attribute, name, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${name}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("content", content);
+    };
+
+    const setLink = (rel, href) => {
+      let element = document.head.querySelector(
+        `link[rel="${rel}"]`
+      );
+
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("href", href);
+    };
+
+    /* Basic SEO */
+    setMeta("name", "description", description);
+    setMeta("name", "keywords", keywords);
+    setMeta("name", "author", siteName);
+    setMeta(
+      "name",
+      "robots",
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
+
+    /* Open Graph */
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:url", currentUrl);
+    setMeta("property", "og:site_name", siteName);
+    setMeta("property", "og:image", `${siteUrl}${logo}`);
+
+    /* Twitter */
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", `${siteUrl}${logo}`);
+
+    /* Canonical */
+    setLink("canonical", currentUrl);
+
+    /* Structured Data */
+    let structuredData = document.getElementById(
+      "kas-foundation-venues-structured-data"
+    );
+
+    if (!structuredData) {
+      structuredData = document.createElement("script");
+      structuredData.id = "kas-foundation-venues-structured-data";
+      structuredData.type = "application/ld+json";
+      document.head.appendChild(structuredData);
+    }
+
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: title,
+      url: currentUrl,
+      description: description,
+      isPartOf: {
+        "@type": "Organization",
+        name: siteName,
+        url: siteUrl,
+        logo: `${siteUrl}${logo}`,
+      },
+    });
+
+    return () => {
+      const existingStructuredData = document.getElementById(
+        "kas-foundation-venues-structured-data"
+      );
+
+      if (existingStructuredData) {
+        existingStructuredData.remove();
+      }
+    };
+  }, []);
 
   /* =====================================
      FETCH VENUES
@@ -172,7 +287,7 @@ function Venues() {
                       )}
                       alt={
                         venue.name ||
-                        "KAS Foundation Venue"
+                        "Khel Aur Shiksha Foundation Venue"
                       }
                     />
                   ) : null}
@@ -268,7 +383,7 @@ function Venues() {
 
                 <img
                   src={venueImage}
-                  alt="Football player"
+                  alt="Khel Aur Shiksha Foundation football player"
                 />
 
               </div>
@@ -281,6 +396,7 @@ function Venues() {
 
       </section>
 
+      <JoinCommunity />
     </div>
   );
 }
