@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/images/logo.png";
@@ -16,10 +16,40 @@ const navItems = [
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+
+    const handleClickOutside = (event) => {
+      if (!menuOpen) return;
+
+      const navbar = event.target.closest(".navbar");
+
+      if (!navbar) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [menuOpen]);
+
   return (
     <header className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo" onClick={() => setMenuOpen(false)}>
+        <Link
+          to="/"
+          className="navbar-logo"
+          onClick={() => setMenuOpen(false)}
+        >
           <img src={logo} alt="KAS Foundation" />
         </Link>
 
@@ -45,8 +75,11 @@ function Navbar() {
 
         <button
           className="mobile-menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Open navigation"
+          onClick={(event) => {
+            event.stopPropagation();
+            setMenuOpen((prev) => !prev);
+          }}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
         >
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

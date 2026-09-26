@@ -901,40 +901,16 @@
   overflow: hidden;
 }
 
-.achievement-bottom-banner::before {
-  content: "";
+/* REMOVE DECORATIVE CIRCLES */
 
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  top: -300px;
-  right: -100px;
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-
-  animation: bannerCircleRotate 12s linear infinite;
-}
-
+.achievement-bottom-banner::before,
 .achievement-bottom-banner::after {
-  content: "";
-
-  position: absolute;
-
-  width: 180px;
-  height: 180px;
-
-  left: -90px;
-  bottom: -120px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.06);
+  display: none;
 }
 
-.achievement-banner-content {
+/* ACTUAL JSX CLASS */
+
+.achievement-bottom-content {
   position: relative;
   z-index: 2;
 
@@ -943,35 +919,10 @@
 
   margin: 0 auto;
 
-  display: flex;
-  align-items: center;
-
-  gap: 23px;
-
   animation: bannerReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.achievement-banner-icon {
-  width: 60px;
-  height: 60px;
-
-  flex: 0 0 60px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-
-  color: #ffffff;
-
-  background: rgba(255, 255, 255, 0.07);
-
-  animation: bannerIconFloat 3.5s ease-in-out infinite;
-}
-
-.achievement-banner-content span {
+.achievement-bottom-content span {
   display: block;
 
   margin-bottom: 7px;
@@ -980,12 +931,12 @@
 
   font-family: "Montserrat", sans-serif;
   font-size: 9px;
-  font-weight: 800;
+  font-weight: 400;
 
   letter-spacing: 2px;
 }
 
-.achievement-banner-content h2 {
+.achievement-bottom-content h2 {
   margin: 0;
 
   color: #ffffff;
@@ -993,9 +944,21 @@
   font-family: "Montserrat", sans-serif;
   font-size: 29px;
   line-height: 1.1;
-  font-weight: 700;
+  font-weight: 500;
 
   letter-spacing: -0.5px;
+}
+
+.achievement-bottom-content p {
+  margin: 7px 0 0;
+
+  color: #ffffff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.4;
 }
 
 /* =========================================================
@@ -1395,7 +1358,7 @@
     gap: 22px;
   }
 
-  .achievement-banner-content h2 {
+  .achievement-bottom-content h2 {
     font-size: 27px;
   }
 }
@@ -1450,7 +1413,7 @@
     padding: 45px 25px;
   }
 
-  .achievement-banner-content h2 {
+  .achievement-bottom-content h2 {
     font-size: 24px;
   }
 }
@@ -1630,29 +1593,20 @@
     padding: 32px 15px;
   }
 
-  .achievement-banner-content {
-    gap: 13px;
-  }
-
-  .achievement-banner-icon {
-    width: 45px;
-    height: 45px;
-    flex: 0 0 45px;
-  }
-
-  .achievement-banner-icon svg {
-    width: 19px;
-  }
-
-  .achievement-banner-content span {
+  .achievement-bottom-content span {
     margin-bottom: 5px;
     font-size: 6.5px;
     letter-spacing: 1px;
   }
 
-  .achievement-banner-content h2 {
+  .achievement-bottom-content h2 {
     font-size: 16px;
     line-height: 1.15;
+  }
+
+  .achievement-bottom-content p {
+    font-size: 10px;
+    line-height: 1.4;
   }
 
   .achievements-floating-contact {
