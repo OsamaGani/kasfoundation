@@ -28,12 +28,24 @@ function ForgotPassword() {
        EMAIL VALIDATION
     ========================================= */
 
-    if (!email.trim()) {
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!normalizedEmail) {
       setError("Please enter your email.");
       return;
     }
 
     setLoading(true);
+
+    /* =========================================
+       REQUEST TIMEOUT
+    ========================================= */
+
+    const controller = new AbortController();
+
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+    }, 20000);
 
     try {
       /* =========================================
@@ -50,12 +62,24 @@ function ForgotPassword() {
           },
 
           body: JSON.stringify({
-            email: email.trim(),
+            email: normalizedEmail,
           }),
+
+          signal: controller.signal,
         }
       );
 
-      const data = await response.json();
+      /* =========================================
+         SAFE JSON RESPONSE
+      ========================================= */
+
+      let data = {};
+
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
 
       /* =========================================
          REGISTERED EMAIL
@@ -68,7 +92,9 @@ function ForgotPassword() {
       ) {
         setSuccess(
           data.message ||
-            `Reset link has been sent to your registered email: ${data.email}`
+            `Reset link has been sent to your registered email: ${
+              data.email || normalizedEmail
+            }`
         );
 
         setEmail("");
@@ -93,12 +119,12 @@ function ForgotPassword() {
       }
 
       /* =========================================
-         OTHER ERROR
+         OTHER SERVER ERROR
       ========================================= */
 
       setError(
         data.message ||
-          "Unable to process password reset request."
+          "Unable to process password reset request. Please try again."
       );
     } catch (error) {
       console.error(
@@ -106,10 +132,27 @@ function ForgotPassword() {
         error
       );
 
+      /* =========================================
+         REQUEST TIMEOUT
+      ========================================= */
+
+      if (error.name === "AbortError") {
+        setError(
+          "The server took too long to respond. Please try again."
+        );
+
+        return;
+      }
+
+      /* =========================================
+         CONNECTION ERROR
+      ========================================= */
+
       setError(
         "Unable to connect to server. Please try again."
       );
     } finally {
+      clearTimeout(timeoutId);
       setLoading(false);
     }
   };
@@ -151,7 +194,6 @@ function ForgotPassword() {
 
       </section>
 
-
       {/* =========================================
           RIGHT FORM SECTION
       ========================================= */}
@@ -163,7 +205,6 @@ function ForgotPassword() {
           <div className="forgot-password-icon">
             <ShieldCheck size={28} />
           </div>
-
 
           <div className="forgot-password-heading">
 
@@ -182,7 +223,6 @@ function ForgotPassword() {
 
           </div>
 
-
           {/* =========================================
               ERROR MESSAGE
           ========================================= */}
@@ -199,7 +239,6 @@ function ForgotPassword() {
             </div>
           )}
 
-
           {/* =========================================
               SUCCESS MESSAGE
           ========================================= */}
@@ -215,7 +254,6 @@ function ForgotPassword() {
 
             </div>
           )}
-
 
           {/* =========================================
               FORM
@@ -252,7 +290,6 @@ function ForgotPassword() {
 
             </div>
 
-
             <button
               type="submit"
               className="forgot-password-button"
@@ -275,7 +312,6 @@ function ForgotPassword() {
 
           </form>
 
-
           {/* =========================================
               BACK TO LOGIN
           ========================================= */}
@@ -287,7 +323,6 @@ function ForgotPassword() {
             <ArrowLeft size={17} />
             Back to Login
           </Link>
-
 
           {/* =========================================
               FOOTER

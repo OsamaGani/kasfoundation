@@ -1,26 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const nodemailer = require("nodemailer");
 
 const Admin = require("../models/Admin");
-
-/* =========================================
-   EMAIL TRANSPORTER
-========================================= */
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-
-  auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASSWORD,
-  },
-
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
 
 /* =========================================
    ADMIN LOGIN
@@ -168,201 +150,265 @@ const forgotPassword = async (req, res) => {
     admin.resetPasswordExpires =
       resetTokenExpires;
 
-    await admin.save();
-
     /* =========================================
        RESET URL
     ========================================= */
 
-     /* =========================================
-   RESET URL
-========================================= */
-
-const resetUrl =
-  `${process.env.FRONTEND_URL}/admin/reset-password/${resetToken}`;
+    const resetUrl =
+      `${process.env.FRONTEND_URL}/admin/reset-password/${resetToken}`;
 
     /* =========================================
-       SEND EMAIL
+       EMAIL HTML
     ========================================= */
 
-    await transporter.sendMail({
-      from: `"KAS Foundation" <${process.env.MAIL_USER}>`,
+    const emailHtml = `
+      <!DOCTYPE html>
 
-      to: admin.email,
+      <html>
+        <head>
+          <meta charset="UTF-8" />
 
-      subject:
-        "KAS Foundation - Reset Admin Password",
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
 
-      html: `
-        <!DOCTYPE html>
+          <title>
+            Reset Admin Password
+          </title>
+        </head>
 
-        <html>
-          <head>
-            <meta charset="UTF-8" />
+        <body
+          style="
+            margin: 0;
+            padding: 0;
+            background: #f5f7fb;
+            font-family: Arial, sans-serif;
+          "
+        >
 
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0"
-            />
-
-            <title>
-              Reset Admin Password
-            </title>
-          </head>
-
-          <body
+          <div
             style="
-              margin: 0;
-              padding: 0;
-              background: #f5f7fb;
-              font-family: Arial, sans-serif;
+              max-width: 600px;
+              margin: 40px auto;
+              background: #ffffff;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             "
           >
 
             <div
               style="
-                max-width: 600px;
-                margin: 40px auto;
-                background: #ffffff;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                padding: 30px;
+                background: #111827;
+                color: #ffffff;
+                text-align: center;
               "
             >
 
-              <div
+              <h1
                 style="
-                  padding: 30px;
-                  background: #111827;
-                  color: #ffffff;
-                  text-align: center;
+                  margin: 0;
+                  font-size: 24px;
                 "
               >
+                KAS Foundation
+              </h1>
 
-                <h1
-                  style="
-                    margin: 0;
-                    font-size: 24px;
-                  "
-                >
-                  KAS Foundation
-                </h1>
-
-                <p
-                  style="
-                    margin: 8px 0 0;
-                    font-size: 14px;
-                    opacity: 0.85;
-                  "
-                >
-                  Admin Password Reset
-                </p>
-
-              </div>
-
-              <div
+              <p
                 style="
-                  padding: 35px;
+                  margin: 8px 0 0;
+                  font-size: 14px;
+                  opacity: 0.85;
                 "
               >
-
-                <h2
-                  style="
-                    margin-top: 0;
-                    color: #111827;
-                  "
-                >
-                  Reset Your Password
-                </h2>
-
-                <p
-                  style="
-                    color: #4b5563;
-                    line-height: 1.6;
-                  "
-                >
-                  We received a request to reset the
-                  password for your KAS Foundation
-                  admin account.
-                </p>
-
-                <p
-                  style="
-                    color: #4b5563;
-                    line-height: 1.6;
-                  "
-                >
-                  Click the button below to create
-                  a new password.
-                </p>
-
-                <div
-                  style="
-                    text-align: center;
-                    margin: 30px 0;
-                  "
-                >
-
-                  <a
-                    href="${resetUrl}"
-                    style="
-                      display: inline-block;
-                      padding: 14px 25px;
-                      background: #111827;
-                      color: #ffffff;
-                      text-decoration: none;
-                      border-radius: 8px;
-                      font-weight: 600;
-                    "
-                  >
-                    Reset Password
-                  </a>
-
-                </div>
-
-                <p
-                  style="
-                    color: #6b7280;
-                    font-size: 13px;
-                    line-height: 1.6;
-                  "
-                >
-                  This reset link will expire in
-                  <strong>15 minutes</strong>.
-                </p>
-
-                <p
-                  style="
-                    color: #6b7280;
-                    font-size: 13px;
-                    line-height: 1.6;
-                  "
-                >
-                  If you did not request a password
-                  reset, you can safely ignore this email.
-                </p>
-
-              </div>
-
-              <div
-                style="
-                  padding: 20px;
-                  text-align: center;
-                  background: #f9fafb;
-                  color: #9ca3af;
-                  font-size: 12px;
-                "
-              >
-                © ${new Date().getFullYear()}
-                Khel Aur Shiksha Foundation
-              </div>
+                Admin Password Reset
+              </p>
 
             </div>
 
-          </body>
-        </html>
-      `,
-    });
+            <div
+              style="
+                padding: 35px;
+              "
+            >
+
+              <h2
+                style="
+                  margin-top: 0;
+                  color: #111827;
+                "
+              >
+                Reset Your Password
+              </h2>
+
+              <p
+                style="
+                  color: #4b5563;
+                  line-height: 1.6;
+                "
+              >
+                We received a request to reset the
+                password for your KAS Foundation
+                admin account.
+              </p>
+
+              <p
+                style="
+                  color: #4b5563;
+                  line-height: 1.6;
+                "
+              >
+                Click the button below to create
+                a new password.
+              </p>
+
+              <div
+                style="
+                  text-align: center;
+                  margin: 30px 0;
+                "
+              >
+
+                <a
+                  href="${resetUrl}"
+                  style="
+                    display: inline-block;
+                    padding: 14px 25px;
+                    background: #111827;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    font-weight: 600;
+                  "
+                >
+                  Reset Password
+                </a>
+
+              </div>
+
+              <p
+                style="
+                  color: #6b7280;
+                  font-size: 13px;
+                  line-height: 1.6;
+                "
+              >
+                This reset link will expire in
+                <strong>15 minutes</strong>.
+              </p>
+
+              <p
+                style="
+                  color: #6b7280;
+                  font-size: 13px;
+                  line-height: 1.6;
+                "
+              >
+                If you did not request a password
+                reset, you can safely ignore this email.
+              </p>
+
+            </div>
+
+            <div
+              style="
+                padding: 20px;
+                text-align: center;
+                background: #f9fafb;
+                color: #9ca3af;
+                font-size: 12px;
+              "
+            >
+              © ${new Date().getFullYear()}
+              Khel Aur Shiksha Foundation
+            </div>
+
+          </div>
+
+        </body>
+      </html>
+    `;
+
+    /* =========================================
+       SEND EMAIL WITH BREVO API
+    ========================================= */
+
+    try {
+      const brevoResponse = await fetch(
+        "https://api.brevo.com/v3/smtp/email",
+        {
+          method: "POST",
+
+          headers: {
+            accept: "application/json",
+            "api-key": process.env.BREVO_API_KEY,
+            "content-type": "application/json",
+          },
+
+          body: JSON.stringify({
+            sender: {
+              name: "Khel Aur Shiksha Foundation",
+              email: process.env.MAIL_USER,
+            },
+
+            to: [
+              {
+                email: admin.email,
+              },
+            ],
+
+            subject:
+              "KAS Foundation - Reset Admin Password",
+
+            htmlContent: emailHtml,
+          }),
+        }
+      );
+
+      if (!brevoResponse.ok) {
+        const brevoError =
+          await brevoResponse.text();
+
+        console.error(
+          "Brevo email error:",
+          brevoError
+        );
+
+        throw new Error(
+          "Brevo email sending failed"
+        );
+      }
+    } catch (mailError) {
+      console.error(
+        "Password reset email error:",
+        mailError.message
+      );
+
+      /* =========================================
+         CLEAR RESET TOKEN IF EMAIL FAILED
+      ========================================= */
+
+      admin.resetPasswordToken = null;
+      admin.resetPasswordExpires = null;
+
+      await admin.save();
+
+      return res.status(500).json({
+        success: false,
+        registered: true,
+        message:
+          "Unable to send reset email. Please try again later.",
+      });
+    }
+
+    /* =========================================
+       SAVE RESET TOKEN ONLY AFTER EMAIL
+       HAS BEEN SENT SUCCESSFULLY
+    ========================================= */
+
+    await admin.save();
 
     /* =========================================
        EMAIL SENT SUCCESSFULLY
@@ -375,7 +421,6 @@ const resetUrl =
       message:
         `Reset link has been sent to your registered email: ${admin.email}`,
     });
-
   } catch (error) {
     console.error(
       "Forgot password error:",
@@ -384,6 +429,7 @@ const resetUrl =
 
     return res.status(500).json({
       success: false,
+      registered: true,
       message:
         "Unable to process password reset request.",
     });
@@ -489,7 +535,6 @@ const resetPassword = async (req, res) => {
       message:
         "Password reset successful. You can now login.",
     });
-
   } catch (error) {
     console.error(
       "Reset password error:",

@@ -204,10 +204,15 @@
   left: 0;
   bottom: 3px;
 
-  width: 124px;
+  width: 100px;
   height: 1px;
 
   background: #777777;
+}
+
+/* Remove underline from Privacy */
+.footer-column:nth-child(3) .footer-links a:first-child::after {
+  display: none;
 }
 
 .footer-links a:hover {
@@ -400,15 +405,20 @@
 
 @media (max-width: 550px) {
   .footer-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 
     row-gap: 15px;
+    column-gap: 30px;
 
     padding: 45px 20px 30px;
   }
 
   .footer-about {
-    grid-column: auto;
+    grid-column: 1 / -1;
+  }
+
+  .footer-column {
+    min-width: 0;
   }
 
   .footer-logo {

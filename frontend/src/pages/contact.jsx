@@ -335,7 +335,7 @@ function Contact() {
                   <input
                     id="firstName"
                     type="text"
-                    placeholder="e.g. Anas"
+                    placeholder="Enter Your First Name"
                   />
 
                 </div>
@@ -350,7 +350,7 @@ function Contact() {
                   <input
                     id="lastName"
                     type="text"
-                    placeholder="e.g. Rasheed"
+                    placeholder="Enter Your Last Name"
                   />
 
                 </div>
@@ -371,7 +371,7 @@ function Contact() {
                   <input
                     id="email"
                     type="email"
-                    placeholder="e.g. abc@youremail.com"
+                    placeholder="Enter Your Email Address"
                   />
 
                 </div>
@@ -386,7 +386,7 @@ function Contact() {
                   <input
                     id="phone"
                     type="tel"
-                    placeholder="e.g. 123 1800-567-8990"
+                    placeholder="Enter Your Phone Number"
                   />
 
                 </div>
@@ -405,6 +405,7 @@ function Contact() {
                 <input
                   id="address"
                   type="text"
+                  placeholder="Enter Your Address"
                 />
 
               </div>
@@ -423,6 +424,7 @@ function Contact() {
                   <input
                     id="academy"
                     type="text"
+                    placeholder="Enter Your Last Academy Or Club"
                   />
 
                 </div>
@@ -439,6 +441,7 @@ function Contact() {
                     type="number"
                     min="1"
                     max="100"
+                    placeholder="Enter Your Age"
                   />
 
                 </div>
