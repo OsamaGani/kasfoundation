@@ -1,10 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-
-import {
-  Trophy,
-  MapPin,
-  Award,
-} from "lucide-react";
+import { useEffect, useState } from "react";
+import { Trophy } from "lucide-react";
 
 import JoinCommunity from "../components/JoinCommunity";
 
@@ -13,44 +8,10 @@ import "./achievements.css";
 const API_URL =
   `${import.meta.env.VITE_API_URL}/api/achievements`;
 
-const LEVEL_ORDER = [
-  "Local",
-  "City",
-  "District",
-  "State",
-  "National",
-  "International",
-];
-
-const LEVEL_FLAGS = {
-  Local: "📍",
-  City: "🏙️",
-  District: "🏘️",
-  State: "🇮🇳",
-  National: "🇮🇳",
-  International: "🌍",
-};
-
-function formatLocation(item) {
-  const location = [
-    item.city,
-    item.district,
-    item.state,
-    item.country,
-  ].filter(Boolean);
-
-  return location.join(", ");
-}
-
 function Achievements() {
-  const [achievements, setAchievements] =
-    useState([]);
-
-  const [loading, setLoading] =
-    useState(true);
-
-  const [error, setError] =
-    useState("");
+  const [achievements, setAchievements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   /* =====================================================
      SEO
@@ -64,7 +25,7 @@ function Achievements() {
       "Our Achievements | Khel Aur Shiksha Foundation";
 
     const description =
-      "Explore the achievements, milestones, awards and football journeys of players and teams associated with Khel Aur Shiksha Foundation at local, city, district, state, national and international levels.";
+      "Explore the achievements, milestones, awards and football journeys of players and teams associated with Khel Aur Shiksha Foundation.";
 
     const keywords =
       "Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation achievements, Khel Aur Shiksha Foundation awards, Khel Aur Shiksha Foundation football achievements, Khel Aur Shiksha Foundation players, Khel Aur Shiksha Foundation teams, Khel Aur Shiksha Foundation football, Khel Aur Shiksha Foundation milestones";
@@ -82,83 +43,42 @@ function Achievements() {
         document.head.appendChild(element);
       }
 
-      element.setAttribute(
-        "content",
-        content
-      );
+      element.setAttribute("content", content);
     };
 
-    const setPropertyMeta = (
-      property,
-      content
-    ) => {
+    const setPropertyMeta = (property, content) => {
       let element = document.querySelector(
         `meta[property="${property}"]`
       );
 
       if (!element) {
         element = document.createElement("meta");
-        element.setAttribute(
-          "property",
-          property
-        );
+        element.setAttribute("property", property);
         document.head.appendChild(element);
       }
 
-      element.setAttribute(
-        "content",
-        content
-      );
+      element.setAttribute("content", content);
     };
 
     /* Basic SEO */
 
-    setMeta(
-      "description",
-      description
-    );
-
-    setMeta(
-      "keywords",
-      keywords
-    );
-
-    setMeta(
-      "author",
-      siteName
-    );
-
-    setMeta(
-      "robots",
-      "index, follow"
-    );
+    setMeta("description", description);
+    setMeta("keywords", keywords);
+    setMeta("author", siteName);
+    setMeta("robots", "index, follow");
 
     /* Open Graph */
 
-    setPropertyMeta(
-      "og:title",
-      title
-    );
-
-    setPropertyMeta(
-      "og:description",
-      description
-    );
-
-    setPropertyMeta(
-      "og:type",
-      "website"
-    );
+    setPropertyMeta("og:title", title);
+    setPropertyMeta("og:description", description);
+    setPropertyMeta("og:type", "website");
 
     setPropertyMeta(
       "og:url",
       `${window.location.origin}/achievements`
     );
 
-    setPropertyMeta(
-      "og:site_name",
-      siteName
-    );
+    setPropertyMeta("og:site_name", siteName);
 
     setPropertyMeta(
       "og:image",
@@ -172,15 +92,8 @@ function Achievements() {
       "summary_large_image"
     );
 
-    setMeta(
-      "twitter:title",
-      title
-    );
-
-    setMeta(
-      "twitter:description",
-      description
-    );
+    setMeta("twitter:title", title);
+    setMeta("twitter:description", description);
 
     setMeta(
       "twitter:image",
@@ -192,23 +105,14 @@ function Achievements() {
     const canonicalURL =
       `${window.location.origin}/achievements`;
 
-    let canonical =
-      document.querySelector(
-        'link[rel="canonical"]'
-      );
+    let canonical = document.querySelector(
+      'link[rel="canonical"]'
+    );
 
     if (!canonical) {
-      canonical =
-        document.createElement("link");
-
-      canonical.setAttribute(
-        "rel",
-        "canonical"
-      );
-
-      document.head.appendChild(
-        canonical
-      );
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
     }
 
     canonical.setAttribute(
@@ -216,58 +120,33 @@ function Achievements() {
       canonicalURL
     );
 
-    /* JSON-LD Structured Data */
+    /* JSON-LD */
 
     const structuredData = {
-      "@context":
-        "https://schema.org",
-
-      "@type":
-        "CollectionPage",
-
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
       name: title,
-
-      description:
-        description,
-
-      url:
-        canonicalURL,
-
+      description: description,
+      url: canonicalURL,
       publisher: {
-        "@type":
-          "Organization",
-
-        name:
-          siteName,
+        "@type": "Organization",
+        name: siteName,
       },
     };
 
-    let script =
-      document.getElementById(
-        "achievements-schema"
-      );
+    let script = document.getElementById(
+      "achievements-schema"
+    );
 
     if (!script) {
-      script =
-        document.createElement(
-          "script"
-        );
-
-      script.id =
-        "achievements-schema";
-
-      script.type =
-        "application/ld+json";
-
-      document.head.appendChild(
-        script
-      );
+      script = document.createElement("script");
+      script.id = "achievements-schema";
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
     }
 
     script.textContent =
-      JSON.stringify(
-        structuredData
-      );
+      JSON.stringify(structuredData);
 
     return () => {
       const schemaScript =
@@ -282,127 +161,51 @@ function Achievements() {
   }, []);
 
   /* =====================================================
-     PAGE SETUP + FETCH ACHIEVEMENTS
+     FETCH ACHIEVEMENTS
   ===================================================== */
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    const fetchAchievements =
-      async () => {
-        try {
-          setLoading(true);
-          setError("");
+    const fetchAchievements = async () => {
+      try {
+        setLoading(true);
+        setError("");
 
-          const response =
-            await fetch(API_URL);
+        const response = await fetch(API_URL);
+        const data = await response.json();
 
-          const data =
-            await response.json();
-
-          if (!response.ok) {
-            throw new Error(
-              data.message ||
-                "Failed to fetch achievements."
-            );
-          }
-
-          setAchievements(
-            data.achievements || []
+        if (!response.ok) {
+          throw new Error(
+            data.message ||
+              "Failed to fetch achievements."
           );
-        } catch (err) {
-          console.error(
-            "Achievements fetch error:",
-            err
-          );
-
-          setError(
-            err.message ||
-              "Unable to load achievements."
-          );
-        } finally {
-          setLoading(false);
         }
-      };
+
+        setAchievements(
+          data.achievements || []
+        );
+      } catch (err) {
+        console.error(
+          "Achievements fetch error:",
+          err
+        );
+
+        setError(
+          err.message ||
+            "Unable to load achievements."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
 
     fetchAchievements();
   }, []);
 
-  const featuredAchievements =
-    useMemo(() => {
-      return achievements.filter(
-        (item) => item.isFeatured
-      );
-    }, [achievements]);
-
-  const normalAchievements =
-    useMemo(() => {
-      return achievements.filter(
-        (item) => !item.isFeatured
-      );
-    }, [achievements]);
-
-  const groupedAchievements =
-    useMemo(() => {
-      const groups = {};
-
-      normalAchievements.forEach(
-        (item) => {
-          const key =
-            item.sectionTitle?.trim() ||
-            item.level ||
-            "Other Achievements";
-
-          if (!groups[key]) {
-            groups[key] = {
-              title: key,
-
-              label:
-                item.sectionLabel ||
-                `${item.level || "LOCAL"} ACHIEVEMENTS`,
-
-              description:
-                item.sectionDescription ||
-                "",
-
-              level:
-                item.level ||
-                "Local",
-
-              items: [],
-            };
-          }
-
-          groups[key].items.push(
-            item
-          );
-        }
-      );
-
-      return Object.values(
-        groups
-      ).sort((a, b) => {
-        const levelA =
-          LEVEL_ORDER.indexOf(
-            a.level
-          );
-
-        const levelB =
-          LEVEL_ORDER.indexOf(
-            b.level
-          );
-
-        if (
-          levelA !== -1 &&
-          levelB !== -1 &&
-          levelA !== levelB
-        ) {
-          return levelA - levelB;
-        }
-
-        return 0;
-      });
-    }, [normalAchievements]);
+  /* =====================================================
+     IMAGE URL
+  ===================================================== */
 
   const getImageURL = (item) => {
     if (!item.image?.fileId) {
@@ -410,6 +213,59 @@ function Achievements() {
     }
 
     return `${API_URL}/image/${item.image.fileId}`;
+  };
+
+  /* =====================================================
+     ACHIEVEMENT ICON
+  ===================================================== */
+
+  const getAchievementIcon = (type) => {
+    if (!type) {
+      return "🏆";
+    }
+
+    const value = type.toLowerCase();
+
+    if (
+      value.includes("runner") ||
+      value.includes("second")
+    ) {
+      return "🥈";
+    }
+
+    if (
+      value.includes("third") ||
+      value.includes("third place")
+    ) {
+      return "🥉";
+    }
+
+    if (
+      value.includes("best player") ||
+      value.includes("individual")
+    ) {
+      return "🏅";
+    }
+
+    if (
+      value.includes("goalkeeper")
+    ) {
+      return "🧤";
+    }
+
+    if (
+      value.includes("top scorer")
+    ) {
+      return "⚽";
+    }
+
+    if (
+      value.includes("selection")
+    ) {
+      return "⭐";
+    }
+
+    return "🏆";
   };
 
   return (
@@ -442,15 +298,12 @@ function Achievements() {
             Celebrating the achievements,
             milestones, and football journeys
             of Khel Aur Shiksha Foundation
-            players and teams at local, city,
-            district, state, national, and
-            international levels.
+            players and teams.
           </p>
 
         </div>
 
       </section>
-
 
       {/* =========================================
           LOADING
@@ -473,7 +326,6 @@ function Achievements() {
 
         </section>
       )}
-
 
       {/* =========================================
           ERROR
@@ -501,7 +353,6 @@ function Achievements() {
         </section>
       )}
 
-
       {/* =========================================
           EMPTY
       ========================================= */}
@@ -518,14 +369,13 @@ function Achievements() {
               </span>
 
               <h2>
-                Our achievement journey is
-                growing.
+                Our achievement journey is growing.
               </h2>
 
               <p>
-                New achievements will be
-                published here as our teams and
-                players continue to compete.
+                New achievements will be published
+                here as our teams and players
+                continue to compete.
               </p>
 
             </div>
@@ -533,357 +383,126 @@ function Achievements() {
           </section>
         )}
 
-
       {/* =========================================
-          FEATURED ACHIEVEMENTS
+          ACHIEVEMENTS
       ========================================= */}
 
       {!loading &&
         !error &&
-        featuredAchievements.length >
-          0 && (
-          <section className="achievement-feature-section">
+        achievements.length > 0 && (
+          <section className="achievement-cards-section">
 
-            <div className="achievement-feature-wrapper">
+            <div className="achievement-simple-grid">
 
-              <div className="achievement-feature-image">
+              {achievements.map(
+                (item, index) => {
 
-                {getImageURL(
-                  featuredAchievements[0]
-                ) ? (
-                  <img
-                    src={getImageURL(
-                      featuredAchievements[0]
-                    )}
-                    alt={
-                      featuredAchievements[0]
-                        .title
-                    }
-                  />
-                ) : (
-                  <div className="achievement-image-placeholder"></div>
-                )}
+                  const imageURL =
+                    getImageURL(item);
 
-                <div className="achievement-feature-badge">
+                  const participant =
+                    item.playerName ||
+                    item.teamName ||
+                    "";
 
-                  <Trophy size={20} />
+                  return (
+                    <article
+                      className="achievement-simple-card"
+                      key={item._id}
+                      style={{
+                        "--achievement-delay":
+                          `${index * 0.08}s`,
+                      }}
+                    >
 
-                  <span>
-                    FEATURED ACHIEVEMENT
-                  </span>
+                      {/* PHOTO */}
 
-                </div>
+                      <div className="achievement-simple-image">
 
-              </div>
-
-
-              <div className="achievement-feature-content">
-
-                <div className="achievement-section-label">
-
-                  <span className="achievement-label-line"></span>
-
-                  {featuredAchievements[0]
-                    .sectionLabel ||
-                    "FEATURED ACHIEVEMENT"}
-
-                </div>
-
-
-                <div className="achievement-country">
-
-                  <span className="country-flag">
-                    {
-                      LEVEL_FLAGS[
-                        featuredAchievements[0]
-                          .level
-                      ]
-                    }
-                  </span>
-
-                  <span>
-                    {(
-                      featuredAchievements[0]
-                        .level ||
-                      "LOCAL"
-                    ).toUpperCase()}
-                  </span>
-
-                </div>
-
-
-                <h2>
-                  {
-                    featuredAchievements[0]
-                      .sectionTitle ||
-                    featuredAchievements[0]
-                      .title
-                  }
-                </h2>
-
-
-                <div className="achievement-blue-line"></div>
-
-
-                {featuredAchievements[0]
-                  .sectionDescription && (
-                  <p>
-                    {
-                      featuredAchievements[0]
-                        .sectionDescription
-                    }
-                  </p>
-                )}
-
-
-                <div className="achievement-player-list">
-
-                  {featuredAchievements.map(
-                    (item, index) => (
-                      <div
-                        className="achievement-player"
-                        key={item._id}
-                        style={{
-                          "--player-delay": `${
-                            index * 0.08
-                          }s`,
-                        }}
-                      >
-
-                        <h3>
-                          {item.playerName ||
-                            item.teamName ||
-                            item.title}
-                        </h3>
-
-                        <p>
-
-                          {item.result && (
-                            <>
-                              <strong>
-                                {item.result}
-                              </strong>
-
-                              {" • "}
-                            </>
-                          )}
-
-                          {item.description ||
-                            item.competition ||
-                            ""}
-
-                        </p>
-
-
-                        {formatLocation(
-                          item
-                        ) && (
-                          <small>
-
-                            <MapPin
-                              size={13}
+                        {imageURL ? (
+                          <img
+                            src={imageURL}
+                            alt={
+                              item.title ||
+                              item.competition ||
+                              "Achievement"
+                            }
+                          />
+                        ) : (
+                          <div className="achievement-simple-placeholder">
+                            <Trophy
+                              size={42}
+                              strokeWidth={1.5}
                             />
-
-                            {formatLocation(
-                              item
-                            )}
-
-                          </small>
+                          </div>
                         )}
 
                       </div>
-                    )
-                  )}
 
-                </div>
+                      {/* CONTENT */}
 
-              </div>
+                      <div className="achievement-simple-info">
+
+                        {/* ACHIEVEMENT TYPE */}
+
+                        <div className="achievement-simple-type">
+
+                          <span>
+                            {getAchievementIcon(
+                              item.achievementType
+                            )}
+                          </span>
+
+                          <span>
+                            {item.achievementType ||
+                              "Achievement"}
+                          </span>
+
+                        </div>
+
+                        {/* COMPETITION */}
+
+                        <h3>
+                          {item.competition ||
+                            item.title ||
+                            "Achievement"}
+                        </h3>
+
+                        {/* TEAM / PLAYER */}
+
+                        {participant && (
+                          <div className="achievement-simple-participant">
+                            {participant}
+                          </div>
+                        )}
+
+                        {/* YEAR */}
+
+                        {item.year && (
+                          <div className="achievement-simple-year">
+                            {item.year}
+                          </div>
+                        )}
+
+                        {/* SHORT DESCRIPTION */}
+
+                        {item.description && (
+                          <p>
+                            {item.description}
+                          </p>
+                        )}
+
+                      </div>
+
+                    </article>
+                  );
+                }
+              )}
 
             </div>
 
           </section>
         )}
-
-
-      {/* =========================================
-          DYNAMIC ACHIEVEMENT SECTIONS
-      ========================================= */}
-
-      {!loading &&
-        !error &&
-        groupedAchievements.map(
-          (group, groupIndex) => (
-            <section
-              className="achievement-cards-section"
-              key={group.title}
-            >
-
-              <div className="achievement-section-heading">
-
-                <span>
-                  {group.label}
-                </span>
-
-                <h2>
-                  {group.title}
-                </h2>
-
-                {group.description && (
-                  <p>
-                    {group.description}
-                  </p>
-                )}
-
-              </div>
-
-
-              <div className="achievement-two-grid">
-
-                {group.items.map(
-                  (item, index) => {
-                    const imageURL =
-                      getImageURL(item);
-
-                    return (
-                      <article
-                        className="achievement-large-card"
-                        key={item._id}
-                        style={{
-                          "--achievement-delay": `${
-                            index * 0.15
-                          }s`,
-                        }}
-                      >
-
-                        <div className="achievement-large-image">
-
-                          {imageURL ? (
-                            <img
-                              src={imageURL}
-                              alt={item.title}
-                            />
-                          ) : (
-                            <div className="achievement-image-placeholder"></div>
-                          )}
-
-                          <div className="achievement-card-shine"></div>
-
-                        </div>
-
-
-                        <div className="achievement-large-info">
-
-                          <div className="achievement-card-meta">
-
-                            <span>
-                              {LEVEL_FLAGS[
-                                item.level
-                              ]}{" "}
-                              {(
-                                item.level ||
-                                "LOCAL"
-                              ).toUpperCase()}
-                            </span>
-
-                            {item.year && (
-                              <span>
-                                {item.year}
-                              </span>
-                            )}
-
-                          </div>
-
-
-                          <h3>
-                            {item.title}
-                          </h3>
-
-
-                          {item.competition && (
-                            <p>
-                              <strong>
-                                {item.competition}
-                              </strong>
-                            </p>
-                          )}
-
-
-                          {item.result && (
-                            <p>
-                              {item.result}
-                            </p>
-                          )}
-
-
-                          {item.description && (
-                            <p>
-                              {item.description}
-                            </p>
-                          )}
-
-
-                          {formatLocation(
-                            item
-                          ) && (
-                            <div className="achievement-location">
-
-                              <MapPin
-                                size={15}
-                              />
-
-                              <span>
-                                {formatLocation(
-                                  item
-                                )}
-                              </span>
-
-                            </div>
-                          )}
-
-
-                          {item.playerName && (
-                            <div className="achievement-person">
-
-                              <Award
-                                size={16}
-                              />
-
-                              <span>
-                                {item.playerName}
-                              </span>
-
-                            </div>
-                          )}
-
-
-                          {item.teamName &&
-                            !item.playerName && (
-                              <div className="achievement-person">
-
-                                <Trophy
-                                  size={16}
-                                />
-
-                                <span>
-                                  {item.teamName}
-                                </span>
-
-                              </div>
-                            )}
-
-                        </div>
-
-                      </article>
-                    );
-                  }
-                )}
-
-              </div>
-
-            </section>
-          )
-        )}
-
 
       {/* =========================================
           BOTTOM BANNER
@@ -909,7 +528,6 @@ function Achievements() {
         </div>
 
       </section>
-
 
       <JoinCommunity />
 

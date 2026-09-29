@@ -5,10 +5,21 @@ import "./AdminNews.css";
 
 const API_URL = `${import.meta.env.VITE_API_URL}/api/news`;
 
+const NEWS_TYPES = [
+  "Announcement",
+  "Upcoming Tournament",
+  "Match Update",
+  "Tournament News",
+  "Event Update",
+  "Training Update",
+  "Sports Activity",
+];
+
 const initialForm = {
   title: "",
   date: "",
   slug: "",
+  type: "Announcement",
   shortDescription: "",
   description: "",
   isActive: true,
@@ -109,6 +120,7 @@ function AdminNews() {
       formData.append("title", form.title);
       formData.append("date", form.date);
       formData.append("slug", form.slug);
+      formData.append("type", form.type);
       formData.append(
         "shortDescription",
         form.shortDescription
@@ -165,6 +177,7 @@ function AdminNews() {
       title: article.title || "",
       date: article.date || "",
       slug: article.slug || "",
+      type: article.type || "Announcement",
       shortDescription:
         article.shortDescription || "",
       description: article.description || "",
@@ -336,6 +349,28 @@ function AdminNews() {
             </div>
 
             <div className="admin-news-field">
+              <label htmlFor="news-type">
+                News Type
+              </label>
+
+              <select
+                id="news-type"
+                name="type"
+                value={form.type}
+                onChange={handleChange}
+              >
+                {NEWS_TYPES.map((type) => (
+                  <option
+                    key={type}
+                    value={type}
+                  >
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="admin-news-field">
               <label htmlFor="news-slug">
                 Slug
               </label>
@@ -494,6 +529,7 @@ function AdminNews() {
                   <th>Image</th>
                   <th>Title</th>
                   <th>Date</th>
+                  <th>Type</th>
                   <th>Status</th>
                   <th>Order</th>
                   <th>Actions</th>
@@ -530,6 +566,10 @@ function AdminNews() {
 
                     <td>
                       {article.date}
+                    </td>
+
+                    <td>
+                      {article.type || "Announcement"}
                     </td>
 
                     <td>

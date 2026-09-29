@@ -22,6 +22,21 @@ const newsSchema = new mongoose.Schema(
       trim: true,
     },
 
+    type: {
+      type: String,
+      enum: [
+        "Announcement",
+        "Upcoming Tournament",
+        "Match Update",
+        "Tournament News",
+        "Event Update",
+        "Training Update",
+        "Sports Activity",
+      ],
+      default: "Announcement",
+      trim: true,
+    },
+
     shortDescription: {
       type: String,
       default: "",

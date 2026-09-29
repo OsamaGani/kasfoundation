@@ -67,6 +67,7 @@ const createNews = async (req, res) => {
       title,
       date,
       slug,
+      type,
       shortDescription,
       description,
       isActive,
@@ -87,9 +88,10 @@ const createNews = async (req, res) => {
       });
     }
 
-    let finalSlug = slug && slug.trim()
-      ? generateSlug(slug)
-      : generateSlug(title);
+    let finalSlug =
+      slug && slug.trim()
+        ? generateSlug(slug)
+        : generateSlug(title);
 
     const existingNews = await News.findOne({
       slug: finalSlug,
@@ -109,6 +111,11 @@ const createNews = async (req, res) => {
       slug: finalSlug,
 
       date: date.trim(),
+
+      type:
+        type && type.trim()
+          ? type.trim()
+          : "Announcement",
 
       shortDescription:
         shortDescription
@@ -273,6 +280,7 @@ const updateNews = async (req, res) => {
       title,
       date,
       slug,
+      type,
       shortDescription,
       description,
       isActive,
@@ -325,6 +333,11 @@ const updateNews = async (req, res) => {
       }
 
       news.slug = newSlug;
+    }
+
+    if (type !== undefined) {
+      news.type =
+        type.trim() || "Announcement";
     }
 
     if (

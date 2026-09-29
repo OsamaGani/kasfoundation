@@ -14,11 +14,7 @@ const API_URL = `${import.meta.env.VITE_API_URL}/api/achievements`;
 
 const initialForm = {
   title: "",
-  sectionLabel: "",
-  sectionTitle: "",
-  sectionDescription: "",
   achievementType: "Tournament Winner",
-  level: "Local",
   competition: "",
   year: "",
   result: "",
@@ -26,15 +22,21 @@ const initialForm = {
   playerName: "",
   teamName: "",
   description: "",
+  image: null,
+  isActive: true,
+
+  // Backend compatibility defaults
+  sectionLabel: "",
+  sectionTitle: "",
+  sectionDescription: "",
+  level: "Local",
   city: "",
   district: "",
   state: "",
   country: "India",
   opponent: "",
   opponentCountry: "",
-  image: null,
   isFeatured: false,
-  isActive: true,
   order: 0,
 };
 
@@ -60,6 +62,10 @@ function AdminAchievements() {
   useEffect(() => {
     fetchAchievements();
   }, []);
+
+  /* =====================================================
+     FETCH ACHIEVEMENTS
+  ===================================================== */
 
   const fetchAchievements = async () => {
     try {
@@ -97,9 +103,17 @@ function AdminAchievements() {
     }
   };
 
+  /* =====================================================
+     FORM CHANGE
+  ===================================================== */
+
   const handleChange = (event) => {
-    const { name, value, type, checked } =
-      event.target;
+    const {
+      name,
+      value,
+      type,
+      checked,
+    } = event.target;
 
     setForm((previous) => ({
       ...previous,
@@ -109,6 +123,10 @@ function AdminAchievements() {
           : value,
     }));
   };
+
+  /* =====================================================
+     IMAGE CHANGE
+  ===================================================== */
 
   const handleImageChange = (event) => {
     const file = event.target.files?.[0];
@@ -127,6 +145,10 @@ function AdminAchievements() {
     );
   };
 
+  /* =====================================================
+     RESET FORM
+  ===================================================== */
+
   const resetForm = () => {
     setForm(initialForm);
     setEditingId(null);
@@ -135,6 +157,10 @@ function AdminAchievements() {
     setError("");
   };
 
+  /* =====================================================
+     ADD
+  ===================================================== */
+
   const handleAdd = () => {
     setForm(initialForm);
     setEditingId(null);
@@ -142,52 +168,88 @@ function AdminAchievements() {
     setError("");
     setSuccess("");
     setShowForm(true);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
+
+  /* =====================================================
+     EDIT
+  ===================================================== */
 
   const handleEdit = (achievement) => {
     setEditingId(achievement._id);
 
     setForm({
       title: achievement.title || "",
-      sectionLabel:
-        achievement.sectionLabel || "",
-      sectionTitle:
-        achievement.sectionTitle || "",
-      sectionDescription:
-        achievement.sectionDescription || "",
+
       achievementType:
         achievement.achievementType ||
         "Tournament Winner",
-      level:
-        achievement.level || "Local",
+
       competition:
         achievement.competition || "",
-      year: achievement.year || "",
-      result: achievement.result || "",
+
+      year:
+        achievement.year || "",
+
+      result:
+        achievement.result || "",
+
       participantType:
         achievement.participantType ||
         "Team",
+
       playerName:
         achievement.playerName || "",
+
       teamName:
         achievement.teamName || "",
+
       description:
         achievement.description || "",
-      city: achievement.city || "",
-      district:
-        achievement.district || "",
-      state: achievement.state || "",
-      country:
-        achievement.country || "India",
-      opponent:
-        achievement.opponent || "",
-      opponentCountry:
-        achievement.opponentCountry || "",
+
       image: null,
-      isFeatured:
-        achievement.isFeatured || false,
+
       isActive:
         achievement.isActive !== false,
+
+      // Backend compatibility
+      sectionLabel:
+        achievement.sectionLabel || "",
+
+      sectionTitle:
+        achievement.sectionTitle || "",
+
+      sectionDescription:
+        achievement.sectionDescription || "",
+
+      level:
+        achievement.level || "Local",
+
+      city:
+        achievement.city || "",
+
+      district:
+        achievement.district || "",
+
+      state:
+        achievement.state || "",
+
+      country:
+        achievement.country || "India",
+
+      opponent:
+        achievement.opponent || "",
+
+      opponentCountry:
+        achievement.opponentCountry || "",
+
+      isFeatured:
+        achievement.isFeatured || false,
+
       order:
         achievement.order ?? 0,
     });
@@ -210,6 +272,10 @@ function AdminAchievements() {
     });
   };
 
+  /* =====================================================
+     SUBMIT
+  ===================================================== */
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -220,24 +286,11 @@ function AdminAchievements() {
 
       const formData = new FormData();
 
+      /* Basic fields */
+
       formData.append(
         "title",
-        form.title
-      );
-
-      formData.append(
-        "sectionLabel",
-        form.sectionLabel
-      );
-
-      formData.append(
-        "sectionTitle",
-        form.sectionTitle
-      );
-
-      formData.append(
-        "sectionDescription",
-        form.sectionDescription
+        form.title.trim()
       );
 
       formData.append(
@@ -246,23 +299,18 @@ function AdminAchievements() {
       );
 
       formData.append(
-        "level",
-        form.level
-      );
-
-      formData.append(
         "competition",
-        form.competition
+        form.competition.trim()
       );
 
       formData.append(
         "year",
-        form.year
+        form.year.trim()
       );
 
       formData.append(
         "result",
-        form.result
+        form.result.trim()
       );
 
       formData.append(
@@ -272,52 +320,74 @@ function AdminAchievements() {
 
       formData.append(
         "playerName",
-        form.playerName
+        form.playerName.trim()
       );
 
       formData.append(
         "teamName",
-        form.teamName
+        form.teamName.trim()
       );
 
       formData.append(
         "description",
-        form.description
+        form.description.trim()
+      );
+
+      /* Backend compatibility defaults */
+
+      formData.append(
+        "sectionLabel",
+        ""
+      );
+
+      formData.append(
+        "sectionTitle",
+        ""
+      );
+
+      formData.append(
+        "sectionDescription",
+        ""
+      );
+
+      formData.append(
+        "level",
+        "Local"
       );
 
       formData.append(
         "city",
-        form.city
+        ""
       );
 
       formData.append(
         "district",
-        form.district
+        ""
       );
 
       formData.append(
         "state",
-        form.state
+        ""
       );
 
       formData.append(
         "country",
-        form.country
+        "India"
       );
 
       formData.append(
         "opponent",
-        form.opponent
+        ""
       );
 
       formData.append(
         "opponentCountry",
-        form.opponentCountry
+        ""
       );
 
       formData.append(
         "isFeatured",
-        String(form.isFeatured)
+        "false"
       );
 
       formData.append(
@@ -327,8 +397,10 @@ function AdminAchievements() {
 
       formData.append(
         "order",
-        String(form.order)
+        "0"
       );
+
+      /* Image */
 
       if (form.image) {
         formData.append(
@@ -385,6 +457,10 @@ function AdminAchievements() {
     }
   };
 
+  /* =====================================================
+     DELETE
+  ===================================================== */
+
   const handleDelete = async (id) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this achievement?"
@@ -432,6 +508,10 @@ function AdminAchievements() {
     }
   };
 
+  /* =====================================================
+     IMAGE URL
+  ===================================================== */
+
   const getImageURL = (achievement) => {
     if (!achievement.image?.fileId) {
       return "";
@@ -443,11 +523,15 @@ function AdminAchievements() {
   return (
     <div className="admin-achievements">
 
-      {/* HEADER */}
+      {/* =================================================
+          HEADER
+      ================================================= */}
+
       <div className="admin-achievements-header">
 
         <div>
           <div className="admin-achievements-heading">
+
             <Trophy size={28} />
 
             <div>
@@ -460,6 +544,7 @@ function AdminAchievements() {
                 tournament results and awards.
               </p>
             </div>
+
           </div>
         </div>
 
@@ -474,21 +559,33 @@ function AdminAchievements() {
 
       </div>
 
-      {/* SUCCESS */}
+
+      {/* =================================================
+          SUCCESS
+      ================================================= */}
+
       {success && (
         <div className="admin-achievements-success">
           {success}
         </div>
       )}
 
-      {/* ERROR */}
+
+      {/* =================================================
+          ERROR
+      ================================================= */}
+
       {error && (
         <div className="admin-achievements-error">
           {error}
         </div>
       )}
 
-      {/* FORM */}
+
+      {/* =================================================
+          FORM
+      ================================================= */}
+
       {showForm && (
         <section className="admin-achievements-form-card">
 
@@ -502,8 +599,8 @@ function AdminAchievements() {
               </h2>
 
               <p>
-                Enter the achievement details
-                below.
+                Add the basic achievement details,
+                description and photo.
               </p>
             </div>
 
@@ -517,22 +614,33 @@ function AdminAchievements() {
 
           </div>
 
+
           <form
             onSubmit={handleSubmit}
             className="admin-achievements-form"
           >
 
-            {/* BASIC INFORMATION */}
+            {/* =================================================
+                BASIC INFORMATION
+            ================================================= */}
+
             <div className="admin-achievements-section-title">
+
               <Trophy size={18} />
+
               <span>
-                Basic Information
+                Achievement Information
               </span>
+
             </div>
+
 
             <div className="admin-achievements-form-grid">
 
+              {/* TITLE */}
+
               <div className="admin-field admin-field-full">
+
                 <label>
                   Achievement Title *
                 </label>
@@ -542,12 +650,17 @@ function AdminAchievements() {
                   name="title"
                   value={form.title}
                   onChange={handleChange}
-                  placeholder="Example: Mumbai City Football Championship Winner"
+                  placeholder="Example: Mumbai Youth Football Tournament"
                   required
                 />
+
               </div>
 
+
+              {/* TYPE */}
+
               <div className="admin-field">
+
                 <label>
                   Achievement Type
                 </label>
@@ -597,45 +710,14 @@ function AdminAchievements() {
                     Special Recognition
                   </option>
                 </select>
+
               </div>
 
-              <div className="admin-field">
-                <label>
-                  Achievement Level
-                </label>
 
-                <select
-                  name="level"
-                  value={form.level}
-                  onChange={handleChange}
-                >
-                  <option>
-                    Local
-                  </option>
-
-                  <option>
-                    City
-                  </option>
-
-                  <option>
-                    District
-                  </option>
-
-                  <option>
-                    State
-                  </option>
-
-                  <option>
-                    National
-                  </option>
-
-                  <option>
-                    International
-                  </option>
-                </select>
-              </div>
+              {/* COMPETITION */}
 
               <div className="admin-field">
+
                 <label>
                   Competition / Event
                 </label>
@@ -645,11 +727,16 @@ function AdminAchievements() {
                   name="competition"
                   value={form.competition}
                   onChange={handleChange}
-                  placeholder="Example: Mumbai Football League"
+                  placeholder="Example: Mumbai Youth Football Tournament"
                 />
+
               </div>
 
+
+              {/* YEAR */}
+
               <div className="admin-field">
+
                 <label>
                   Year
                 </label>
@@ -661,9 +748,14 @@ function AdminAchievements() {
                   onChange={handleChange}
                   placeholder="2026"
                 />
+
               </div>
 
+
+              {/* RESULT */}
+
               <div className="admin-field">
+
                 <label>
                   Result
                 </label>
@@ -673,13 +765,18 @@ function AdminAchievements() {
                   name="result"
                   value={form.result}
                   onChange={handleChange}
-                  placeholder="Winner / Runner Up / 3rd Place"
+                  placeholder="Winner / Runner Up / Best Player"
                 />
+
               </div>
 
+
+              {/* PARTICIPANT TYPE */}
+
               <div className="admin-field">
+
                 <label>
-                  Participant Type
+                  For
                 </label>
 
                 <select
@@ -687,243 +784,127 @@ function AdminAchievements() {
                   value={form.participantType}
                   onChange={handleChange}
                 >
-                  <option>
+                  <option value="Team">
                     Team
                   </option>
 
-                  <option>
+                  <option value="Player">
                     Player
                   </option>
 
-                  <option>
+                  <option value="Coach">
                     Coach
                   </option>
 
-                  <option>
+                  <option value="Foundation">
                     Foundation
                   </option>
                 </select>
+
               </div>
 
-              <div className="admin-field">
-                <label>
-                  Player Name
-                </label>
 
-                <input
-                  type="text"
-                  name="playerName"
-                  value={form.playerName}
-                  onChange={handleChange}
-                  placeholder="Player name"
-                />
-              </div>
+              {/* TEAM NAME */}
 
-              <div className="admin-field">
-                <label>
-                  Team Name
-                </label>
+              {form.participantType === "Team" && (
+                <div className="admin-field">
 
-                <input
-                  type="text"
-                  name="teamName"
-                  value={form.teamName}
-                  onChange={handleChange}
-                  placeholder="Team name"
-                />
-              </div>
+                  <label>
+                    Team Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="teamName"
+                    value={form.teamName}
+                    onChange={handleChange}
+                    placeholder="Example: U-16 Team"
+                  />
+
+                </div>
+              )}
+
+
+              {/* PLAYER NAME */}
+
+              {form.participantType === "Player" && (
+                <div className="admin-field">
+
+                  <label>
+                    Player Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="playerName"
+                    value={form.playerName}
+                    onChange={handleChange}
+                    placeholder="Example: Player Name"
+                  />
+
+                </div>
+              )}
 
             </div>
 
-            {/* SECTION INFORMATION */}
+
+            {/* =================================================
+                DESCRIPTION
+            ================================================= */}
+
             <div className="admin-achievements-section-title">
+
               <Trophy size={18} />
+
               <span>
-                Section Information
+                About Achievement
               </span>
-            </div>
-
-            <div className="admin-achievements-form-grid">
-
-              <div className="admin-field">
-                <label>
-                  Section Label
-                </label>
-
-                <input
-                  type="text"
-                  name="sectionLabel"
-                  value={form.sectionLabel}
-                  onChange={handleChange}
-                  placeholder="Example: CITY LEVEL"
-                />
-              </div>
-
-              <div className="admin-field">
-                <label>
-                  Section Title
-                </label>
-
-                <input
-                  type="text"
-                  name="sectionTitle"
-                  value={form.sectionTitle}
-                  onChange={handleChange}
-                  placeholder="Example: Mumbai City Achievements"
-                />
-              </div>
-
-              <div className="admin-field admin-field-full">
-                <label>
-                  Section Description
-                </label>
-
-                <textarea
-                  name="sectionDescription"
-                  value={form.sectionDescription}
-                  onChange={handleChange}
-                  rows="3"
-                  placeholder="Short description for this achievement section..."
-                />
-              </div>
 
             </div>
 
-            {/* DESCRIPTION */}
-            <div className="admin-achievements-section-title">
-              <Trophy size={18} />
-              <span>
-                Achievement Details
-              </span>
-            </div>
 
             <div className="admin-achievements-form-grid">
 
               <div className="admin-field admin-field-full">
+
                 <label>
-                  Description
+                  Short Description
                 </label>
 
                 <textarea
                   name="description"
                   value={form.description}
                   onChange={handleChange}
-                  rows="6"
-                  placeholder="Write complete details about the achievement..."
+                  rows="4"
+                  placeholder="Write a short description about this achievement..."
                 />
+
               </div>
 
             </div>
 
-            {/* LOCATION */}
+
+            {/* =================================================
+                IMAGE
+            ================================================= */}
+
             <div className="admin-achievements-section-title">
-              <Trophy size={18} />
-              <span>
-                Location & Competition Details
-              </span>
-            </div>
 
-            <div className="admin-achievements-form-grid">
-
-              <div className="admin-field">
-                <label>
-                  City
-                </label>
-
-                <input
-                  type="text"
-                  name="city"
-                  value={form.city}
-                  onChange={handleChange}
-                  placeholder="Mumbai"
-                />
-              </div>
-
-              <div className="admin-field">
-                <label>
-                  District
-                </label>
-
-                <input
-                  type="text"
-                  name="district"
-                  value={form.district}
-                  onChange={handleChange}
-                  placeholder="Mumbai Suburban"
-                />
-              </div>
-
-              <div className="admin-field">
-                <label>
-                  State
-                </label>
-
-                <input
-                  type="text"
-                  name="state"
-                  value={form.state}
-                  onChange={handleChange}
-                  placeholder="Maharashtra"
-                />
-              </div>
-
-              <div className="admin-field">
-                <label>
-                  Country
-                </label>
-
-                <input
-                  type="text"
-                  name="country"
-                  value={form.country}
-                  onChange={handleChange}
-                  placeholder="India"
-                />
-              </div>
-
-              <div className="admin-field">
-                <label>
-                  Opponent
-                </label>
-
-                <input
-                  type="text"
-                  name="opponent"
-                  value={form.opponent}
-                  onChange={handleChange}
-                  placeholder="Opponent team"
-                />
-              </div>
-
-              <div className="admin-field">
-                <label>
-                  Opponent Country
-                </label>
-
-                <input
-                  type="text"
-                  name="opponentCountry"
-                  value={form.opponentCountry}
-                  onChange={handleChange}
-                  placeholder="India"
-                />
-              </div>
-
-            </div>
-
-            {/* IMAGE */}
-            <div className="admin-achievements-section-title">
               <ImageIcon size={18} />
+
               <span>
-                Achievement Image
+                Achievement Photo
               </span>
+
             </div>
+
 
             <div className="admin-achievements-image-upload">
 
               <div className="admin-field">
+
                 <label>
-                  Upload Image
+                  Upload Photo
                 </label>
 
                 <input
@@ -937,7 +918,9 @@ function AdminAchievements() {
                   JPG, PNG, WEBP or GIF. Maximum
                   10MB.
                 </small>
+
               </div>
+
 
               {imagePreview && (
                 <div className="admin-achievements-image-preview">
@@ -952,44 +935,23 @@ function AdminAchievements() {
 
             </div>
 
-            {/* SETTINGS */}
+
+            {/* =================================================
+                VISIBILITY
+            ================================================= */}
+
             <div className="admin-achievements-section-title">
+
               <Trophy size={18} />
+
               <span>
-                Display Settings
+                Website Visibility
               </span>
+
             </div>
 
+
             <div className="admin-achievements-settings">
-
-              <div className="admin-field">
-                <label>
-                  Display Order
-                </label>
-
-                <input
-                  type="number"
-                  name="order"
-                  value={form.order}
-                  onChange={handleChange}
-                  min="0"
-                />
-              </div>
-
-              <label className="admin-checkbox">
-
-                <input
-                  type="checkbox"
-                  name="isFeatured"
-                  checked={form.isFeatured}
-                  onChange={handleChange}
-                />
-
-                <span>
-                  Featured Achievement
-                </span>
-
-              </label>
 
               <label className="admin-checkbox">
 
@@ -1001,14 +963,18 @@ function AdminAchievements() {
                 />
 
                 <span>
-                  Active / Visible
+                  Show this achievement on website
                 </span>
 
               </label>
 
             </div>
 
-            {/* BUTTONS */}
+
+            {/* =================================================
+                BUTTONS
+            ================================================= */}
+
             <div className="admin-achievements-form-actions">
 
               <button
@@ -1035,15 +1001,21 @@ function AdminAchievements() {
             </div>
 
           </form>
+
         </section>
       )}
 
-      {/* ACHIEVEMENTS LIST */}
+
+      {/* =================================================
+          ACHIEVEMENTS LIST
+      ================================================= */}
+
       <section className="admin-achievements-list-card">
 
         <div className="admin-achievements-list-header">
 
           <div>
+
             <h2>
               All Achievements
             </h2>
@@ -1055,7 +1027,9 @@ function AdminAchievements() {
                 : ""}{" "}
               found
             </p>
+
           </div>
+
 
           {!showForm && (
             <button
@@ -1070,11 +1044,21 @@ function AdminAchievements() {
 
         </div>
 
+
+        {/* =================================================
+            LOADING
+        ================================================= */}
+
         {loading ? (
           <div className="admin-achievements-loading">
             Loading achievements...
           </div>
         ) : achievements.length === 0 ? (
+
+          /* =================================================
+             EMPTY
+          ================================================= */
+
           <div className="admin-achievements-empty">
 
             <Trophy size={42} />
@@ -1098,12 +1082,19 @@ function AdminAchievements() {
             </button>
 
           </div>
+
         ) : (
+
+          /* =================================================
+             TABLE
+          ================================================= */
+
           <div className="admin-achievements-table-wrapper">
 
             <table className="admin-achievements-table">
 
               <thead>
+
                 <tr>
 
                   <th>
@@ -1115,7 +1106,7 @@ function AdminAchievements() {
                   </th>
 
                   <th>
-                    Level
+                    Type
                   </th>
 
                   <th>
@@ -1139,7 +1130,9 @@ function AdminAchievements() {
                   </th>
 
                 </tr>
+
               </thead>
+
 
               <tbody>
 
@@ -1151,6 +1144,8 @@ function AdminAchievements() {
                       }
                     >
 
+                      {/* IMAGE */}
+
                       <td>
 
                         <div className="admin-achievement-table-image">
@@ -1158,6 +1153,7 @@ function AdminAchievements() {
                           {getImageURL(
                             achievement
                           ) ? (
+
                             <img
                               src={getImageURL(
                                 achievement
@@ -1166,15 +1162,21 @@ function AdminAchievements() {
                                 achievement.title
                               }
                             />
+
                           ) : (
+
                             <Trophy
                               size={24}
                             />
+
                           )}
 
                         </div>
 
                       </td>
+
+
+                      {/* TITLE */}
 
                       <td>
 
@@ -1185,12 +1187,6 @@ function AdminAchievements() {
                               achievement.title
                             }
                           </strong>
-
-                          {achievement.isFeatured && (
-                            <span className="admin-achievement-featured-badge">
-                              Featured
-                            </span>
-                          )}
 
                         </div>
 
@@ -1214,15 +1210,22 @@ function AdminAchievements() {
 
                       </td>
 
+
+                      {/* TYPE */}
+
                       <td>
 
                         <span className="admin-achievement-level-badge">
                           {
-                            achievement.level
+                            achievement.achievementType ||
+                            "Achievement"
                           }
                         </span>
 
                       </td>
+
+
+                      {/* COMPETITION */}
 
                       <td>
                         {
@@ -1231,6 +1234,9 @@ function AdminAchievements() {
                         }
                       </td>
 
+
+                      {/* YEAR */}
+
                       <td>
                         {
                           achievement.year ||
@@ -1238,12 +1244,18 @@ function AdminAchievements() {
                         }
                       </td>
 
+
+                      {/* RESULT */}
+
                       <td>
                         {
                           achievement.result ||
                           "-"
                         }
                       </td>
+
+
+                      {/* STATUS */}
 
                       <td>
 
@@ -1260,6 +1272,9 @@ function AdminAchievements() {
                         </span>
 
                       </td>
+
+
+                      {/* ACTIONS */}
 
                       <td>
 
@@ -1279,6 +1294,7 @@ function AdminAchievements() {
                               size={17}
                             />
                           </button>
+
 
                           <button
                             type="button"
@@ -1308,6 +1324,7 @@ function AdminAchievements() {
             </table>
 
           </div>
+
         )}
 
       </section>
