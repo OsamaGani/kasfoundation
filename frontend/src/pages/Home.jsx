@@ -24,7 +24,7 @@ import heroVideo from "../assets/videos/hero-video.mp4";
 import logo from "../assets/images/logo.png";
 
 function Home() {
-  const phoneNumber = "+919999999999";
+  const phoneNumber = "+919004630950";
 
   /* =========================================================
      SEO
@@ -563,8 +563,8 @@ function Home() {
 
             <p>
               We’re more than a football foundation — we’re a
-              movement changing lives through sport. Operating in
-              the majority of Pakistan and catering to kids from all
+              movement changing lives through sport. Operating in the
+              majority of Pakistan and catering to kids from all
               across the country, Khel Aur Shiksha Foundation is
               transforming football at the grassroots level with
               impact that speaks for itself:
