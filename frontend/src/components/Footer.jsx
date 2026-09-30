@@ -46,6 +46,7 @@ const Footer = () => {
           <div className="footer-links">
             <a href="/">Home</a>
             <a href="/about">About Us</a>
+            <a href="/programs">Our Programs</a>
             <a href="/venues">Venues</a>
             <a href="/team">Our Team</a>
             <a href="/achievements">Our Achievements</a>
@@ -172,7 +173,7 @@ const Footer = () => {
       {/* COPYRIGHT */}
       <div className="footer-bottom">
         <p>
-          © Khel Aur Shiksha Foundation. All Rights Reserved – Developed by{" "}
+          © {new Date().getFullYear()} Khel Aur Shiksha Foundation. All Rights Reserved – Developed by{" "}
           <a
             href="https://www.instagram.com/__osm037____?stkn=eW1oOW12a3N2ODRx"
             target="_blank"

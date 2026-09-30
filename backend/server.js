@@ -13,6 +13,7 @@ const newsRoutes = require("./routes/newsRoutes");
 const achievementRoutes = require("./routes/achievementRoutes");
 const venueRoutes = require("./routes/venueRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const programRoutes = require("./routes/programRoutes");
 
 const app = express();
 
@@ -71,6 +72,11 @@ app.use(
 app.use(
   "/api/admin",
   adminRoutes
+);
+
+app.use(
+  "/api/programs",
+  programRoutes
 );
 
 const PORT =

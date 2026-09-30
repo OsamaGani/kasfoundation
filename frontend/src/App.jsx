@@ -41,6 +41,9 @@ import Terms from "./pages/Terms";
 import FAQ from "./pages/FAQ";
 import Venues from "./pages/Venues";
 
+import Programs from "./pages/Programs";
+import ProgramDetail from "./pages/ProgramDetail";
+
 /* =========================================
    ADMIN
 ========================================= */
@@ -56,6 +59,7 @@ import AdminAchievements from "./admin/pages/AdminAchievements";
 import AdminVenues from "./admin/pages/AdminVenues";
 import ForgotPassword from "./admin/ForgotPassword";
 import ResetPassword from "./admin/ResetPassword";
+import AdminPrograms from "./admin/AdminPrograms";
 
 /* =========================================
    PAGE TITLE
@@ -103,6 +107,9 @@ function PageTitle() {
       "/venues":
         "Venues | KAS Foundation",
 
+      "/programs":
+        "Our Programs | KAS Foundation",
+
       /* =====================================
          LOCATION TEAM TITLES
       ===================================== */
@@ -149,6 +156,9 @@ function PageTitle() {
 
       "/admin/venues":
         "Venues Management | KAS Foundation",
+
+      "/admin/programs":
+        "Programs Management | KAS Foundation",
     };
 
     if (pageTitles[path]) {
@@ -159,6 +169,7 @@ function PageTitle() {
         Actual member name comes from MongoDB,
         so a generic title is used here.
       */
+
       document.title =
         "Team Member | KAS Foundation";
     } else if (path.startsWith("/gallery/")) {
@@ -167,6 +178,9 @@ function PageTitle() {
     } else if (path.startsWith("/news/")) {
       document.title =
         "News Article | KAS Foundation";
+    } else if (path.startsWith("/programs/")) {
+      document.title =
+        "Program | KAS Foundation";
     } else {
       document.title =
         "KAS Foundation";
@@ -217,6 +231,16 @@ function App() {
             element={<EducationProgram />}
           />
 
+          <Route
+            path="/programs"
+            element={<Programs />}
+          />
+
+          <Route
+  path="/programs/:slug"
+  element={<ProgramDetail />}
+/>
+
           {/* =====================================
               ABOUT
           ===================================== */}
@@ -243,11 +267,21 @@ function App() {
             path="/team/:slug"
             element={<TeamMember />}
           />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-          <Route path="/terms-and-condition" element={<Terms />} />
-          
-          <Route path="/faqs" element={<FAQ />} />
+          <Route
+            path="/privacy-policy"
+            element={<PrivacyPolicy />}
+          />
+
+          <Route
+            path="/terms-and-condition"
+            element={<Terms />}
+          />
+
+          <Route
+            path="/faqs"
+            element={<FAQ />}
+          />
 
           {/* =====================================
               CONTACT
@@ -348,15 +382,16 @@ function App() {
           path="/admin/login"
           element={<AdminLogin />}
         />
-        <Route
-  path="/admin/forgot-password"
-  element={<ForgotPassword />}
-/>
 
-<Route
-  path="/admin/reset-password/:token"
-  element={<ResetPassword />}
-/>
+        <Route
+          path="/admin/forgot-password"
+          element={<ForgotPassword />}
+        />
+
+        <Route
+          path="/admin/reset-password/:token"
+          element={<ResetPassword />}
+        />
 
         {/* =========================================
             PROTECTED ADMIN PANEL
@@ -418,6 +453,15 @@ function App() {
             <Route
               path="/admin/venues"
               element={<AdminVenues />}
+            />
+
+            {/* =====================================
+                ADMIN PROGRAMS
+            ===================================== */}
+
+            <Route
+              path="/admin/programs"
+              element={<AdminPrograms />}
             />
 
           </Route>

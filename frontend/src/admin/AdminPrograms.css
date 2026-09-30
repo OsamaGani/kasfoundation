@@ -1,0 +1,688 @@
+.admin-programs {
+  width: 100%;
+  padding: 30px;
+  color: #111111;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-programs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-programs-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin-programs-heading svg {
+  flex-shrink: 0;
+}
+
+.admin-programs-heading h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.admin-programs-heading p {
+  margin: 5px 0 0;
+  color: #666666;
+  font-size: 14px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.admin-programs-add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  background: #111111;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-programs-add-button:hover {
+  background: #333333;
+}
+
+/* =========================
+   SUCCESS / ERROR
+========================= */
+
+.admin-programs-success,
+.admin-programs-error {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.admin-programs-success {
+  background: #eaf8ee;
+  color: #187a3d;
+  border: 1px solid #bfe7cc;
+}
+
+.admin-programs-error {
+  background: #fff0f0;
+  color: #c62828;
+  border: 1px solid #f1bcbc;
+}
+
+/* =========================
+   FORM CARD
+========================= */
+
+.admin-programs-form-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 30px;
+}
+
+.admin-programs-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 25px;
+}
+
+.admin-programs-form-header h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.admin-programs-form-header p {
+  margin: 6px 0 0;
+  color: #777777;
+  font-size: 13px;
+}
+
+.admin-programs-close-button {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-programs-close-button:hover {
+  background: #f5f5f5;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.admin-programs-section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 28px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.admin-programs-form {
+  width: 100%;
+}
+
+.admin-programs-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-field-full {
+  grid-column: 1 / -1;
+}
+
+.admin-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+  width: 100%;
+  border: 1px solid #d8d8d8;
+  background: #ffffff;
+  color: #111111;
+  border-radius: 7px;
+  padding: 12px 13px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.admin-field textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+.admin-field input:focus,
+.admin-field select:focus,
+.admin-field textarea:focus {
+  border-color: #111111;
+}
+
+.admin-field input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.admin-field small {
+  color: #777777;
+  font-size: 12px;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.admin-programs-image-upload {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 25px;
+  align-items: start;
+}
+
+.admin-programs-image-preview {
+  width: 100%;
+  height: 190px;
+  border: 1px solid #dddddd;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.admin-programs-image-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.admin-programs-settings {
+  padding: 4px 0 5px;
+}
+
+.admin-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333333;
+}
+
+.admin-checkbox input {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+/* =========================
+   FORM ACTIONS
+========================= */
+
+.admin-programs-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #eeeeee;
+}
+
+.admin-programs-cancel-button,
+.admin-programs-save-button {
+  min-width: 130px;
+  padding: 12px 18px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-programs-cancel-button {
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #d5d5d5;
+}
+
+.admin-programs-cancel-button:hover {
+  background: #f5f5f5;
+}
+
+.admin-programs-save-button {
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+}
+
+.admin-programs-save-button:hover {
+  background: #333333;
+}
+
+.admin-programs-save-button:disabled,
+.admin-programs-cancel-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   LIST CARD
+========================= */
+
+.admin-programs-list-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.admin-programs-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.admin-programs-list-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.admin-programs-list-header p {
+  margin: 5px 0 0;
+  color: #777777;
+  font-size: 13px;
+}
+
+/* =========================
+   LOADING / EMPTY
+========================= */
+
+.admin-programs-loading,
+.admin-programs-empty {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.admin-programs-loading {
+  color: #666666;
+  font-size: 14px;
+}
+
+.admin-programs-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-programs-empty svg {
+  margin-bottom: 15px;
+  color: #888888;
+}
+
+.admin-programs-empty h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.admin-programs-empty p {
+  margin: 7px 0 20px;
+  color: #777777;
+  font-size: 14px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.admin-programs-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-programs-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+}
+
+.admin-programs-table th {
+  padding: 15px 18px;
+  background: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+  color: #555555;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-programs-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #eeeeee;
+  vertical-align: middle;
+  font-size: 13px;
+  color: #333333;
+}
+
+.admin-programs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-programs-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* =========================
+   TABLE IMAGE
+========================= */
+
+.admin-program-table-image {
+  width: 65px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f2f2f2;
+  color: #777777;
+}
+
+.admin-program-table-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================
+   TABLE TITLE
+========================= */
+
+.admin-program-table-title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 280px;
+}
+
+.admin-program-table-title strong {
+  color: #111111;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.admin-program-table-title small {
+  color: #777777;
+  font-size: 12px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================
+   CATEGORY
+========================= */
+
+.admin-program-category-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: #f1f1f1;
+  color: #444444;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.admin-status-active,
+.admin-status-inactive {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.admin-status-active {
+  background: #eaf8ee;
+  color: #187a3d;
+}
+
+.admin-status-inactive {
+  background: #f3f3f3;
+  color: #777777;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.admin-program-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-program-edit-button,
+.admin-program-delete-button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-program-edit-button {
+  background: #ffffff;
+  border: 1px solid #d7d7d7;
+  color: #333333;
+}
+
+.admin-program-edit-button:hover {
+  background: #f3f3f3;
+}
+
+.admin-program-delete-button {
+  background: #ffffff;
+  border: 1px solid #e2bcbc;
+  color: #c62828;
+}
+
+.admin-program-delete-button:hover {
+  background: #fff0f0;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .admin-programs {
+    padding: 25px 20px;
+  }
+
+  .admin-programs-image-upload {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-programs-image-preview {
+    max-width: 320px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+  .admin-programs {
+    padding: 20px 15px;
+  }
+
+  .admin-programs-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-programs-heading h1 {
+    font-size: 23px;
+  }
+
+  .admin-programs-heading p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .admin-programs-add-button {
+    width: 100%;
+  }
+
+  .admin-programs-form-card {
+    padding: 20px 16px;
+    border-radius: 9px;
+  }
+
+  .admin-programs-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .admin-field-full {
+    grid-column: auto;
+  }
+
+  .admin-programs-form-header h2 {
+    font-size: 19px;
+  }
+
+  .admin-programs-section-title {
+    margin-top: 23px;
+  }
+
+  .admin-programs-list-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 16px;
+  }
+
+  .admin-programs-list-header .admin-programs-add-button {
+    width: 100%;
+  }
+
+  .admin-programs-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .admin-programs-cancel-button,
+  .admin-programs-save-button {
+    width: 100%;
+  }
+
+  .admin-programs-table {
+    min-width: 800px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .admin-programs {
+    padding: 15px 12px;
+  }
+
+  .admin-programs-heading {
+    gap: 10px;
+  }
+
+  .admin-programs-heading svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .admin-programs-heading h1 {
+    font-size: 20px;
+  }
+
+  .admin-programs-heading p {
+    font-size: 12px;
+  }
+}

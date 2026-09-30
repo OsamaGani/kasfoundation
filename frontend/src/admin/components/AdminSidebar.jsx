@@ -7,6 +7,7 @@ import {
   Newspaper,
   Trophy,
   MapPin,
+  Layers,
   LogOut,
   X,
 } from "lucide-react";
@@ -149,6 +150,23 @@ function AdminSidebar({ isOpen, onClose }) {
 
             <span>
               Achievements
+            </span>
+          </NavLink>
+
+          {/* PROGRAMS */}
+          <NavLink
+            to="/admin/programs"
+            onClick={onClose}
+            className={({ isActive }) =>
+              `admin-sidebar-link ${
+                isActive ? "active" : ""
+              }`
+            }
+          >
+            <Layers size={20} />
+
+            <span>
+              Programs
             </span>
           </NavLink>
 
