@@ -13,7 +13,7 @@
 
 .footer-container {
   width: 100%;
-  padding: 70px 30px 45px;
+  padding: 50px 30px 30px;
 
   display: grid;
 
@@ -39,7 +39,7 @@
   width: 230px;
   display: flex;
   align-items: center;
-  margin-bottom: 48px;
+  margin-bottom: 35px;
 }
 
 .footer-logo img {
@@ -305,7 +305,7 @@
 
   margin: 0 auto;
 
-  padding: 39px 10px 32px;
+  padding: 25px 10px 20px;
 
   border-top: 1px solid #dedede;
 
@@ -379,7 +379,7 @@
     row-gap: 30px;
     column-gap: 35px;
 
-    padding: 55px 25px 40px;
+     padding: 35px 20px 25px;
   }
 
   .footer-about {
