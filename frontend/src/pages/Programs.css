@@ -1,62 +1,86 @@
+/* =========================================================
+   PROGRAMS PAGE
+========================================================= */
+
 .programs-page {
   width: 100%;
+  min-height: 100vh;
   background: #ffffff;
   color: #111111;
 }
 
-/* =========================
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .programs-hero {
   width: 100%;
-  min-height: 430px;
+  min-height: 410px;
   display: flex;
   align-items: center;
   background: #f5f3ef;
-  padding: 90px 7%;
+  padding: 85px 7% 75px;
+  overflow: hidden;
 }
 
 .programs-hero-content {
   width: 100%;
-  max-width: 850px;
+  max-width: 900px;
 }
 
 .programs-eyebrow {
-  display: inline-block;
-  margin-bottom: 18px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #555555;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #1646a3;
+  text-transform: uppercase;
+}
+
+.programs-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: #1646a3;
+  flex-shrink: 0;
 }
 
 .programs-hero h1 {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(42px, 5vw, 70px);
-  line-height: 1.02;
+  max-width: 850px;
+  font-family: "Poppins", "Montserrat", sans-serif;
+   font-size: 40px;
+  line-height: 1.05;
   font-weight: 600;
-  letter-spacing: -2px;
+  letter-spacing: -2.5px;
+  color: #111111;
 }
 
 .programs-hero p {
   max-width: 650px;
-  margin: 25px 0 0;
+  margin: 24px 0 0;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.8;
-  color: #555555;
+  font-weight: 400;
+  color: #5f5f5f;
 }
 
-/* =========================
-   SECTION
-========================= */
+
+/* =========================================================
+   PROGRAMS SECTION
+========================================================= */
 
 .programs-section {
   width: 100%;
-  padding: 90px 7%;
+  padding: 90px 7% 110px;
+  background: #ffffff;
 }
 
 .programs-container {
@@ -65,45 +89,57 @@
   margin: 0 auto;
 }
 
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
 .programs-section-heading {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 40px;
+  gap: 50px;
   margin-bottom: 50px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .programs-section-label {
   display: block;
   margin-bottom: 12px;
   font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #666666;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #1646a3;
+  text-transform: uppercase;
 }
 
 .programs-section-heading h2 {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(32px, 4vw, 52px);
-  line-height: 1.05;
+  font-family: "Poppins", "Montserrat", sans-serif;
+  font-size: 30px;
+  line-height: 1.08;
   font-weight: 600;
-  letter-spacing: -1px;
+  letter-spacing: -1.8px;
+  color: #111111;
 }
 
 .programs-section-heading p {
-  max-width: 450px;
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
+  max-width: 430px;
+  margin: 0 0 3px;
+  padding-left: 18px;
+  border-left: 3px solid #1646a3;
+  font-family: "Montserrat";
   font-size: 14px;
   line-height: 1.8;
-  color: #666666;
+  color: #555;
 }
 
-/* =========================
-   GRID
-========================= */
+
+/* =========================================================
+   PROGRAM GRID
+========================================================= */
 
 .programs-grid {
   display: grid;
@@ -111,27 +147,32 @@
   gap: 28px;
 }
 
-/* =========================
-   CARD
-========================= */
+
+/* =========================================================
+   PROGRAM CARD
+========================================================= */
 
 .program-card {
+  min-width: 0;
   overflow: hidden;
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 1px solid #e5e5e5;
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .program-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  border-color: #d9d9d9;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
 }
 
-/* =========================
-   IMAGE
-========================= */
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
 
 .program-card-image {
   position: relative;
@@ -146,11 +187,11 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
 
 .program-card:hover .program-card-image img {
-  transform: scale(1.04);
+  transform: scale(1.045);
 }
 
 .program-card-placeholder {
@@ -160,24 +201,28 @@
   align-items: center;
   justify-content: center;
   color: #999999;
+  background: #f1f1f1;
 }
 
 .program-card-category {
   position: absolute;
   left: 16px;
   bottom: 16px;
+  max-width: calc(100% - 32px);
   padding: 7px 11px;
-  background: rgba(255, 255, 255, 0.94);
-  color: #222222;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1646a3;
   font-family: "Montserrat", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 
-/* =========================
-   CONTENT
-========================= */
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
 
 .program-card-content {
   padding: 25px 24px 27px;
@@ -185,10 +230,12 @@
 
 .program-card-content h3 {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", "Montserrat", sans-serif;
   font-size: 21px;
-  line-height: 1.3;
+  line-height: 1.35;
   font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #111111;
 }
 
 .program-card-content p {
@@ -208,39 +255,69 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #111111;
+  color: #1646a3;
   font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-decoration: none;
-  transition: gap 0.2s ease;
+  text-transform: uppercase;
+  transition:
+    gap 0.2s ease,
+    color 0.2s ease;
 }
 
 .program-card-link:hover {
   gap: 12px;
+  color: #0d347d;
 }
 
-/* =========================
+
+/* =========================================================
    LOADING / ERROR / EMPTY
-========================= */
+========================================================= */
 
 .programs-loading,
 .programs-error,
 .programs-empty {
   width: 100%;
-  padding: 70px 20px;
+  min-height: 260px;
+  padding: 60px 20px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
 }
 
 .programs-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #666666;
   font-size: 14px;
 }
 
 .programs-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #c62828;
   font-size: 14px;
+}
+
+.programs-error h3 {
+  margin: 14px 0 0;
+  font-family: "Poppins", "Montserrat", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.programs-error p {
+  max-width: 500px;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #777777;
 }
 
 .programs-empty {
@@ -252,79 +329,177 @@
 
 .programs-empty svg {
   margin-bottom: 15px;
-  color: #888888;
+  color: #1646a3;
 }
 
 .programs-empty h3 {
   margin: 0;
+  font-family: "Poppins", "Montserrat", sans-serif;
   font-size: 21px;
   font-weight: 600;
+  color: #222222;
 }
 
 .programs-empty p {
   max-width: 450px;
   margin: 10px 0 0;
+  font-family: "Montserrat", sans-serif;
   color: #777777;
   font-size: 14px;
   line-height: 1.7;
 }
 
-/* =========================
-   TABLET
-========================= */
 
-@media (max-width: 1000px) {
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1500px) {
   .programs-hero {
-    min-height: 380px;
-    padding: 75px 5%;
+    padding-left: 8%;
+    padding-right: 8%;
   }
 
   .programs-section {
-    padding: 75px 5%;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .programs-hero h1 {
+    font-size: 50px;
+  }
+
+  .program-card-image {
+    height: 275px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .programs-hero {
+    min-height: 390px;
+    padding: 80px 5% 70px;
+  }
+
+  .programs-section {
+    padding: 75px 5% 90px;
+  }
+
+  .programs-section-heading {
+    gap: 35px;
   }
 
   .programs-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+  }
+
+  .program-card-image {
+    height: 245px;
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media (max-width: 650px) {
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
   .programs-hero {
-    min-height: 350px;
-    padding: 70px 20px;
+    min-height: 360px;
+    padding: 70px 5% 65px;
   }
 
   .programs-hero h1 {
-    font-size: 39px;
+    font-size: 35px;
+    letter-spacing: -2px;
+  }
+
+  .programs-hero p {
+    max-width: 600px;
+    font-size: 14px;
+  }
+
+  .programs-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .programs-section-heading p {
+    max-width: 550px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .programs-hero {
+    min-height: auto;
+    padding: 85px 20px 60px;
+  }
+
+  .programs-hero-content {
+    max-width: 100%;
+  }
+
+  .programs-eyebrow {
+    margin-bottom: 16px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .programs-eyebrow::before {
+    width: 23px;
+  }
+
+  .programs-hero h1 {
+    font-size: 30px;
+    line-height: 1.08;
     letter-spacing: -1.5px;
   }
 
   .programs-hero p {
-    margin-top: 20px;
+    max-width: 100%;
+    margin-top: 19px;
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
   .programs-section {
-    padding: 60px 20px;
+    padding: 60px 20px 75px;
   }
 
   .programs-section-heading {
     display: block;
     margin-bottom: 35px;
+    padding-bottom: 24px;
+  }
+
+  .programs-section-label {
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 2px;
   }
 
   .programs-section-heading h2 {
-    font-size: 34px;
+    font-size: 28px;
+    letter-spacing: -1px;
   }
 
   .programs-section-heading p {
+    max-width: 100%;
     margin-top: 15px;
     font-size: 13px;
+    line-height: 1.7;
+    padding-left: 14px;
   }
 
   .programs-grid {
@@ -343,26 +518,289 @@
   .program-card-content h3 {
     font-size: 19px;
   }
+
+  .program-card-content p {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
 }
 
-/* =========================
+
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 400px) {
   .programs-hero {
-    padding: 60px 16px;
+    padding: 90px 16px 52px;
+  }
+
+  .programs-eyebrow {
+    font-size: 9px;
   }
 
   .programs-hero h1 {
-    font-size: 34px;
+    font-size: 24px;
+    line-height: 1.09;
+    letter-spacing: -1.2px;
+  }
+
+  .programs-hero p {
+    font-size: 12.5px;
   }
 
   .programs-section {
-    padding: 50px 16px;
+    padding: 50px 16px 65px;
+  }
+
+  .programs-section-heading h2 {
+    font-size: 25px;
+  }
+
+  .programs-section-heading p {
+    font-size: 12.5px;
   }
 
   .program-card-image {
     height: 210px;
+  }
+
+  .program-card-content {
+    padding: 21px 18px 23px;
+  }
+
+  .program-card-content h3 {
+    font-size: 18px;
+  }
+
+  .program-card-content p {
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  .program-card-category {
+    left: 13px;
+    bottom: 13px;
+    max-width: calc(100% - 26px);
+    padding: 6px 9px;
+    font-size: 9px;
+  }
+}
+/* =========================================================
+   PROGRAMS PAGE ANIMATIONS
+========================================================= */
+
+@keyframes programsFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes programsFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes programsImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   HERO ANIMATION
+========================= */
+
+.programs-hero-content {
+  animation: programsFadeUp 0.8s ease-out both;
+}
+
+.programs-eyebrow {
+  animation: programsFadeIn 0.6s ease-out 0.1s both;
+}
+
+.programs-hero h1 {
+  animation: programsFadeUp 0.8s ease-out 0.2s both;
+}
+
+.programs-hero p {
+  animation: programsFadeUp 0.8s ease-out 0.35s both;
+}
+
+/* =========================
+   SECTION HEADING
+========================= */
+
+.programs-section-heading {
+  animation: programsFadeUp 0.7s ease-out 0.15s both;
+}
+
+.programs-section-label {
+  animation: programsFadeIn 0.6s ease-out 0.2s both;
+}
+
+/* =========================
+   PROGRAM CARD
+========================= */
+
+.program-card {
+  animation: programsFadeUp 0.7s ease-out both;
+}
+
+/* Cards one by one */
+
+.program-card:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.program-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.program-card:nth-child(3) {
+  animation-delay: 0.35s;
+}
+
+.program-card:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.program-card:nth-child(5) {
+  animation-delay: 0.55s;
+}
+
+.program-card:nth-child(6) {
+  animation-delay: 0.65s;
+}
+
+/* =========================
+   CARD IMAGE
+========================= */
+
+.program-card-image {
+  overflow: hidden;
+}
+
+.program-card-image img {
+  animation: programsImageReveal 0.9s ease-out both;
+  transition: transform 0.5s ease;
+}
+
+.program-card:hover .program-card-image img {
+  transform: scale(1.07);
+}
+
+/* =========================
+   CARD CATEGORY
+========================= */
+
+.program-card-category {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.program-card:hover .program-card-category {
+  transform: translateY(-3px);
+  background: #1646a3;
+  color: #ffffff;
+}
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.program-card-content h3 {
+  transition: color 0.25s ease;
+}
+
+.program-card:hover .program-card-content h3 {
+  color: #1646a3;
+}
+
+.program-card-content p {
+  transition: color 0.25s ease;
+}
+
+.program-card:hover .program-card-content p {
+  color: #555555;
+}
+
+/* =========================
+   VIEW PROGRAM
+========================= */
+
+.program-card-link {
+  transition:
+    gap 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.program-card-link:hover {
+  gap: 12px;
+  color: #0d347d;
+  transform: translateX(2px);
+}
+
+/* =========================
+   CARD HOVER
+========================= */
+
+.program-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  border-color: #d9d9d9;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .programs-hero-content,
+  .programs-eyebrow,
+  .programs-hero h1,
+  .programs-hero p,
+  .programs-section-heading,
+  .programs-section-label,
+  .program-card,
+  .program-card-image img {
+    animation: none;
+  }
+
+  .program-card,
+  .program-card-image img,
+  .program-card-category,
+  .program-card-content h3,
+  .program-card-content p,
+  .program-card-link {
+    transition: none;
   }
 }

@@ -71,19 +71,46 @@ function MainLayout() {
       }
     };
 
-    document.addEventListener("contextmenu", handleContextMenu);
-    document.addEventListener("copy", handleCopy);
-    document.addEventListener("cut", handleCut);
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener(
+      "contextmenu",
+      handleContextMenu
+    );
+
+    document.addEventListener(
+      "copy",
+      handleCopy
+    );
+
+    document.addEventListener(
+      "cut",
+      handleCut
+    );
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
 
     return () => {
       document.removeEventListener(
         "contextmenu",
         handleContextMenu
       );
-      document.removeEventListener("copy", handleCopy);
-      document.removeEventListener("cut", handleCut);
-      document.removeEventListener("keydown", handleKeyDown);
+
+      document.removeEventListener(
+        "copy",
+        handleCopy
+      );
+
+      document.removeEventListener(
+        "cut",
+        handleCut
+      );
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, []);
 

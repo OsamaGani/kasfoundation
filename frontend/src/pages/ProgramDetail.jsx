@@ -13,9 +13,15 @@ function ProgramArticle() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetchProgram();
-  }, [slug]);
+ useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  });
+
+  fetchProgram();
+}, [slug]);
 
   const fetchProgram = async () => {
     try {
@@ -83,13 +89,7 @@ function ProgramArticle() {
               "The requested program could not be found."}
           </p>
 
-          <Link
-            to="/programs"
-            className="program-article-back-button"
-          >
-            <ArrowLeft size={17} />
-            Back to Programs
-          </Link>
+          
 
         </div>
       </main>
@@ -109,13 +109,7 @@ function ProgramArticle() {
 
         <div className="program-article-container">
 
-          <Link
-            to="/programs"
-            className="program-article-back-link"
-          >
-            <ArrowLeft size={17} />
-            Back to Programs
-          </Link>
+          
 
           {program.category && (
             <span className="program-article-category">
