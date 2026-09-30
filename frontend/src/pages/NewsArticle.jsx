@@ -3,8 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
-  Phone,
-  MessageCircle,
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
@@ -449,33 +447,6 @@ function NewsArticle() {
 
         <JoinCommunity />
       </main>
-
-      {/* =========================================
-          FLOATING CONTACT
-      ========================================= */}
-
-      <div className="news-article-floating-contact">
-        <a
-          href="tel:+919004630950"
-          className="news-article-phone"
-          aria-label="Call us"
-        >
-          <Phone size={23} />
-        </a>
-
-        <a
-          href="https://wa.me/919004630950"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="news-article-whatsapp"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle
-            size={28}
-            strokeWidth={2.5}
-          />
-        </a>
-      </div>
 
       <Footer />
     </>

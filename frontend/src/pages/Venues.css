@@ -404,17 +404,16 @@
     "Roboto Condensed",
     sans-serif;
 
-  font-size: 48px;
+  font-size: clamp(34px, 3.3vw, 46px);
 
-  font-weight: 700;
+  font-weight: 500;
 
-  line-height: 1.02;
+  line-height: 1.05;
 
   letter-spacing: -0.5px;
 
   text-transform: uppercase;
 }
-
 
 .venue-training-left p {
   width: 100%;
@@ -846,10 +845,12 @@
 
 
   .venue-training-left h2 {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 
-    font-size: 39px;
-  }
+  font-size: 32px;
+
+  font-weight: 500;
+}
 
 
   .venue-training-left p {
