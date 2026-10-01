@@ -1,17 +1,4 @@
 const Subscriber = require("../models/Subscriber");
-const nodemailer = require("nodemailer");
-
-/* =========================================================
-   EMAIL TRANSPORTER
-========================================================= */
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
-  },
-});
 
 /* =========================================================
    SUBSCRIBE USER
@@ -91,12 +78,16 @@ const getSubscribers = async (req, res) => {
 };
 
 /* =========================================================
-   SEND NEWSLETTER
+   SEND NEWSLETTER USING BREVO API
 ========================================================= */
 
 const sendNewsletter = async (req, res) => {
   try {
     const { subject, message } = req.body;
+
+    /* =====================================================
+       VALIDATION
+    ===================================================== */
 
     if (!subject || !subject.trim()) {
       return res.status(400).json({
@@ -112,6 +103,24 @@ const sendNewsletter = async (req, res) => {
       });
     }
 
+    /* =====================================================
+       CHECK BREVO CONFIGURATION
+    ===================================================== */
+
+    if (
+      !process.env.BREVO_API_KEY ||
+      !process.env.MAIL_USER
+    ) {
+      return res.status(500).json({
+        success: false,
+        message: "Email service is not configured.",
+      });
+    }
+
+    /* =====================================================
+       GET ACTIVE SUBSCRIBERS
+    ===================================================== */
+
     const subscribers = await Subscriber.find({
       isActive: true,
     }).select("email");
@@ -123,57 +132,189 @@ const sendNewsletter = async (req, res) => {
       });
     }
 
-    if (!process.env.MAIL_USER || !process.env.MAIL_PASS) {
+    /* =====================================================
+       CREATE EMAIL LIST
+    ===================================================== */
+
+    const emailList = subscribers.map((subscriber) => ({
+      email: subscriber.email,
+    }));
+
+    /* =====================================================
+       EMAIL HTML
+    ===================================================== */
+
+    const emailHtml = `
+      <!DOCTYPE html>
+
+      <html>
+        <head>
+          <meta charset="UTF-8" />
+
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+
+          <title>
+            ${subject.trim()}
+          </title>
+        </head>
+
+        <body
+          style="
+            margin: 0;
+            padding: 0;
+            background: #f5f7fb;
+            font-family: Arial, sans-serif;
+          "
+        >
+          <div
+            style="
+              max-width: 600px;
+              margin: 40px auto;
+              background: #ffffff;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            "
+          >
+
+            <div
+              style="
+                padding: 30px;
+                background: #111827;
+                color: #ffffff;
+                text-align: center;
+              "
+            >
+              <h1
+                style="
+                  margin: 0;
+                  font-size: 24px;
+                "
+              >
+                KAS Foundation
+              </h1>
+
+              <p
+                style="
+                  margin: 8px 0 0;
+                  font-size: 14px;
+                  opacity: 0.85;
+                "
+              >
+                Newsletter
+              </p>
+            </div>
+
+            <div
+              style="
+                padding: 35px;
+              "
+            >
+              <h2
+                style="
+                  margin-top: 0;
+                  color: #111827;
+                "
+              >
+                ${subject.trim()}
+              </h2>
+
+              <div
+                style="
+                  color: #4b5563;
+                  line-height: 1.7;
+                  font-size: 15px;
+                "
+              >
+                ${message.trim().replace(/\n/g, "<br />")}
+              </div>
+            </div>
+
+            <div
+              style="
+                padding: 20px;
+                text-align: center;
+                background: #f9fafb;
+                color: #9ca3af;
+                font-size: 12px;
+              "
+            >
+              © ${new Date().getFullYear()}
+              Khel Aur Shiksha Foundation
+            </div>
+
+          </div>
+        </body>
+      </html>
+    `;
+
+    /* =====================================================
+       SEND EMAIL WITH BREVO API
+    ===================================================== */
+
+    const brevoResponse = await fetch(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        method: "POST",
+
+        headers: {
+          accept: "application/json",
+          "api-key": process.env.BREVO_API_KEY,
+          "content-type": "application/json",
+        },
+
+        body: JSON.stringify({
+          sender: {
+            name: "Khel Aur Shiksha Foundation",
+            email: process.env.MAIL_USER,
+          },
+
+          to: [
+            {
+              email: process.env.MAIL_USER,
+            },
+          ],
+
+          bcc: emailList,
+
+          subject: subject.trim(),
+
+          htmlContent: emailHtml,
+        }),
+      }
+    );
+
+    /* =====================================================
+       BREVO ERROR
+    ===================================================== */
+
+    if (!brevoResponse.ok) {
+      const brevoError = await brevoResponse.text();
+
+      console.error(
+        "Brevo newsletter error:",
+        brevoError
+      );
+
       return res.status(500).json({
         success: false,
-        message: "Email service is not configured.",
+        message: "Newsletter email sending failed.",
       });
     }
 
-    const emailList = subscribers.map(
-      (subscriber) => subscriber.email
+    /* =====================================================
+       SUCCESS
+    ===================================================== */
+
+    const brevoData = await brevoResponse.json();
+
+    console.log(
+      "Brevo newsletter sent successfully:",
+      brevoData
     );
-
-    await transporter.sendMail({
-      from: `"KAS Foundation" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_USER,
-      bcc: emailList,
-      subject: subject.trim(),
-      text: message.trim(),
-      html: `
-        <div
-          style="
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 30px;
-            font-family: Arial, sans-serif;
-            line-height: 1.7;
-            color: #333333;
-          "
-        >
-          <h2 style="color: #111827;">
-            KAS Foundation
-          </h2>
-
-          <div>
-            ${message
-              .trim()
-              .replace(/\n/g, "<br />")}
-          </div>
-
-          <p
-            style="
-              margin-top: 30px;
-              color: #777777;
-              font-size: 13px;
-            "
-          >
-            © ${new Date().getFullYear()}
-            Khel Aur Shiksha Foundation
-          </p>
-        </div>
-      `,
-    });
 
     return res.status(200).json({
       success: true,
@@ -181,7 +322,10 @@ const sendNewsletter = async (req, res) => {
       sentCount: subscribers.length,
     });
   } catch (error) {
-    console.error("Send newsletter error:", error);
+    console.error(
+      "Send newsletter error:",
+      error.message
+    );
 
     return res.status(500).json({
       success: false,
@@ -189,6 +333,10 @@ const sendNewsletter = async (req, res) => {
     });
   }
 };
+
+/* =========================================================
+   EXPORT
+========================================================= */
 
 module.exports = {
   subscribeUser,
