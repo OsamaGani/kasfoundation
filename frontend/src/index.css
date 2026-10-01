@@ -371,9 +371,9 @@ a {
 
   font-family: "Montserrat", sans-serif;
 
-  font-size: 48px;
+  font-size: 38px;
 
-  font-weight: 700;
+  font-weight: 500;
 
   line-height: 1.05;
 
@@ -1048,8 +1048,8 @@ a {
   color: #111111;
 
   font-family: "Montserrat", sans-serif;
-  font-size: 42px;
-  font-weight: 800;
+  font-size: 36px;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -1.5px;
 }
@@ -1227,7 +1227,7 @@ a {
 
   .about-home-card h2 {
     margin-bottom: 22px;
-    font-size: 31px;
+    font-size: 28px;
     letter-spacing: -1px;
   }
 
@@ -1331,9 +1331,9 @@ a {
 
   font-family: "Montserrat", sans-serif;
 
-  font-size: 44px;
+  font-size: 30px;
 
-  font-weight: 700;
+  font-weight: 600;
 
   line-height: 1;
 
@@ -1480,9 +1480,9 @@ a {
 
   font-family: "Montserrat", sans-serif;
 
-  font-size: 30px;
+  font-size: 28px;
 
-  font-weight: 700;
+  font-weight: 600;
 
   line-height: 1.05;
 
@@ -1685,7 +1685,7 @@ a {
   .programs-home-heading h2 {
     margin-top: 18px;
 
-    font-size: 30px;
+    font-size: 28px;
 
     line-height: 1.1;
 
@@ -1723,7 +1723,7 @@ a {
   }
 
   .program-home-content h3 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .program-home-content p {
@@ -1744,7 +1744,7 @@ a {
 
 @media (max-width: 380px) {
   .programs-home-heading h2 {
-    font-size: 27px;
+    font-size: 25px;
   }
 
   .program-home-image {
