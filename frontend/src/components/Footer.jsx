@@ -1,20 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import logo from "../assets/images/logo.png";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [subscribeMessage, setSubscribeMessage] = useState("");
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
+
+  const handleSubscribe = async (event) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      setSubscribeMessage("Please enter your email.");
+      return;
+    }
+
+    try {
+      setSubscribeLoading(true);
+      setSubscribeMessage("");
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/subscribers`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email.trim(),
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Subscription failed.");
+      }
+
+      setSubscribeMessage(
+        data.message || "Subscribed successfully!"
+      );
+
+      setEmail("");
+    } catch (error) {
+      console.error(
+        "Newsletter subscription error:",
+        error
+      );
+
+      setSubscribeMessage(
+        error.message ||
+          "Unable to subscribe. Please try again."
+      );
+    } finally {
+      setSubscribeLoading(false);
+    }
+  };
+
   return (
     <footer className="site-footer">
       <div className="footer-container">
+
         {/* LEFT SECTION */}
         <div className="footer-about">
+
           <div className="footer-logo">
-            <img src={logo} alt="KAS Foundation" />
+            <img
+              src={logo}
+              alt="KAS Foundation"
+            />
           </div>
 
           <p className="footer-description">
-            Khel Aur Shiksha Foundation is dedicated to empowering youth through
-            football, education, and community initiatives, helping every child
+            Khel Aur Shiksha Foundation is dedicated to
+            empowering youth through football, education,
+            and community initiatives, helping every child
             dream bigger.
           </p>
 
@@ -25,17 +86,36 @@ const Footer = () => {
               exclusive offers & more!
             </p>
 
-            <form className="subscribe-form">
+            <form
+              className="subscribe-form"
+              onSubmit={handleSubscribe}
+            >
               <input
                 type="email"
                 placeholder="Enter email"
                 aria-label="Email address"
+                value={email}
+                onChange={(event) =>
+                  setEmail(event.target.value)
+                }
+                disabled={subscribeLoading}
+                required
               />
 
-              <button type="submit" aria-label="Subscribe">
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                disabled={subscribeLoading}
+              >
                 <span>→</span>
               </button>
             </form>
+
+            {subscribeMessage && (
+              <p className="subscribe-message">
+                {subscribeMessage}
+              </p>
+            )}
           </div>
         </div>
 
@@ -49,7 +129,9 @@ const Footer = () => {
             <a href="/programs">Our Programs</a>
             <a href="/venues">Venues</a>
             <a href="/team">Our Team</a>
-            <a href="/achievements">Our Achievements</a>
+            <a href="/achievements">
+              Our Achievements
+            </a>
             <a href="/gallery">Gallery</a>
             <a href="/news">News</a>
           </div>
@@ -60,9 +142,17 @@ const Footer = () => {
           <h3>Policy</h3>
 
           <div className="footer-links">
-            <a href="/privacy-policy">Privacy</a>
-            <a href="/terms-and-condition">Terms</a>
-            <a href="/faqs">FAQs</a>
+            <a href="/privacy-policy">
+              Privacy
+            </a>
+
+            <a href="/terms-and-condition">
+              Terms
+            </a>
+
+            <a href="/faqs">
+              FAQs
+            </a>
           </div>
         </div>
 
@@ -70,7 +160,10 @@ const Footer = () => {
         <div className="footer-column footer-contact">
           <h3>Contacts</h3>
 
-          <a href="tel:+919004630950" className="footer-contact-link">
+          <a
+            href="tel:+919004630950"
+            className="footer-contact-link"
+          >
             9004630950
           </a>
 
@@ -89,8 +182,13 @@ const Footer = () => {
 
           {/* SOCIAL ICONS */}
           <div className="footer-socials">
+
             {/* Facebook */}
-            <a href="#" aria-label="Facebook" className="social-icon">
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="social-icon"
+            >
               <svg viewBox="0 0 24 24">
                 <path
                   d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.67.33-1 1-1Z"
@@ -128,12 +226,21 @@ const Footer = () => {
                   strokeWidth="2"
                 />
 
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                />
               </svg>
             </a>
 
             {/* LinkedIn */}
-            <a href="#" aria-label="LinkedIn" className="social-icon">
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="social-icon"
+            >
               <svg viewBox="0 0 24 24">
                 <rect
                   x="4"
@@ -144,9 +251,20 @@ const Footer = () => {
                   fill="currentColor"
                 />
 
-                <rect x="7" y="10" width="2" height="7" fill="#ffffff" />
+                <rect
+                  x="7"
+                  y="10"
+                  width="2"
+                  height="7"
+                  fill="#ffffff"
+                />
 
-                <circle cx="8" cy="7.5" r="1" fill="#ffffff" />
+                <circle
+                  cx="8"
+                  cy="7.5"
+                  r="1"
+                  fill="#ffffff"
+                />
 
                 <path
                   d="M12 10h2v1c.5-.8 1.4-1.3 2.5-1.3 2 0 2.5 1.3 2.5 3.5V17h-2v-3.3c0-1.1-.4-1.8-1.3-1.8s-1.7.7-1.7 2V17h-2v-7Z"
@@ -156,16 +274,24 @@ const Footer = () => {
             </a>
 
             {/* YouTube */}
-            <a href="#" aria-label="YouTube" className="social-icon">
+            <a
+              href="#"
+              aria-label="YouTube"
+              className="social-icon"
+            >
               <svg viewBox="0 0 24 24">
                 <path
                   d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2C1.9 9 1.9 12 1.9 12s0 3 .5 4.8a2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8Z"
                   fill="currentColor"
                 />
 
-                <path d="m10 15.5 5-3.5-5-3.5v7Z" fill="#ffffff" />
+                <path
+                  d="m10 15.5 5-3.5-5-3.5v7Z"
+                  fill="#ffffff"
+                />
               </svg>
             </a>
+
           </div>
         </div>
       </div>
@@ -173,7 +299,8 @@ const Footer = () => {
       {/* COPYRIGHT */}
       <div className="footer-bottom">
         <p>
-          © {new Date().getFullYear()} Khel Aur Shiksha Foundation. All Rights Reserved – Developed by{" "}
+          © {new Date().getFullYear()} Khel Aur Shiksha
+          Foundation. All Rights Reserved – Developed by{" "}
           <a
             href="https://www.instagram.com/__osm037____?stkn=eW1oOW12a3N2ODRx"
             target="_blank"

@@ -8,6 +8,7 @@ import {
   Trophy,
   MapPin,
   Layers,
+  Mail,
   LogOut,
   X,
 } from "lucide-react";
@@ -184,6 +185,23 @@ function AdminSidebar({ isOpen, onClose }) {
 
             <span>
               Venues
+            </span>
+          </NavLink>
+
+          {/* NEWSLETTER */}
+          <NavLink
+            to="/admin/newsletter"
+            onClick={onClose}
+            className={({ isActive }) =>
+              `admin-sidebar-link ${
+                isActive ? "active" : ""
+              }`
+            }
+          >
+            <Mail size={20} />
+
+            <span>
+              Newsletter
             </span>
           </NavLink>
         </nav>

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import {
   BrowserRouter,
   Routes,
@@ -36,6 +37,7 @@ import Achievements from "./pages/achievements";
 
 import News from "./pages/News";
 import NewsArticle from "./pages/NewsArticle";
+
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import FAQ from "./pages/FAQ";
@@ -60,6 +62,7 @@ import AdminVenues from "./admin/pages/AdminVenues";
 import ForgotPassword from "./admin/ForgotPassword";
 import ResetPassword from "./admin/ResetPassword";
 import AdminPrograms from "./admin/AdminPrograms";
+import AdminNewsletter from "./admin/pages/AdminNewsletter";
 
 /* =========================================
    PAGE TITLE
@@ -159,6 +162,9 @@ function PageTitle() {
 
       "/admin/programs":
         "Programs Management | KAS Foundation",
+
+      "/admin/newsletter":
+        "Newsletter | KAS Foundation",
     };
 
     if (pageTitles[path]) {
@@ -197,11 +203,9 @@ function PageTitle() {
 function App() {
   return (
     <BrowserRouter>
-
       <PageTitle />
 
       <Routes>
-
         {/* =========================================
             PUBLIC WEBSITE
         ========================================= */}
@@ -237,9 +241,9 @@ function App() {
           />
 
           <Route
-  path="/programs/:slug"
-  element={<ProgramDetail />}
-/>
+            path="/programs/:slug"
+            element={<ProgramDetail />}
+          />
 
           {/* =====================================
               ABOUT
@@ -464,12 +468,20 @@ function App() {
               element={<AdminPrograms />}
             />
 
+            {/* =====================================
+                ADMIN NEWSLETTER
+            ===================================== */}
+
+            <Route
+              path="/admin/newsletter"
+              element={<AdminNewsletter />}
+            />
+
           </Route>
 
         </Route>
 
       </Routes>
-
     </BrowserRouter>
   );
 }

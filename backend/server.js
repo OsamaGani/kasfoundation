@@ -14,6 +14,7 @@ const achievementRoutes = require("./routes/achievementRoutes");
 const venueRoutes = require("./routes/venueRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const programRoutes = require("./routes/programRoutes");
+const subscriberRoutes = require("./routes/subscriberRoutes");
 
 const app = express();
 
@@ -77,6 +78,11 @@ app.use(
 app.use(
   "/api/programs",
   programRoutes
+);
+
+app.use(
+  "/api/subscribers",
+  subscriberRoutes
 );
 
 const PORT =
