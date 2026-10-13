@@ -24,6 +24,8 @@ app.use(
       "http://localhost:5173",
       "http://10.171.57.75:5173",
       "https://kasfoundation.usamagani030.workers.dev",
+      "https://kasf.org.in",
+      "https://www.kasf.org.in",
     ],
     credentials: true,
   })
