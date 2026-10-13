@@ -9,6 +9,7 @@ import {
   MapPin,
   Layers,
   Mail,
+  ImagePlus,
   LogOut,
   X,
 } from "lucide-react";
@@ -204,6 +205,22 @@ function AdminSidebar({ isOpen, onClose }) {
               Newsletter
             </span>
           </NavLink>
+          {/* BANNER MANAGEMENT */}
+<NavLink
+  to="/admin/banners"
+  onClick={onClose}
+  className={({ isActive }) =>
+    `admin-sidebar-link ${
+      isActive ? "active" : ""
+    }`
+  }
+>
+  <ImagePlus size={20} />
+
+  <span>
+    Banner Management
+  </span>
+</NavLink>
         </nav>
 
         {/* LOGOUT */}

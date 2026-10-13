@@ -63,6 +63,7 @@ import ForgotPassword from "./admin/ForgotPassword";
 import ResetPassword from "./admin/ResetPassword";
 import AdminPrograms from "./admin/AdminPrograms";
 import AdminNewsletter from "./admin/pages/AdminNewsletter";
+import AdminBanners from "./admin/pages/AdminBanners";
 
 /* =========================================
    PAGE TITLE
@@ -475,6 +476,11 @@ function App() {
             <Route
               path="/admin/newsletter"
               element={<AdminNewsletter />}
+            />
+            {/* ADMIN BANNER MANAGEMENT */}
+            <Route
+              path="/admin/banners"
+              element={<AdminBanners />}
             />
 
           </Route>

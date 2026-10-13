@@ -15,6 +15,7 @@ const venueRoutes = require("./routes/venueRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const programRoutes = require("./routes/programRoutes");
 const subscriberRoutes = require("./routes/subscriberRoutes");
+const bannerRoutes = require("./routes/bannerRoutes");
 
 const app = express();
 
@@ -86,6 +87,9 @@ app.use(
   "/api/subscribers",
   subscriberRoutes
 );
+app.use(
+  "/api/banners",
+  bannerRoutes);
 
 const PORT =
   process.env.PORT || 5000;

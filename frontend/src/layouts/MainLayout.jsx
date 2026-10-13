@@ -9,6 +9,7 @@ import PageLoader from "../components/PageLoader";
 function MainLayout() {
   const [loading, setLoading] = useState(true);
 
+  /*
   useEffect(() => {
     const handleContextMenu = (event) => {
       event.preventDefault();
@@ -113,6 +114,7 @@ function MainLayout() {
       );
     };
   }, []);
+  */
 
   useEffect(() => {
     const timer = setTimeout(() => {

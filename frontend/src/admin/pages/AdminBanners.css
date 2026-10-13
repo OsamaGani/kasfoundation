@@ -1,0 +1,331 @@
+/* ================================
+   ADMIN BANNER MANAGEMENT
+================================ */
+
+.admin-banners-page {
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  color: #172033;
+  box-sizing: border-box;
+}
+
+.admin-banners-page * {
+  box-sizing: border-box;
+}
+
+.admin-banners-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.admin-banners-heading h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #102b3f;
+}
+
+.admin-banners-heading p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.banner-refresh-btn,
+.banner-primary-btn,
+.admin-banner-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.banner-refresh-btn {
+  flex-shrink: 0;
+  color: #17384d;
+  background: #eaf0f5;
+}
+
+.banner-refresh-btn:hover {
+  background: #dce6ee;
+}
+
+.banner-primary-btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  color: #ffffff;
+  background: #087f5b;
+}
+
+.banner-primary-btn:hover {
+  background: #066b4c;
+}
+
+.banner-primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================================
+   UPLOAD CARD
+================================ */
+
+.banner-upload-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  padding: 24px;
+  margin-bottom: 28px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(16, 42, 67, 0.04);
+}
+
+.banner-upload-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 4px;
+  color: #17384d;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.banner-upload-card h2 svg {
+  color: #087f5b;
+}
+
+.banner-upload-card label {
+  color: #344054;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.banner-upload-card input[type="file"] {
+  width: 100%;
+  max-width: 560px;
+  padding: 12px;
+  color: #344054;
+  font-size: 14px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.banner-upload-card input[type="file"]::file-selector-button {
+  padding: 8px 12px;
+  margin-right: 12px;
+  color: #17384d;
+  background: #e8eef4;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.banner-upload-card p {
+  margin: -4px 0 0;
+  color: #667085;
+  font-size: 13px;
+}
+
+/* ================================
+   IMAGE PREVIEW
+================================ */
+
+.banner-upload-preview {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  max-height: 300px;
+  margin-top: 4px;
+  object-fit: contain;
+  object-position: left center;
+  background: #f8fafc;
+  border: 1px solid #e5eaf0;
+  border-radius: 10px;
+}
+
+/* ================================
+   SUCCESS AND ERROR MESSAGES
+================================ */
+
+.banner-success,
+.banner-error {
+  padding: 12px 16px;
+  margin: 0 0 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.banner-success {
+  color: #067647;
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+}
+
+.banner-error {
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+}
+
+/* ================================
+   BANNER LIST
+================================ */
+
+.admin-banners-page > h2 {
+  margin: 24px 0 16px;
+  color: #17384d;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.admin-banner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.admin-banner-item {
+  display: grid;
+  grid-template-columns: minmax(140px, 240px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(16, 42, 67, 0.03);
+}
+
+.admin-banner-item > img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  background: #f8fafc;
+  border: 1px solid #edf0f4;
+  border-radius: 8px;
+}
+
+.admin-banner-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-banner-meta > span {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-banner-actions button {
+  color: #344054;
+  background: #eef2f6;
+}
+
+.admin-banner-actions button:hover {
+  background: #dfe7ef;
+}
+
+.admin-banner-actions button:last-child {
+  color: #b42318;
+  background: #fef3f2;
+}
+
+.admin-banner-actions button:last-child:hover {
+  background: #fee4e2;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .admin-banners-page {
+    padding: 20px;
+  }
+
+  .admin-banner-item {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+
+  .admin-banner-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-banners-page {
+    padding: 14px;
+  }
+
+  .admin-banners-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-banners-heading h1 {
+    font-size: 23px;
+  }
+
+  .banner-upload-card {
+    padding: 16px;
+  }
+
+  .admin-banner-item {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 12px;
+  }
+
+  .admin-banner-item > img {
+    height: auto;
+    max-height: 200px;
+  }
+
+  .admin-banner-actions {
+    grid-column: auto;
+  }
+
+  .admin-banner-actions button {
+    flex: 1;
+  }
+
+  .banner-primary-btn {
+    width: 100%;
+  }
+}
