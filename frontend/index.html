@@ -1,37 +1,32 @@
+
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-
-  <link rel="icon" type="image/png" href="/assets/images/kaslogo.png" />
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   />
 
-  <meta
-    name="theme-color"
-    content="#0637a5"
-  />
+  <meta name="theme-color" content="#0637a5" />
 
   <!-- =========================================
-       DEFAULT SEO
+       PRIMARY SEO
   ========================================= -->
 
   <title>
-    Khel Aur Shiksha Foundation | Football, Education & Youth Development
+    Khel Aur Shiksha Foundation | NGO in Sadullah Nagar, Balrampur
   </title>
 
   <meta
     name="description"
-    content="Khel Aur Shiksha Foundation empowers young people through football, education and community initiatives, helping children develop confidence, discipline, teamwork and opportunities for a brighter future."
+    content="Khel Aur Shiksha Foundation (KASF) is a registered NGO based in Sadullah Nagar, Balrampur, Uttar Pradesh, India, empowering children and rural communities through football, sports, education and youth development."
   />
 
   <meta
     name="keywords"
-    content="Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation football, Khel Aur Shiksha Foundation education, Khel Aur Shiksha Foundation youth development, Khel Aur Shiksha Foundation football training, Khel Aur Shiksha Foundation football academy, Khel Aur Shiksha Foundation football camps, Khel Aur Shiksha Foundation community programs"
+    content="Khel Aur Shiksha Foundation, KAS Foundation, KASF, NGO in Sadullah Nagar, NGO in Balrampur, NGOs in Balrampur Uttar Pradesh, NGO in Uttar Pradesh, registered NGO in Uttar Pradesh, sports NGO in Balrampur, education NGO in Balrampur, football NGO in Uttar Pradesh, rural development NGO, child development, football training, sports education, youth development, community development"
   />
 
   <meta
@@ -44,18 +39,36 @@
     content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
   />
 
+  <meta
+    name="referrer"
+    content="strict-origin-when-cross-origin"
+  />
+
+  <!-- Canonical URL -->
+  <link
+    rel="canonical"
+    href="https://kasf.org.in/"
+  />
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/images/kaslogo.png"
+  />
+
   <!-- =========================================
-       OPEN GRAPH
+       OPEN GRAPH / FACEBOOK
   ========================================= -->
 
   <meta
     property="og:title"
-    content="Khel Aur Shiksha Foundation | Football, Education & Youth Development"
+    content="Khel Aur Shiksha Foundation | NGO in Sadullah Nagar, Balrampur"
   />
 
   <meta
     property="og:description"
-    content="Khel Aur Shiksha Foundation empowers young people through football, education and community initiatives, helping children develop confidence, discipline, teamwork and opportunities for a brighter future."
+    content="Discover Khel Aur Shiksha Foundation (KASF), a registered NGO in Sadullah Nagar, Balrampur, Uttar Pradesh, working to empower children and rural communities through football, sports and education."
   />
 
   <meta
@@ -64,13 +77,28 @@
   />
 
   <meta
+    property="og:url"
+    content="https://kasf.org.in/"
+  />
+
+  <meta
     property="og:site_name"
     content="Khel Aur Shiksha Foundation"
   />
 
   <meta
+    property="og:locale"
+    content="en_IN"
+  />
+
+  <meta
     property="og:image"
-    content="/assets/images/kaslogo.png"
+    content="https://kasf.org.in/assets/images/kaslogo.png"
+  />
+
+  <meta
+    property="og:image:alt"
+    content="Khel Aur Shiksha Foundation logo"
   />
 
   <!-- =========================================
@@ -84,30 +112,72 @@
 
   <meta
     name="twitter:title"
-    content="Khel Aur Shiksha Foundation | Football, Education & Youth Development"
+    content="Khel Aur Shiksha Foundation | NGO in Balrampur"
   />
 
   <meta
     name="twitter:description"
-    content="Khel Aur Shiksha Foundation empowers young people through football, education and community initiatives, helping children develop confidence, discipline, teamwork and opportunities for a brighter future."
+    content="KASF empowers children and rural communities in Uttar Pradesh through football, sports, education and youth development."
   />
 
   <meta
     name="twitter:image"
-    content="/assets/images/kaslogo.png"
+    content="https://kasf.org.in/assets/images/kaslogo.png"
   />
+
+  <meta
+    name="twitter:image:alt"
+    content="Khel Aur Shiksha Foundation logo"
+  />
+
+  <!-- =========================================
+       ORGANIZATION STRUCTURED DATA
+  ========================================= -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "@id": "https://kasf.org.in/#organization",
+    "name": "Khel Aur Shiksha Foundation",
+    "alternateName": [
+      "KAS Foundation",
+      "KASF"
+    ],
+    "url": "https://kasf.org.in/",
+    "logo": "https://kasf.org.in/assets/images/kaslogo.png",
+    "description": "Khel Aur Shiksha Foundation is a registered non-governmental organization in Uttar Pradesh, India, focused on empowering children and rural communities through football, sports, education and youth development.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sadullah Nagar",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "IN"
+    },
+    "areaServed": [
+      {
+        "@type": "Place",
+        "name": "Sadullah Nagar, Uttar Pradesh, India"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Balrampur, Uttar Pradesh, India"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/kasfindia/",
+      "https://www.facebook.com/p/Khel-Aur-Shiksha-Foundation-61579277191096/"
+    ]
+  }
+  </script>
 
 </head>
 
 <body>
-
   <div id="root"></div>
 
   <script
     type="module"
     src="/src/main.jsx"
   ></script>
-
 </body>
-
 </html>

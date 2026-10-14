@@ -36,16 +36,16 @@ function Home() {
     const siteName = "Khel Aur Shiksha Foundation";
 
     const title =
-      "Khel Aur Shiksha Foundation | Football, Education & Youth Development";
+      "Khel Aur Shiksha Foundation | NGO in Sadullah Nagar, Balrampur";
 
     const description =
-      "Khel Aur Shiksha Foundation empowers young people through football, education and community initiatives, helping children develop confidence, discipline, teamwork and opportunities for a brighter future.";
+      "Khel Aur Shiksha Foundation (KASF) is a registered NGO based in Sadullah Nagar, Balrampur, Uttar Pradesh, India, empowering children and rural communities through football, sports, education and youth development.";
 
     const keywords =
-      "Khel Aur Shiksha Foundation, KAS Foundation, football foundation, football training, youth football, football academy, sports education, education programs, football camps, youth development, community development, grassroots football";
+      "Khel Aur Shiksha Foundation, KAS Foundation, KASF, NGO in Sadullah Nagar, NGO in Balrampur, NGOs in Balrampur Uttar Pradesh, NGO in Uttar Pradesh, registered NGO in Uttar Pradesh, sports NGO in Balrampur, football NGO in Uttar Pradesh, education NGO, rural development NGO, child development, football training, sports education, youth development, community development, grassroots football";
 
-    const currentUrl = window.location.href;
-    const siteUrl = window.location.origin;
+    const siteUrl = "https://kasf.org.in";
+    const canonicalUrl = "https://kasf.org.in/";
 
     document.title = title;
 
@@ -91,7 +91,7 @@ function Home() {
     setMeta("property", "og:title", title);
     setMeta("property", "og:description", description);
     setMeta("property", "og:type", "website");
-    setMeta("property", "og:url", currentUrl);
+    setMeta("property", "og:url", canonicalUrl);
     setMeta("property", "og:site_name", siteName);
     setMeta("property", "og:image", `${siteUrl}${logo}`);
 
@@ -102,7 +102,7 @@ function Home() {
     setMeta("name", "twitter:image", `${siteUrl}${logo}`);
 
     /* Canonical */
-    setLink("canonical", currentUrl);
+    setLink("canonical", canonicalUrl);
 
     /* Structured Data */
     let structuredData = document.getElementById(
@@ -120,9 +120,30 @@ function Home() {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: siteName,
-      url: siteUrl,
+      alternateName: ["KAS Foundation", "KASF"],
+      url: canonicalUrl,
       logo: `${siteUrl}${logo}`,
       description: description,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Sadullah Nagar",
+        addressRegion: "Uttar Pradesh",
+        addressCountry: "IN"
+      },
+      areaServed: [
+        {
+          "@type": "AdministrativeArea",
+          name: "Balrampur, Uttar Pradesh, India"
+        },
+        {
+          "@type": "AdministrativeArea",
+          name: "Uttar Pradesh, India"
+        }
+      ],
+      sameAs: [
+        "https://www.instagram.com/kasfindia/",
+        "https://www.facebook.com/p/Khel-Aur-Shiksha-Foundation-61579277191096/"
+      ],
     });
 
     return () => {
@@ -367,10 +388,10 @@ function Home() {
               </h1>
 
               <p>
-                AT THE KAS FOUNDATION, WE BELIEVE EVERY CHILD DESERVES
-                A CHANCE TO DREAM. THROUGH FOOTBALL, WE EMPOWER
-                UNDERPRIVILEGED YOUTH, NURTURING TALENT, DISCIPLINE,
-                AND OPPORTUNITY BOTH ON AND OFF THE FIELD.
+                KHEL AUR SHIKSHA FOUNDATION (KASF) IS A REGISTERED NGO BASED IN
+                SADULLAH NAGAR, BALRAMPUR, UTTAR PRADESH, INDIA, EMPOWERING
+                CHILDREN AND RURAL COMMUNITIES THROUGH FOOTBALL, SPORTS,
+                EDUCATION, AND YOUTH DEVELOPMENT.
               </p>
             </div>
 
@@ -428,9 +449,10 @@ function Home() {
 
             <p>
               We work especially with children and youth from
-              underprivileged communities, helping them build
-              confidence, discipline, teamwork, and the skills
-              needed for a brighter future.
+              underprivileged and rural communities, including communities
+              in Sadullah Nagar, Balrampur, Uttar Pradesh. Through football training,
+              sports and education programs, we help young people build
+              confidence, discipline, teamwork, and skills for a brighter future.
             </p>
 
             <Link
@@ -566,9 +588,9 @@ function Home() {
 
             <p>
               We’re more than a football foundation — we’re a
-              movement changing lives through sport. Operating in the
-              majority of Uttar pradesh and catering to kids from all
-              across the country, Khel Aur Shiksha Foundation is
+              movement changing lives through sport. Working with children
+              and communities in Uttar Pradesh, including Sadullah Nagar
+              and Balrampur, Khel Aur Shiksha Foundation is
               transforming football at the grassroots level with
               impact that speaks for itself:
             </p>
@@ -577,7 +599,7 @@ function Home() {
 
             <ul>
               <li>
-                Biggest football development NGO in Uttar pradesh.
+                Football development and youth empowerment through grassroots programs.
               </li>
 
               <li>
