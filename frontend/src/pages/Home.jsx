@@ -22,6 +22,8 @@ import moosa from "../assets/images/moosa.jpeg";
 
 import heroVideo from "../assets/videos/hero-video.mp4";
 import logo from "../assets/images/logo.png";
+import BannerPopup from "../components/BannerPopup";
+
 
 function Home() {
   const phoneNumber = "+919004630950";
@@ -332,6 +334,7 @@ function Home() {
 
   return (
     <div className="home-page">
+      <BannerPopup />
       {/* =====================================================
           HERO SECTION
       ===================================================== */}

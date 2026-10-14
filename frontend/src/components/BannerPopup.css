@@ -1,1 +1,199 @@
+.banner-popup-overlay {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 99999;
+  width: min(350px, calc(100vw - 36px));
+  padding: 0;
+  background: transparent;
+  pointer-events: none;
+  animation: popupFadeIn 0.25s ease-out;
+}
 
+.banner-popup-modal {
+  position: relative;
+  width: 100%;
+  max-height: 75vh;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e5eaf2;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+  animation: popupSlideIn 0.3s ease-out;
+}
+
+.banner-popup-image {
+  display: block;
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  object-position: center 35%;
+  background: #f1f5f9;
+}
+
+.banner-popup-content {
+  padding: 15px 16px 16px;
+}
+
+.banner-popup-category {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 4px 9px;
+  color: #0756bd;
+  background: #eaf2ff;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.banner-popup-title {
+  margin: 0 28px 8px 0;
+  color: #102b55;
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.banner-popup-description {
+  display: -webkit-box;
+  margin: 0 0 13px;
+  color: #586579;
+  font-size: 13px;
+  line-height: 1.55;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.banner-popup-learn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 14px;
+  color: #fff;
+  background: #0756bd;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.banner-popup-learn-more:hover {
+  background: #063f91;
+  transform: translateY(-1px);
+}
+
+.banner-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.banner-popup-close:hover {
+  background: #0756bd;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .banner-popup-overlay {
+    left: 12px;
+    bottom: 12px;
+    width: min(270px, calc(100vw - 24px));
+  }
+
+  .banner-popup-modal {
+    max-height: 70vh;
+    border-radius: 13px;
+  }
+
+  .banner-popup-image {
+    height: 125px;
+  }
+
+  .banner-popup-content {
+    padding: 11px 12px 12px;
+  }
+
+  .banner-popup-category {
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+
+  .banner-popup-title {
+    margin-bottom: 6px;
+    font-size: 16px;
+  }
+
+  .banner-popup-description {
+    margin-bottom: 10px;
+    font-size: 12px;
+    -webkit-line-clamp: 3;
+  }
+
+  .banner-popup-learn-more {
+    min-height: 38px;
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .banner-popup-close {
+    top: 7px;
+    right: 7px;
+    width: 29px;
+    height: 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-popup-overlay,
+  .banner-popup-modal {
+    animation: none;
+  }
+
+  .banner-popup-learn-more {
+    transition: none;
+  }
+}
