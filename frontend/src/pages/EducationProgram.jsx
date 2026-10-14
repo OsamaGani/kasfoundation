@@ -93,7 +93,7 @@ function EducationProgram() {
               Hammad Khalid from Pakpattan appeared in the TGF trials held in
               Tandlianwala, Faisalabad, and was selected for the program. As a
               talented goalkeeper, he is now receiving professional training at
-              the Lahore Center of The Grassroots Foundation.
+              the Lahore Center of The kasf Foundation.
             </p>
 
             <p>
@@ -106,7 +106,7 @@ function EducationProgram() {
 
             <p>
               This shows that TGF is not only about football, it is about
-              building futures beyond the game. The Grassroots Foundation
+              building futures beyond the game. The kasf Foundation
               believes in empowering young players both on and off the field.
               Even if a player may not continue professionally in football due
               to family or life circumstances, they can still grow into
@@ -114,7 +114,7 @@ function EducationProgram() {
             </p>
 
             <p>
-              That is what the Grassroots Foundation is truly all about:
+              That is what the kasf Foundation is truly all about:
               creating opportunities, shaping character, and building a better
               future for every child.
             </p>
@@ -132,7 +132,7 @@ function EducationProgram() {
             <h2>BUILDING FUTURES BEYOND FOOTBALL – WALEED KHALID’S STORY</h2>
 
             <p>
-              The Grassroots Foundation discovered talented player Waleed Khalid
+              The kasf Foundation discovered talented player Waleed Khalid
               from Tandilyawala through trials conducted by TGF. After being
               selected, he moved to Lahore, where he is now receiving
               professional football training at the TGF Lahore center.
@@ -181,7 +181,7 @@ function EducationProgram() {
           <h2>EDUCATION GOES HAND IN HAND WITH FOOTBALL</h2>
 
           <p>
-            At The Grassroots Foundation, football and education go hand in
+            At The kasf Foundation, football and education go hand in
             hand. The foundation believes that young athletes should have the
             opportunity to develop their football skills while also building a
             strong academic foundation for their future.

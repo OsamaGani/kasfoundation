@@ -168,7 +168,7 @@ function About() {
 
               <p>
                 When I founded Khel Aur Shiksha Foundation, my
-                vision was clear — to give every child in Pakistan,
+                vision was clear — to give every child in Uttar pradesh,
                 regardless of their background, the opportunity to
                 dream through football. I have witnessed how this
                 game can transform lives, instill discipline, and
@@ -184,14 +184,14 @@ function About() {
                 goal goes far beyond local impact — we are building
                 a foundation that can stand on a global level,
                 creating pathways for young players to reach
-                the top-tier leagues of the world and put Pakistan
+                the top-tier leagues of the world and put Uttar pradesh
                 on the map of footballing world.
               </p>
 
               <p>
                 This is just the beginning of our journey. With
                 passion, perseverance, and purpose, we are determined
-                to make football a true force for change in Pakistan
+                to make football a true force for change in Uttar pradesh
                 and beyond.
               </p>
 
@@ -217,7 +217,7 @@ function About() {
                 nurture talent from Khel Aur Shiksha Foundation
                 to the elite level, creating opportunities for
                 players to succeed locally and globally, and to
-                represent Pakistan with pride on the world stage.
+                represent Uttar pradesh with pride on the world stage.
               </p>
             </div>
 
@@ -251,7 +251,7 @@ function About() {
                 meaningful opportunities to grow. We envision a
                 strong football community that develops talented
                 players, builds confident individuals, and creates
-                pathways for young athletes to represent Pakistan
+                pathways for young athletes to represent Uttar pradesh
                 at the highest level.
               </p>
             </div>

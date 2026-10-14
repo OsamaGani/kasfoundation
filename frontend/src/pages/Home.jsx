@@ -567,7 +567,7 @@ function Home() {
             <p>
               We’re more than a football foundation — we’re a
               movement changing lives through sport. Operating in the
-              majority of Pakistan and catering to kids from all
+              majority of Uttar pradesh and catering to kids from all
               across the country, Khel Aur Shiksha Foundation is
               transforming football at the grassroots level with
               impact that speaks for itself:
@@ -577,7 +577,7 @@ function Home() {
 
             <ul>
               <li>
-                Biggest football development NGO in Pakistan.
+                Biggest football development NGO in Uttar pradesh.
               </li>
 
               <li>
@@ -643,7 +643,7 @@ function Home() {
               </p>
 
               <p>
-                From <strong>Grassroots (U10–U12)</strong> where kids
+                From <strong>kasf (U10–U12)</strong> where kids
                 discover the joy of football, to{" "}
                 <strong>Elite (U17)</strong> where players are
                 prepared for professional opportunities, Khel Aur

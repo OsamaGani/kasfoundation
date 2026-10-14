@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { X, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +23,7 @@ export default function BannerPopup() {
         const response = await fetch(API_URL);
 
         if (!response.ok) {
-          throw new Error("Banner API request failed");
+          throw new Error("Unable to load the event announcement.");
         }
 
         const data = await response.json();
@@ -40,9 +41,15 @@ export default function BannerPopup() {
         if (cancelled || !activeBanner) return;
 
         setBanner(activeBanner);
-        setVisible(true);
+
+        // Let React render the popup before starting its entrance animation.
+        requestAnimationFrame(() => {
+          if (!cancelled) setVisible(true);
+        });
       } catch (error) {
-        console.error("Homepage banner error:", error);
+        if (!cancelled) {
+          console.error("Homepage banner error:", error);
+        }
       }
     }
 
@@ -64,22 +71,27 @@ export default function BannerPopup() {
     navigate(`/events/${banner._id}`);
   }
 
-  if (!visible || !banner) return null;
+  if (!banner) return null;
 
   return (
-    <div className="banner-popup-overlay">
-      <div
+    <div
+      className={`banner-popup-overlay${visible ? " is-visible" : ""}`}
+      aria-hidden={!visible}
+    >
+      <section
         className="banner-popup-modal"
         role="dialog"
         aria-label="KAS Foundation event announcement"
+        aria-modal="false"
       >
         <button
           type="button"
           className="banner-popup-close"
           onClick={closePopup}
-          aria-label="Close banner"
+          aria-label="Close event announcement"
+          tabIndex={visible ? 0 : -1}
         >
-          <X size={18} />
+          <X size={17} />
         </button>
 
         <img
@@ -110,12 +122,13 @@ export default function BannerPopup() {
             type="button"
             className="banner-popup-learn-more"
             onClick={openDetails}
+            tabIndex={visible ? 0 : -1}
           >
-            Learn More
+            <span>Learn More</span>
             <ArrowRight size={16} />
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

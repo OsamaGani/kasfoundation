@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./Footer.css";
 import logo from "../assets/images/logo.png";
@@ -64,7 +65,6 @@ const Footer = () => {
 
         {/* LEFT SECTION */}
         <div className="footer-about">
-
           <div className="footer-logo">
             <img
               src={logo}
@@ -185,9 +185,11 @@ const Footer = () => {
 
             {/* Facebook */}
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61579277191096&mibextid=wwXIfr"
               aria-label="Facebook"
               className="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <svg viewBox="0 0 24 24">
                 <path
@@ -199,7 +201,7 @@ const Footer = () => {
 
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/kasfindia?stkn=MWM1MDdweWl5eW9scQ=="
+              href="https://instagram.com/khelaurshikshafoundation?xtok=cW83aDJnNHR2MW9l&utm_source=qr"
               aria-label="Instagram"
               className="social-icon"
               target="_blank"
@@ -231,63 +233,6 @@ const Footer = () => {
                   cy="6.5"
                   r="1"
                   fill="currentColor"
-                />
-              </svg>
-            </a>
-
-            {/* LinkedIn */}
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="social-icon"
-            >
-              <svg viewBox="0 0 24 24">
-                <rect
-                  x="4"
-                  y="4"
-                  width="16"
-                  height="16"
-                  rx="1"
-                  fill="currentColor"
-                />
-
-                <rect
-                  x="7"
-                  y="10"
-                  width="2"
-                  height="7"
-                  fill="#ffffff"
-                />
-
-                <circle
-                  cx="8"
-                  cy="7.5"
-                  r="1"
-                  fill="#ffffff"
-                />
-
-                <path
-                  d="M12 10h2v1c.5-.8 1.4-1.3 2.5-1.3 2 0 2.5 1.3 2.5 3.5V17h-2v-3.3c0-1.1-.4-1.8-1.3-1.8s-1.7.7-1.7 2V17h-2v-7Z"
-                  fill="#ffffff"
-                />
-              </svg>
-            </a>
-
-            {/* YouTube */}
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="social-icon"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2C1.9 9 1.9 12 1.9 12s0 3 .5 4.8a2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8Z"
-                  fill="currentColor"
-                />
-
-                <path
-                  d="m10 15.5 5-3.5-5-3.5v7Z"
-                  fill="#ffffff"
                 />
               </svg>
             </a>

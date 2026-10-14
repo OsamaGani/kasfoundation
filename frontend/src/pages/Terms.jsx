@@ -304,7 +304,7 @@ function Terms() {
 
                 <li>
                   Unauthorized use of our content, including our slogan
-                  <strong> “#GrassrootsToGlory”</strong>, logos, or training
+                  <strong> “#kasfToGlory”</strong>, logos, or training
                   materials, is prohibited without prior written consent.
                 </li>
 
