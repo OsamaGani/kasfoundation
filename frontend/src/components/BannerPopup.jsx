@@ -111,7 +111,7 @@ export default function BannerPopup() {
             className="banner-popup-learn-more"
             onClick={openDetails}
           >
-            {banner.buttonText || "Learn More"}
+            Learn More
             <ArrowRight size={16} />
           </button>
         </div>

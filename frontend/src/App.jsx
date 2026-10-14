@@ -45,6 +45,7 @@ import Venues from "./pages/Venues";
 
 import Programs from "./pages/Programs";
 import ProgramDetail from "./pages/ProgramDetail";
+import EventDetails from "./pages/EventDetails";
 
 /* =========================================
    ADMIN
@@ -220,6 +221,10 @@ function App() {
           <Route
             path="/"
             element={<Home />}
+          />
+          <Route
+            path="/events/:id"
+            element={<EventDetails />}
           />
 
           {/* =====================================
