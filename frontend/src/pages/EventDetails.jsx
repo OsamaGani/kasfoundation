@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -192,30 +191,33 @@ Thank you!`;
               </div>
             </div>
 
-            {/* WhatsApp Interest Button */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="event-whatsapp-button"
-            >
-              <MessageCircle size={20} />
-              <span>I'm Interested</span>
-              <ArrowUpRight size={18} />
-            </a>
-
-            {/* Optional registration button */}
-            {registrationUrl && (
+            {/* ✅ Action buttons row (side-by-side on desktop, stacked on mobile) */}
+            <div className="event-actions-row">
+              {/* WhatsApp Interest Button */}
               <a
-                href={registrationUrl}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="event-primary-button"
+                className="event-whatsapp-button"
               >
-                {event.buttonText || "Register Now"}
-                <ArrowUpRight size={19} />
+                <MessageCircle size={20} />
+                <span>I'm Interested</span>
+                <ArrowUpRight size={18} />
               </a>
-            )}
+
+              {/* Optional registration button */}
+              {registrationUrl && (
+                <a
+                  href={registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="event-primary-button"
+                >
+                  {event.buttonText || "Register Now"}
+                  <ArrowUpRight size={19} />
+                </a>
+              )}
+            </div>
 
             <p className="event-hero-footnote">
               Discover opportunities. Participate. Make an impact.

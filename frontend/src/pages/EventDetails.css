@@ -1,7 +1,9 @@
-
 /* =========================================
    KAS FOUNDATION - EVENT DETAILS PAGE
    Responsive Desktop, Tablet and Mobile
+   Fixed Navbar Safe
+   Full Image (No Crop) - No Side Space
+   ✅ Buttons side-by-side on ALL screens
 ========================================= */
 
 .event-details-page,
@@ -34,6 +36,7 @@
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
+  margin-top: 100px; /* ✅ fixed navbar safe */
 }
 
 /* Breadcrumb */
@@ -64,7 +67,7 @@
 .event-hero {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  align-items: stretch;
+  align-items: start;
   gap: 0;
   overflow: hidden;
 
@@ -82,15 +85,16 @@
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 480px;
+  min-height: 0;
+  height: auto;
 
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 18px;
+  gap: 0;
 
   overflow: hidden;
-  padding: 34px 28px;
+  padding: 0;
 
   background:
     radial-gradient(ellipse at 50% 45%, #e0eaff 0%, transparent 68%),
@@ -107,23 +111,23 @@
   pointer-events: none;
 }
 
-/* Desktop poster: full image, no cropping */
+/* Poster image: full width, no crop, no side space */
 
 .event-details-image {
   position: relative;
   z-index: 1;
 
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 540px;
+  max-height: none;
 
   object-fit: contain;
   object-position: center;
 
-  border-radius: 12px;
-  box-shadow: 0 18px 45px rgba(13, 35, 79, 0.2);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .event-poster-placeholder {
@@ -140,7 +144,7 @@
   gap: 15px;
 
   border: 1px dashed #a9bfeb;
-  border-radius: 16px;
+  border-radius: 0;
   color: var(--event-blue);
   font-weight: 700;
 }
@@ -150,6 +154,7 @@
   z-index: 1;
 
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -158,6 +163,9 @@
   font-size: 12px;
   font-weight: 600;
   text-align: center;
+
+  padding: 14px 12px;
+  background: #ffffff;
 }
 
 /* Event information */
@@ -293,59 +301,52 @@
   overflow-wrap: break-word;
 }
 
-/* Registration button */
+/* =========================================
+   ✅ Action buttons row
+   ALWAYS side-by-side (desktop + mobile)
+========================================= */
 
-.event-primary-button {
-  display: inline-flex;
-  min-height: 46px;
-
+.event-actions-row {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;         /* ✅ kabhi stack nahi hoga */
+  gap: 12px;
 
-  margin-top: 27px;
-  padding: 0 21px;
-
-  border: 0;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #1755cb, #07399e);
-  box-shadow: 0 8px 20px rgba(18, 71, 184, 0.19);
-
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  margin-top: 22px;
 }
 
-.event-primary-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(18, 71, 184, 0.25);
+.event-actions-row .event-whatsapp-button,
+.event-actions-row .event-primary-button {
+  margin-top: 0;
+  flex: 1 1 0;               /* ✅ dono barabar width lenge */
+  min-width: 0;              /* ✅ overflow nahi hoga */
+  width: auto;
 }
 
 /* WhatsApp - I'm Interested */
 
 .event-whatsapp-button {
   display: inline-flex;
-  width: fit-content;
-  min-height: 50px;
+  min-height: 48px;
 
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 
-  margin-top: 18px;
-  padding: 13px 22px;
+  padding: 12px 16px;
 
   border: 1px solid #25d366;
   border-radius: 10px;
   background: #25d366;
 
   color: #ffffff;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;       /* ✅ text ek line mein rahe */
 
   cursor: pointer;
 
@@ -366,6 +367,37 @@
 .event-whatsapp-button:focus-visible {
   outline: 3px solid rgba(37, 211, 102, 0.35);
   outline-offset: 3px;
+}
+
+/* Registration button */
+
+.event-primary-button {
+  display: inline-flex;
+  min-height: 48px;
+
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 16px;
+
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1755cb, #07399e);
+  box-shadow: 0 8px 20px rgba(18, 71, 184, 0.19);
+
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;       /* ✅ text ek line mein rahe */
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(18, 71, 184, 0.25);
 }
 
 .event-hero-footnote {
@@ -600,11 +632,14 @@
   }
 }
 
-/* Large desktop */
+/* =========================================
+   Large desktop
+========================================= */
 
 @media (min-width: 1400px) {
   .event-details-container {
     max-width: 1220px;
+    margin-top: 110px;
   }
 
   .event-hero-content {
@@ -612,11 +647,17 @@
   }
 }
 
-/* Tablet */
+/* =========================================
+   Tablet (600px - 900px)
+========================================= */
 
 @media (max-width: 900px) {
   .event-details-page {
     padding: 34px 20px 60px;
+  }
+
+  .event-details-container {
+    margin-top: 90px;
   }
 
   .event-hero {
@@ -624,12 +665,16 @@
   }
 
   .event-poster-panel {
-    min-height: 400px;
-    padding: 23px 18px;
+    min-height: 0;
+    padding: 0;
   }
 
   .event-details-image {
-    max-height: 450px;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
   }
 
   .event-hero-content {
@@ -650,9 +695,25 @@
   .event-about-section {
     padding: 31px 28px 23px;
   }
+
+  /* Tablet: side-by-side, equal width */
+  .event-actions-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .event-actions-row .event-whatsapp-button,
+  .event-actions-row .event-primary-button {
+    flex: 1 1 0;
+    width: auto;
+  }
 }
 
-/* Mobile */
+/* =========================================
+   Mobile (max-width: 600px)
+   ✅ Buttons STILL side-by-side
+========================================= */
 
 @media (max-width: 600px) {
   .event-details-page {
@@ -661,6 +722,7 @@
 
   .event-details-container {
     width: 100%;
+    margin-top: 80px;
   }
 
   .event-breadcrumb {
@@ -678,10 +740,6 @@
     border-radius: 18px;
   }
 
-  /*
-    Poster height is controlled by max-height.
-    The full image stays visible with object-fit: contain.
-  */
   .event-poster-panel {
     display: flex;
     width: 100%;
@@ -689,12 +747,12 @@
     min-height: 0;
     height: auto;
 
-    align-items: center;
+    align-items: stretch;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
 
-    padding: 10px 12px 12px;
+    padding: 0 !important;
     margin: 0;
     overflow: hidden;
   }
@@ -707,23 +765,19 @@
     position: relative;
     display: block;
 
-    /*
-      Limit poster height without cropping.
-      Width follows the original image ratio.
-    */
-    width: auto !important;
+    width: 100% !important;
     height: auto !important;
     max-width: 100%;
-    max-height: 390px !important;
+    max-height: none !important;
 
     object-fit: contain !important;
     object-position: center;
 
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(13, 35, 79, 0.15);
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .event-poster-placeholder {
@@ -737,12 +791,13 @@
     justify-content: center;
     font-size: 11px;
     text-align: center;
+    padding: 12px 8px;
   }
 
   .event-hero-content {
     width: 100%;
     min-width: 0;
-    padding: 25px 19px 27px;
+    padding: 25px 16px 27px;    /* ✅ side padding thodi kam */
   }
 
   .event-brand-label {
@@ -794,20 +849,37 @@
     font-size: 11px;
   }
 
-  .event-whatsapp-button {
-    width: 100%;
-    min-height: 46px;
-    margin-top: 17px;
-    padding: 11px 15px;
-    font-size: 14px;
+  /* ✅ Mobile: STILL side-by-side, compact */
+  .event-actions-row {
+    display: flex !important;
+    flex-direction: row !important;   /* ✅ side-by-side */
+    flex-wrap: nowrap !important;     /* ✅ stack nahi hoga */
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+
+    width: 100% !important;
+    margin-top: 18px !important;
   }
 
-  .event-primary-button {
-    width: 100%;
-    min-height: 43px;
-    margin-top: 15px;
-    padding: 0 17px;
-    font-size: 13px;
+  .event-actions-row .event-whatsapp-button,
+  .event-actions-row .event-primary-button {
+    flex: 1 1 0 !important;           /* ✅ dono barabar */
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    margin-top: 0 !important;
+    padding: 10px 8px !important;     /* ✅ compact padding */
+    font-size: 12px !important;       /* ✅ chhota font */
+    gap: 5px !important;
+    white-space: nowrap !important;
+  }
+
+  .event-actions-row .event-whatsapp-button svg,
+  .event-actions-row .event-primary-button svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0;
   }
 
   .event-hero-footnote {
@@ -893,23 +965,33 @@
   }
 }
 
-/* Extra-small phones */
+/* =========================================
+   Extra-small phones (max-width: 380px)
+   ✅ Buttons STILL side-by-side (aur compact)
+========================================= */
 
 @media (max-width: 380px) {
   .event-details-page {
     padding: 12px 8px 30px;
   }
 
+  .event-details-container {
+    margin-top: 74px;
+  }
+
   .event-poster-panel {
-    padding: 8px 8px 10px;
+    padding: 0 !important;
   }
 
   .event-details-image {
-    max-height: 340px !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
   }
 
   .event-hero-content {
-    padding: 22px 15px 24px;
+    padding: 22px 12px 24px;
   }
 
   .event-hero-content h1 {
@@ -926,6 +1008,29 @@
 
   .event-bottom-banner {
     padding: 13px 10px;
+  }
+
+  /* ✅ Small phone: still side-by-side, more compact */
+  .event-actions-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+  }
+
+  .event-actions-row .event-whatsapp-button,
+  .event-actions-row .event-primary-button {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    padding: 9px 6px !important;
+    font-size: 11px !important;
+    min-height: 42px !important;
+    gap: 4px !important;
+  }
+
+  .event-actions-row .event-whatsapp-button svg,
+  .event-actions-row .event-primary-button svg {
+    width: 12px !important;
+    height: 12px !important;
   }
 }
 
@@ -945,55 +1050,5 @@
   .event-primary-button,
   .event-whatsapp-button {
     transition: none;
-  }
-}
-
-/* FIX: Remove left-right space around poster */
-.event-poster-panel {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.event-details-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .event-poster-panel {
-    width: 100%;
-    padding: 0 !important;
-    gap: 10px;
-    align-items: stretch;
-  }
-
-  .event-details-image {
-    width: 100% !important;
-    max-width: 100%;
-    height: auto !important;
-    margin: 0;
-    border-radius: 0;
-    object-fit: contain !important;
-    box-shadow: none;
-  }
-
-  .event-poster-caption {
-    padding: 0 8px 10px;
-    margin: 0;
-  }
-}
-
-/* Small phones */
-@media (max-width: 380px) {
-  .event-poster-panel {
-    padding: 0 !important;
-  }
-
-  .event-details-image {
-    width: 100% !important;
-    height: auto !important;
   }
 }
