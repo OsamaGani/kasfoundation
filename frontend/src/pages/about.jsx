@@ -394,7 +394,7 @@ function About() {
 
               <strong className="about-founder">
 
-                – Saud Yousaf, Founder
+                – Kaleem A. Yousuf, Founder
 
               </strong>
 

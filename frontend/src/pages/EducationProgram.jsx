@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from "react";
 import "./EducationProgram.css";
 
@@ -58,12 +59,12 @@ function EducationProgram() {
 
       <section className="education-page-hero">
         <div className="education-page-hero-content">
-          <h1>EDUCATION PROGRAM</h1>
+          <h1>EDUCATION & LEARNING PROGRAM</h1>
         </div>
       </section>
 
       {/* =====================================================
-          HAMMAD KHALID
+          EDUCATION AND YOUTH DEVELOPMENT
       ===================================================== */}
 
       <section
@@ -87,71 +88,73 @@ function EducationProgram() {
           </div>
 
           <div className="education-text-content">
-            <h2>FROM PAKPATTAN TO LAHORE: HAMMAD KHALID’S JOURNEY WITH TGF</h2>
+            <h2>EDUCATION: BUILDING A BRIGHTER FUTURE FOR EVERY CHILD</h2>
 
             <p>
-              Hammad Khalid from Pakpattan appeared in the TGF trials held in
-              Tandlianwala, Faisalabad, and was selected for the program. As a
-              talented goalkeeper, he is now receiving professional training at
-              the Lahore Center of The kasf Foundation.
+              Khel Aur Shiksha Foundation believes that education
+              plays an important role in helping children and young
+              people develop their knowledge, skills and confidence.
+              Learning can open new opportunities and help young
+              people work towards their ambitions and build a
+              brighter future.
             </p>
 
             <p>
-              Hammad also wanted to continue his education alongside football.
-              Understanding the importance of academics, TGF helped secure his
-              admission to Crescent School Lahore so he could continue his
-              studies without any obstacles. From books to bags, school support
-              to football training, everything is being facilitated by TGF.
+              Education is important alongside sports and physical
+              development. By encouraging young people to value
+              learning, discipline, teamwork and personal growth,
+              we aim to promote a balanced approach to education
+              and life skills.
             </p>
 
             <p>
-              This shows that TGF is not only about football, it is about
-              building futures beyond the game. The kasf Foundation
-              believes in empowering young players both on and off the field.
-              Even if a player may not continue professionally in football due
-              to family or life circumstances, they can still grow into
-              impactful, educated, and responsible individuals.
+              Every child deserves encouragement to learn, explore
+              their interests and develop their abilities.
+              Khel Aur Shiksha Foundation supports the importance
+              of creating positive learning environments where
+              young people can grow with confidence and motivation.
             </p>
 
             <p>
-              That is what the kasf Foundation is truly all about:
-              creating opportunities, shaping character, and building a better
-              future for every child.
+              Our vision is to highlight the value of education
+              in building knowledgeable, confident and responsible
+              individuals who can contribute positively to their
+              families and communities.
             </p>
           </div>
         </div>
       </section>
 
       {/* =====================================================
-          WALEED KHALID
+          EDUCATION AND PERSONAL GROWTH
       ===================================================== */}
 
       <section ref={addSectionRef} className="education-content-section">
         <div className="education-content-container education-reverse">
           <div className="education-text-content">
-            <h2>BUILDING FUTURES BEYOND FOOTBALL – WALEED KHALID’S STORY</h2>
+            <h2>LEARNING BEYOND THE CLASSROOM</h2>
 
             <p>
-              The kasf Foundation discovered talented player Waleed Khalid
-              from Tandilyawala through trials conducted by TGF. After being
-              selected, he moved to Lahore, where he is now receiving
-              professional football training at the TGF Lahore center.
+              Education involves more than academic lessons.
+              It also helps young people develop communication,
+              problem-solving, decision-making and interpersonal
+              skills. These abilities can support their personal
+              growth and prepare them to face everyday challenges.
             </p>
 
             <p>
-              But TGF is not just a football development program; it is a
-              platform that changes lives beyond the game. Understanding the
-              importance of education alongside sports, TGF ensured Waleed’s
-              admission to Crescent School so he could continue his studies
-              while pursuing his football dream.
+              Khel Aur Shiksha Foundation recognises the importance
+              of encouraging curiosity, creativity, discipline and
+              a willingness to learn. Young people benefit when
+              they are encouraged to ask questions, explore ideas
+              and work towards their goals.
             </p>
 
             <p>
-              From school admission and educational support to accommodation,
-              food, and mess and living expenses, everything is 100% funded by
-              TGF. By providing young athletes with education, professional
-              training, and a secure environment, TGF is helping players like
-              Waleed build a better future both on and off the field.
+              By promoting the value of education and lifelong
+              learning, we aim to encourage young people to
+              recognise their potential and pursue opportunities
+              for personal and academic development.
             </p>
           </div>
 
@@ -178,26 +181,31 @@ function EducationProgram() {
 
       <section ref={addSectionRef} className="education-more-section">
         <div className="education-more-container">
-          <h2>EDUCATION GOES HAND IN HAND WITH FOOTBALL</h2>
+          <h2>EDUCATION GOES HAND IN HAND WITH SPORTS</h2>
 
           <p>
-            At The kasf Foundation, football and education go hand in
-            hand. The foundation believes that young athletes should have the
-            opportunity to develop their football skills while also building a
-            strong academic foundation for their future.
+            At Khel Aur Shiksha Foundation, we believe that
+            education and sports can complement each other.
+            Sports can encourage teamwork, discipline and
+            perseverance, while education helps young people
+            develop knowledge, understanding and essential skills
+            for their future.
           </p>
 
           <p>
-            Through educational support, school admissions, study materials,
-            accommodation, and other essential facilities, TGF works to remove
-            the barriers that can prevent talented young players from continuing
-            their education.
+            A balanced approach to learning and physical activity
+            can help young people develop confidence, responsibility
+            and a positive attitude. Encouraging both education
+            and sports helps highlight the importance of
+            well-rounded personal development.
           </p>
 
           <p>
-            The goal is not only to create footballers, but to help young people
-            become educated, confident, disciplined, and responsible individuals
-            who can build successful futures both on and off the field.
+            Our vision is to encourage young people to value
+            learning, develop their abilities and work towards
+            their goals. Education can help them explore future
+            opportunities and become confident, informed and
+            responsible members of society.
           </p>
         </div>
       </section>

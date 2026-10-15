@@ -42,7 +42,7 @@ function Home() {
       "Khel Aur Shiksha Foundation (KASF) is a registered NGO based in Sadullah Nagar, Balrampur, Uttar Pradesh, India, empowering children and rural communities through football, sports, education and youth development.";
 
     const keywords =
-      "Khel Aur Shiksha Foundation, KAS Foundation, KASF, NGO in Sadullah Nagar, NGO in Balrampur, NGOs in Balrampur Uttar Pradesh, NGO in Uttar Pradesh, registered NGO in Uttar Pradesh, sports NGO in Balrampur, football NGO in Uttar Pradesh, education NGO, rural development NGO, child development, football training, sports education, youth development, community development, grassroots football";
+      "Khel Aur Shiksha Foundation, KAS Foundation, KASF, NGO in Sadullah Nagar, NGO in Balrampur, NGOs in Balrampur Uttar Pradesh, NGO in Uttar Pradesh, registered NGO in Uttar Pradesh, sports NGO in Balrampur, football NGO in Uttar Pradesh, education NGO, rural development NGO, child development, football training, sports education, youth development, community development, kasf football";
 
     const siteUrl = "https://kasf.org.in";
     const canonicalUrl = "https://kasf.org.in/";
@@ -591,7 +591,7 @@ function Home() {
               movement changing lives through sport. Working with children
               and communities in Uttar Pradesh, including Sadullah Nagar
               and Balrampur, Khel Aur Shiksha Foundation is
-              transforming football at the grassroots level with
+              transforming football at the kasf level with
               impact that speaks for itself:
             </p>
 
@@ -599,7 +599,7 @@ function Home() {
 
             <ul>
               <li>
-                Football development and youth empowerment through grassroots programs.
+                Football development and youth empowerment through kasf programs.
               </li>
 
               <li>

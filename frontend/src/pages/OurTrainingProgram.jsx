@@ -1,7 +1,10 @@
+
 import { useEffect, useRef } from "react";
+
 import "./OurTrainingProgram.css";
 
 import programImage from "../assets/images/about-left1.jpeg";
+
 import trainingImage from "../assets/images/about-right1.jpeg";
 
 function OurTrainingProgram() {
@@ -23,15 +26,16 @@ function OurTrainingProgram() {
     const siteName = "Khel Aur Shiksha Foundation";
 
     const title =
-      "Football Training Program | Khel Aur Shiksha Foundation";
+      "Sports & Education Programs | Khel Aur Shiksha Foundation";
 
     const description =
-      "Explore the football training and player development programs of Khel Aur Shiksha Foundation, helping young players build technical skills, discipline, teamwork, fitness and confidence.";
+      "Discover Khel Aur Shiksha Foundation's focus on sports, football, education and youth development, promoting teamwork, discipline, confidence and community growth.";
 
     const keywords =
-      "Khel Aur Shiksha Foundation, Khel Aur Shiksha, KAS Foundation, Khel Aur Shiksha Foundation training program, Khel Aur Shiksha Foundation football training, Khel Aur Shiksha Foundation football development, Khel Aur Shiksha Foundation player development, Khel Aur Shiksha Foundation football coaching, Khel Aur Shiksha Foundation training centers, Khel Aur Shiksha Foundation football academy";
+      "Khel Aur Shiksha Foundation, KAS Foundation, Khel Aur Shiksha, sports and education foundation, football development, youth development, sports education, child development, community development, youth empowerment, sports programs, educational development, Balrampur Uttar Pradesh";
 
     const currentUrl = window.location.href;
+
     const siteUrl = window.location.origin;
 
     document.title = title;
@@ -47,7 +51,9 @@ function OurTrainingProgram() {
 
       if (!element) {
         element = document.createElement("meta");
+
         element.setAttribute(attribute, name);
+
         document.head.appendChild(element);
       }
 
@@ -64,7 +70,9 @@ function OurTrainingProgram() {
 
       if (!element) {
         element = document.createElement("link");
+
         element.setAttribute("rel", rel);
+
         document.head.appendChild(element);
       }
 
@@ -236,6 +244,7 @@ function OurTrainingProgram() {
             entry.target.classList.add(
               "training-section-visible"
             );
+
             observer.unobserve(entry.target);
           }
         });
@@ -274,7 +283,7 @@ function OurTrainingProgram() {
 
       <section className="training-page-hero">
         <div className="training-page-hero-content">
-          <h1>TRAINING PROGRAM</h1>
+          <h1>SPORTS & EDUCATION PROGRAMS</h1>
         </div>
       </section>
 
@@ -291,33 +300,35 @@ function OurTrainingProgram() {
           <div className="training-image-wrapper">
             <img
               src={programImage}
-              alt="Khel Aur Shiksha Foundation Football Training"
+              alt="Khel Aur Shiksha Foundation sports and education initiatives"
             />
           </div>
 
           <div className="training-text-content">
 
             <h2>
-              FOOTBALL DEVELOPMENT PROGRAM KHEL AUR SHIKSHA FOUNDATION
+              KHEL AUR SHIKSHA FOUNDATION SPORTS DEVELOPMENT PROGRAM
             </h2>
 
             <p>
-              Khel Aur Shiksha Foundation is committed to
-              developing the next generation of footballers by
-              providing structured, professional, and high-quality
-              football training opportunities for young players.
-              More than just a football program, Khel Aur Shiksha
-              Foundation is a platform focused on discipline,
-              education, character building, teamwork, and
-              long-term athlete development.
+              Khel Aur Shiksha Foundation believes in the
+              importance of sports, education and personal
+              development for young people. We aim to promote
+              opportunities that encourage children and youth
+              to learn, grow, develop their abilities and work
+              towards a brighter future. Sports can help young
+              people build discipline, teamwork, confidence
+              and a positive attitude.
             </p>
 
             <p>
-              Currently, Khel Aur Shiksha Foundation is actively
-              working to provide talented young players with
-              regular training under experienced and passionate
-              coaches who are dedicated to football development
-              and creating opportunities for young athletes.
+              Our focus on sports and education reflects the
+              belief that learning goes beyond the classroom
+              and the playing field. By encouraging personal
+              growth, cooperation and respect, Khel Aur Shiksha
+              Foundation seeks to support young people in
+              developing valuable life skills and becoming
+              responsible members of their communities.
             </p>
 
           </div>
@@ -326,7 +337,7 @@ function OurTrainingProgram() {
       </section>
 
       {/* =====================================================
-          ISLAMABAD CENTER
+          SPORTS DEVELOPMENT
       ===================================================== */}
 
       <section
@@ -337,28 +348,26 @@ function OurTrainingProgram() {
 
           <div className="training-text-content">
 
-            <h2>ISLAMABAD CENTER</h2>
+            <h2>FOOTBALL & SPORTS DEVELOPMENT</h2>
 
             <p>
-              In Islamabad, Khel Aur Shiksha Foundation operates
-              at the renowned Sports Complex under the supervision
-              of Walid Javaid. Training sessions are conducted
-              four days a week, where players receive structured
-              coaching focused on technical development, fitness,
-              tactical understanding, and game awareness.
+              Football and other sports can play an important
+              role in physical fitness, teamwork and personal
+              development. Through sports, young people can
+              learn to set goals, practise consistently,
+              cooperate with others and develop confidence.
+              Khel Aur Shiksha Foundation recognises the
+              positive role that sports can play in helping
+              young people discover their potential.
             </p>
 
             <p>
-              Coach Walid Javaid is regarded as one of the
-              country's finest football coaches and serves as a
-              great example of hard work, professionalism, and
-              dedication. His passion for player development and
-              his ability to inspire young athletes make the
-              Islamabad center one of the strongest development
-              hubs of Khel Aur Shiksha Foundation. Under his
-              guidance, players are not only improving as
-              footballers but are also learning discipline,
-              commitment, and the importance of teamwork.
+              Participation in sports can also encourage
+              discipline, perseverance, leadership and respect
+              for others. These values can support young
+              people both on and off the field and help them
+              develop a positive approach to challenges,
+              teamwork and personal growth.
             </p>
 
           </div>
@@ -366,7 +375,7 @@ function OurTrainingProgram() {
           <div className="training-image-wrapper">
             <img
               src={trainingImage}
-              alt="Islamabad Football Training Center"
+              alt="Football and sports development for young people"
             />
           </div>
 
@@ -374,7 +383,7 @@ function OurTrainingProgram() {
       </section>
 
       {/* =====================================================
-          LAHORE CENTER
+          EDUCATION & LEARNING
       ===================================================== */}
 
       <section
@@ -386,45 +395,32 @@ function OurTrainingProgram() {
           <div className="training-image-wrapper">
             <img
               src={trainingImage}
-              alt="Lahore Football Training Center"
+              alt="Education and learning opportunities for young people"
             />
           </div>
 
           <div className="training-text-content">
 
-            <h2>LAHORE CENTER</h2>
+            <h2>EDUCATION & LEARNING</h2>
 
             <p>
-              In Lahore, the program operates under the leadership
-              of Coach Zafar, a highly respected and experienced
-              coach with a long history in football development
-              and university-level coaching. Throughout his
-              coaching career, he has worked with prestigious
-              institutions including Lahore University of
-              Management Sciences and University of the Punjab,
-              where he played an important role in developing
-              young football talent.
+              Education helps children and young people
+              develop knowledge, practical skills and
+              confidence. Khel Aur Shiksha Foundation
+              recognises the importance of learning in
+              creating opportunities for personal growth
+              and a better future. Education and sports
+              can complement each other by encouraging
+              focus, responsibility and consistent effort.
             </p>
 
             <p>
-              Coach Zafar is currently serving as the head
-              assistant for the Khel Aur Shiksha Foundation
-              Lahore Center and continues to bring his vast
-              experience and football knowledge into the
-              development of young players. His coaching
-              philosophy focuses on discipline, technical growth,
-              and creating a professional training environment
-              for every athlete.
-            </p>
-
-            <p>
-              The Lahore center also hosts a special two-week
-              intensive training camp every month at SA Garden
-              Lahore, where talented players from all across
-              Punjab come together to train. These camps provide
-              players with the opportunity to experience
-              competitive football environments, improve their
-              skills, and learn from experienced coaches.
+              We believe that a positive attitude towards
+              learning can help young people explore their
+              interests, strengthen their abilities and
+              work towards their goals. Promoting the value
+              of education is an important part of
+              encouraging well-rounded personal development.
             </p>
 
           </div>
@@ -433,7 +429,7 @@ function OurTrainingProgram() {
       </section>
 
       {/* =====================================================
-          KARACHI CENTER
+          YOUTH EMPOWERMENT
       ===================================================== */}
 
       <section
@@ -444,27 +440,25 @@ function OurTrainingProgram() {
 
           <div className="training-text-content">
 
-            <h2>KARACHI CENTER</h2>
+            <h2>YOUTH EMPOWERMENT & PERSONAL DEVELOPMENT</h2>
 
             <p>
-              In Karachi, Khel Aur Shiksha Foundation conducts
-              training sessions four days a week at the famous
-              Kakri Ground under the coaching of Arshad Jamal,
-              assisted by Hamza. Kakri Ground is considered one
-              of the best football pitches in Karachi and has
-              long been known as a hub for football talent and
-              community football culture.
+              Young people need encouragement and opportunities
+              to explore their abilities, build confidence and
+              develop a sense of responsibility. Khel Aur
+              Shiksha Foundation promotes the importance of
+              teamwork, dedication, respect and positive
+              thinking in the development of young people.
             </p>
 
             <p>
-              The Karachi center focuses on creating a competitive
-              and energetic training atmosphere where players can
-              sharpen their technical abilities, improve physical
-              fitness, and gain valuable match experience. With
-              the support of experienced coaches and a strong
-              football culture, players are continuously
-              encouraged to push their limits and develop
-              confidence both as athletes and individuals.
+              Sports and education can help young people
+              develop communication, leadership and
+              problem-solving skills. We believe that
+              encouraging these values can help them make
+              positive choices, face challenges and
+              contribute constructively to their families
+              and communities.
             </p>
 
           </div>
@@ -472,7 +466,7 @@ function OurTrainingProgram() {
           <div className="training-image-wrapper">
             <img
               src={programImage}
-              alt="Karachi Football Training Center"
+              alt="Youth empowerment and personal development"
             />
           </div>
 
@@ -480,7 +474,7 @@ function OurTrainingProgram() {
       </section>
 
       {/* =====================================================
-          TANDO JAM CENTER
+          COMMUNITY DEVELOPMENT
       ===================================================== */}
 
       <section
@@ -492,41 +486,30 @@ function OurTrainingProgram() {
           <div className="training-image-wrapper">
             <img
               src={programImage}
-              alt="Tando Jam Football Training Center"
+              alt="Community development through sports and education"
             />
           </div>
 
           <div className="training-text-content">
 
-            <h2>TANDO JAM CENTER</h2>
+            <h2>COMMUNITY DEVELOPMENT</h2>
 
             <p>
-              In Tando Jam, Khel Aur Shiksha Foundation is
-              expanding its mission of football development under
-              the supervision of Coach Musa, who is working
-              closely with young players from underprivileged
-              areas and minority communities. The center focuses
-              on identifying raw talent and providing
-              opportunities to children who often have limited
-              access to professional sports facilities and
-              structured training programs.
+              Supportive communities can help children and
+              young people access opportunities to learn,
+              participate and grow. Khel Aur Shiksha
+              Foundation recognises the value of cooperation,
+              inclusion and shared responsibility in
+              supporting positive community development.
             </p>
 
             <p>
-              Through regular coaching sessions, mentorship, and
-              community engagement, players are given a safe and
-              positive environment where they can develop their
-              football skills, build confidence, and learn
-              important life values such as discipline, teamwork,
-              and respect.
-            </p>
-
-            <p>
-              Coach Musa is playing an important role in creating
-              opportunities for young athletes in the region by
-              encouraging participation in sports and helping
-              players believe in their potential both on and off
-              the field.
+              Families, educators, volunteers and community
+              members can all play an important role in
+              encouraging young people. By promoting sports,
+              education and positive values, we aim to
+              highlight the importance of creating a
+              supportive environment for the next generation.
             </p>
 
           </div>
@@ -535,7 +518,7 @@ function OurTrainingProgram() {
       </section>
 
       {/* =====================================================
-          MORE THAN FOOTBALL
+          MORE THAN SPORTS
       ===================================================== */}
 
       <section
@@ -544,26 +527,24 @@ function OurTrainingProgram() {
       >
         <div className="training-more-container">
 
-          <h2>MORE THAN FOOTBALL</h2>
+          <h2>MORE THAN SPORTS</h2>
 
           <p>
-            Khel Aur Shiksha Foundation believes football can
-            become a powerful tool for positive change. The
-            organization is not only focused on producing better
-            footballers but also on building responsible,
-            educated, and confident young individuals. Through
-            structured coaching, mentorship, educational support,
-            and community engagement, Khel Aur Shiksha Foundation
-            is creating opportunities for talented players who
-            dream of building a future through sports.
+            Khel Aur Shiksha Foundation believes that the
+            value of sports extends beyond winning games.
+            Sports can encourage discipline, teamwork,
+            leadership, friendship and confidence. These
+            lessons can help young people develop a positive
+            attitude and work towards their goals.
           </p>
 
           <p>
-            From professional coaching and organized training
-            camps to educational support and player development
-            pathways, Khel Aur Shiksha Foundation continues to
-            invest in the future of the football community,
-            proving that it is about much more than football.
+            Education provides knowledge and opens doors
+            to new possibilities. By highlighting the
+            importance of sports, education and personal
+            development, Khel Aur Shiksha Foundation aims
+            to encourage young people to recognise their
+            potential and contribute positively to society.
           </p>
 
         </div>
