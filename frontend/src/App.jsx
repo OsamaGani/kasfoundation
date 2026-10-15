@@ -26,13 +26,6 @@ import Contact from "./pages/contact";
 import Gallery from "./pages/gallery";
 import GalleryAlbum from "./pages/GalleryAlbum";
 
-import GondaTeam from "./pages/GondaTeam";
-import FaizabaadTeam from "./pages/FaizabaadTeam";
-import BalrampurTeam from "./pages/BalrampurTeam";
-import LucknowTeam from "./pages/LucknowTeam";
-import BastiTeam from "./pages/BastiTeam";
-import AzamgarhTeam from "./pages/AzamgarhTeam";
-
 import Achievements from "./pages/achievements";
 
 import News from "./pages/News";
@@ -78,12 +71,9 @@ function PageTitle() {
       location.pathname.replace(/\/+$/, "") || "/";
 
     const pageTitles = {
-      /* =====================================
-         PUBLIC PAGES
-      ===================================== */
+      /* PUBLIC PAGES */
 
-      "/":
-        "Home | KAS Foundation",
+      "/": "Home | KAS Foundation",
 
       "/our-training-program":
         "Our Training Program | KAS Foundation",
@@ -91,55 +81,24 @@ function PageTitle() {
       "/education-program":
         "Education Program | KAS Foundation",
 
-      "/about":
-        "About Us | KAS Foundation",
+      "/about": "About Us | KAS Foundation",
 
-      "/team":
-        "Our Team | KAS Foundation",
+      "/team": "Our Team | KAS Foundation",
 
-      "/contact":
-        "Contact | KAS Foundation",
+      "/contact": "Contact | KAS Foundation",
 
-      "/gallery":
-        "Gallery | KAS Foundation",
+      "/gallery": "Gallery | KAS Foundation",
 
       "/achievements":
         "Achievements | KAS Foundation",
 
-      "/news":
-        "News | KAS Foundation",
+      "/news": "News | KAS Foundation",
 
-      "/venues":
-        "Venues | KAS Foundation",
+      "/venues": "Venues | KAS Foundation",
 
-      "/programs":
-        "Our Programs | KAS Foundation",
+      "/programs": "Our Programs | KAS Foundation",
 
-      /* =====================================
-         LOCATION TEAM TITLES
-      ===================================== */
-
-      "/team/gonda-team":
-        "Gonda Team | KAS Foundation",
-
-      "/team/faizabaad-team":
-        "Faizabaad Team | KAS Foundation",
-
-      "/team/balrampur-team":
-        "Balrampur Team | KAS Foundation",
-
-      "/team/lucknow-team":
-        "Lucknow Team | KAS Foundation",
-
-      "/team/basti-team":
-        "Basti Team | KAS Foundation",
-
-      "/team/azamgarh-team":
-        "Azamgarh Team | KAS Foundation",
-
-      /* =====================================
-         ADMIN TITLES
-      ===================================== */
+      /* ADMIN TITLES */
 
       "/admin/login":
         "Admin Login | KAS Foundation",
@@ -208,28 +167,23 @@ function App() {
       <PageTitle />
 
       <Routes>
-        {/* =========================================
-            PUBLIC WEBSITE
-        ========================================= */}
+        {/* PUBLIC WEBSITE */}
 
         <Route element={<MainLayout />}>
 
-          {/* =====================================
-              HOME
-          ===================================== */}
+          {/* HOME */}
 
           <Route
             path="/"
             element={<Home />}
           />
+
           <Route
             path="/events/:id"
             element={<EventDetails />}
           />
 
-          {/* =====================================
-              PROGRAMS
-          ===================================== */}
+          {/* PROGRAMS */}
 
           <Route
             path="/our-training-program"
@@ -251,60 +205,56 @@ function App() {
             element={<ProgramDetail />}
           />
 
-          {/* =====================================
-              ABOUT
-          ===================================== */}
+          {/* ABOUT */}
 
           <Route
             path="/about"
             element={<About />}
           />
 
-          {/* =====================================
-              OUR TEAM
-          ===================================== */}
+          {/* OUR TEAM */}
 
           <Route
             path="/team"
             element={<OurTeam />}
           />
 
-          {/* =====================================
-              DYNAMIC TEAM MEMBER
-          ===================================== */}
+          {/* DYNAMIC TEAM MEMBER */}
 
           <Route
             path="/team/:slug"
             element={<TeamMember />}
           />
 
+          {/* PRIVACY POLICY */}
+
           <Route
             path="/privacy-policy"
             element={<PrivacyPolicy />}
           />
+
+          {/* TERMS AND CONDITIONS */}
 
           <Route
             path="/terms-and-condition"
             element={<Terms />}
           />
 
+          {/* FAQ */}
+
           <Route
             path="/faqs"
             element={<FAQ />}
           />
 
-          {/* =====================================
-              CONTACT
-          ===================================== */}
+          {/* CONTACT */}
 
           <Route
             path="/contact"
             element={<Contact />}
           />
 
-          {/* =====================================
-              GALLERY
-          ===================================== */}
+          {/* GALLERY */}
 
           <Route
             path="/gallery"
@@ -316,52 +266,14 @@ function App() {
             element={<GalleryAlbum />}
           />
 
-          {/* =====================================
-              LOCATION TEAM PAGES
-          ===================================== */}
-
-          <Route
-            path="/team/gonda-team"
-            element={<GondaTeam />}
-          />
-
-          <Route
-            path="/team/faizabaad-team"
-            element={<FaizabaadTeam />}
-          />
-
-          <Route
-            path="/team/balrampur-team"
-            element={<BalrampurTeam />}
-          />
-
-          <Route
-            path="/team/lucknow-team"
-            element={<LucknowTeam />}
-          />
-
-          <Route
-            path="/team/basti-team"
-            element={<BastiTeam />}
-          />
-
-          <Route
-            path="/team/azamgarh-team"
-            element={<AzamgarhTeam />}
-          />
-
-          {/* =====================================
-              ACHIEVEMENTS
-          ===================================== */}
+          {/* ACHIEVEMENTS */}
 
           <Route
             path="/achievements"
             element={<Achievements />}
           />
 
-          {/* =====================================
-              NEWS
-          ===================================== */}
+          {/* NEWS */}
 
           <Route
             path="/news"
@@ -373,9 +285,7 @@ function App() {
             element={<NewsArticle />}
           />
 
-          {/* =====================================
-              VENUES
-          ===================================== */}
+          {/* VENUES */}
 
           <Route
             path="/venues"
@@ -384,9 +294,7 @@ function App() {
 
         </Route>
 
-        {/* =========================================
-            ADMIN LOGIN
-        ========================================= */}
+        {/* ADMIN LOGIN */}
 
         <Route
           path="/admin/login"
@@ -403,86 +311,70 @@ function App() {
           element={<ResetPassword />}
         />
 
-        {/* =========================================
-            PROTECTED ADMIN PANEL
-        ========================================= */}
+        {/* PROTECTED ADMIN PANEL */}
 
         <Route element={<ProtectedRoute />}>
 
           <Route element={<AdminLayout />}>
 
-            {/* =====================================
-                ADMIN DASHBOARD
-            ===================================== */}
+            {/* ADMIN DASHBOARD */}
 
             <Route
               path="/admin/dashboard"
               element={<AdminDashboard />}
             />
 
-            {/* =====================================
-                ADMIN GALLERY
-            ===================================== */}
+            {/* ADMIN GALLERY */}
 
             <Route
               path="/admin/gallery"
               element={<AdminGallery />}
             />
 
-            {/* =====================================
-                ADMIN TEAM
-            ===================================== */}
+            {/* ADMIN TEAM */}
 
             <Route
               path="/admin/team"
               element={<AdminTeam />}
             />
 
-            {/* =====================================
-                ADMIN NEWS
-            ===================================== */}
+            {/* ADMIN NEWS */}
 
             <Route
               path="/admin/news"
               element={<AdminNews />}
             />
 
-            {/* =====================================
-                ADMIN ACHIEVEMENTS
-            ===================================== */}
+            {/* ADMIN ACHIEVEMENTS */}
 
             <Route
               path="/admin/achievements"
               element={<AdminAchievements />}
             />
 
-            {/* =====================================
-                ADMIN VENUES
-            ===================================== */}
+            {/* ADMIN VENUES */}
 
             <Route
               path="/admin/venues"
               element={<AdminVenues />}
             />
 
-            {/* =====================================
-                ADMIN PROGRAMS
-            ===================================== */}
+            {/* ADMIN PROGRAMS */}
 
             <Route
               path="/admin/programs"
               element={<AdminPrograms />}
             />
 
-            {/* =====================================
-                ADMIN NEWSLETTER
-            ===================================== */}
+            {/* ADMIN NEWSLETTER */}
 
             <Route
               path="/admin/newsletter"
               element={<AdminNewsletter />}
             />
+
             {/* ADMIN BANNER MANAGEMENT */}
+
             <Route
               path="/admin/banners"
               element={<AdminBanners />}

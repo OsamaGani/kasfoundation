@@ -64,9 +64,9 @@
   margin: 0 0 42px;
   color: #050505;
   font-family: "Montserrat", sans-serif;
-  font-size: 38px;
+  font-size: 28px;
   line-height: 1.08;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: -1.5px;
 }
 
@@ -125,9 +125,9 @@
   margin: 0 0 25px;
   color: #050505;
   font-family: "Montserrat", sans-serif;
-  font-size: 44px;
+  font-size: 30px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: -1px;
 }
 
@@ -645,7 +645,7 @@
 
   .about-mission-content h2,
   .about-vision-content h2 {
-    font-size: 38px;
+    font-size: 33px;
   }
 
   .about-gallery-card {
@@ -954,7 +954,7 @@
 
   .about-mission-content h2,
   .about-vision-content h2 {
-    font-size: 32px;
+    font-size: 24px;
     margin-bottom: 20px;
   }
 
@@ -1106,7 +1106,7 @@
 
   .about-mission-content h2,
   .about-vision-content h2 {
-    font-size: 29px;
+    font-size: 20px;
   }
 
   .about-mission-image,

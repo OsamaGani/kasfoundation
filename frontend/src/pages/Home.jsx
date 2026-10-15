@@ -644,7 +644,7 @@ function Home() {
       </section>
 
       {/* =========================================================
-          TRAINING PROGRAMS / GRASSROOTS TO ELITE
+          TRAINING PROGRAMS / kasf TO ELITE
       ========================================================= */}
 
       <section className="training-showcase-section">

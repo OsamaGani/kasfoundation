@@ -1760,7 +1760,7 @@ a {
 }
 
 /* =========================================================
-   WHY CHOOSE THE GRASSROOTS FOUNDATION
+   WHY CHOOSE THE kasf FOUNDATION
 ========================================================= */
 
 .why-foundation-section {
@@ -2345,7 +2345,7 @@ a {
 
 .values-marquee-section {
   width: 100%;
-  height: 145px;
+  height: 100px;
 
   overflow: hidden;
 
@@ -2383,8 +2383,8 @@ a {
 
   font-family: "Bebas Neue", "Oswald", sans-serif;
 
-  font-size: 37px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 600;
 
   line-height: 1;
 
@@ -2417,7 +2417,7 @@ a {
   }
 
   .values-marquee-track span {
-    font-size: 45px;
+    font-size: 35px;
     margin-right: 32px;
   }
 }
@@ -2465,7 +2465,7 @@ a {
 
     margin: 0;
 
-    font-size: 42px;
+    font-size: 30px;
     line-height: 1.05;
 
     text-align: center;
@@ -2490,7 +2490,7 @@ a {
   }
 
   .values-marquee-track span {
-    font-size: 38px;
+    font-size: 28px;
     line-height: 1.05;
   }
 }
@@ -2509,7 +2509,7 @@ a {
   }
 
   .values-marquee-track span {
-    font-size: 28px;
+    font-size: 23px;
   }
 }
 /* =========================================================
@@ -2614,8 +2614,8 @@ a {
 
   font-family: "Bebas Neue", "Oswald", sans-serif;
 
-  font-size: 48px;
-  font-weight: 400;
+  font-size: 25px;
+  font-weight: 600;
 
   line-height: 1.08;
 
@@ -2955,8 +2955,8 @@ a {
 
   font-family: "Bebas Neue", "Oswald", sans-serif;
 
-  font-size: 48px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 600;
 
   line-height: 1.08;
 
@@ -3048,7 +3048,7 @@ a {
   }
 
   .training-showcase-content h2 {
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .training-showcase-content p {
@@ -3106,7 +3106,7 @@ a {
   }
 
   .training-showcase-content h2 {
-    font-size: 34px;
+    font-size: 28px;
     line-height: 1.08;
 
     margin-bottom: 18px;
@@ -3143,7 +3143,7 @@ a {
   }
 
   .training-showcase-content h2 {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 1.08;
   }
 
@@ -3167,7 +3167,7 @@ a {
 
 @media (max-width: 380px) {
   .training-showcase-content h2 {
-    font-size: 27px;
+    font-size: 20px;
   }
 
   .training-showcase-content p {
