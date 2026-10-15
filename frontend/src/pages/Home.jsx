@@ -439,7 +439,7 @@ function Home() {
 
             <p>
               Khel Aur Shiksha Foundation was established with a
-              simple belief: sports and education have the power to
+              simple belief sports and education have the power to
               transform lives. Founded by two brothers,
               <b> Kaleem A. Yousuf</b> and
               <b> Shameem M. Yousuf</b>, the foundation is dedicated
@@ -652,7 +652,7 @@ function Home() {
           <div className="training-showcase-row training-showcase-row-left">
             <div className="training-showcase-content">
               <h2>
-                TRAINING PROGRAMS – FROM GRASSROOTS TO ELITE
+                TRAINING PROGRAMS – FROM KASF TO ELITE
               </h2>
 
               <p>
