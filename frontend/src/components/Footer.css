@@ -427,8 +427,8 @@
   }
 
   .footer-logo img {
-    width: 175px;
-    max-height: 85px;
+    width: 145px;
+    max-height: 62px;
   }
 
   .footer-description {
@@ -468,5 +468,12 @@
 
   .footer-bottom p {
     font-size: 11px;
+  }
+}
+/* Footer logo - Laptop/Desktop only */
+@media (min-width: 1181px) {
+  .footer-logo img {
+    width: 175px;
+    max-height: 70px;
   }
 }

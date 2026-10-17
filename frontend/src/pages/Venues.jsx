@@ -340,9 +340,9 @@ function Venues() {
           <div className="venue-training-left">
 
             <h2>
-              TRAIN WHERE CHAMPIONS ARE
+              TRAIN WHERE CHAMPIONS 
               <br />
-              MADE
+             ARE MADE
             </h2>
 
             <p>

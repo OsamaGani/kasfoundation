@@ -14,15 +14,14 @@ function OurTeam() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  /* =========================================================
+  /* =========================================
      SEO
-  ========================================================= */
+  ========================================= */
 
   useEffect(() => {
     const siteName = "Khel Aur Shiksha Foundation";
 
-    const title =
-      "Our Team | Khel Aur Shiksha Foundation";
+    const title = "Our Team | Khel Aur Shiksha Foundation";
 
     const description =
       "Meet the dedicated team at Khel Aur Shiksha Foundation working to inspire, guide and empower young talent through football, education and community development.";
@@ -67,6 +66,7 @@ function OurTeam() {
     setMeta("name", "description", description);
     setMeta("name", "keywords", keywords);
     setMeta("name", "author", siteName);
+
     setMeta(
       "name",
       "robots",
@@ -105,7 +105,7 @@ function OurTeam() {
       "@type": "CollectionPage",
       name: title,
       url: currentUrl,
-      description: description,
+      description,
       isPartOf: {
         "@type": "Organization",
         name: siteName,
@@ -124,6 +124,10 @@ function OurTeam() {
     };
   }, []);
 
+  /* =========================================
+     FETCH TEAM MEMBERS
+  ========================================= */
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -133,7 +137,6 @@ function OurTeam() {
         setError("");
 
         const response = await fetch(`${API_URL}/team`);
-
         const data = await response.json();
 
         if (!response.ok) {
@@ -142,7 +145,40 @@ function OurTeam() {
           );
         }
 
-        setTeamMembers(data.team || []);
+        /* =========================================
+           SORT TEAM MEMBERS
+           Positive order values first.
+           Order 0 goes after positive values.
+        ========================================= */
+
+        const sortedTeam = [...(data.team || [])].sort(
+          (a, b) => {
+            const orderA = Number(a.order) || 0;
+            const orderB = Number(b.order) || 0;
+
+            // Put order 0 or negative values at the end
+            if (orderA <= 0 && orderB > 0) return 1;
+            if (orderB <= 0 && orderA > 0) return -1;
+
+            // Sort by order: 1, 2, 3...
+            if (orderA !== orderB) {
+              return orderA - orderB;
+            }
+
+            // Same order: newest member first
+            const dateA = a.createdAt
+              ? new Date(a.createdAt).getTime()
+              : 0;
+
+            const dateB = b.createdAt
+              ? new Date(b.createdAt).getTime()
+              : 0;
+
+            return dateB - dateA;
+          }
+        );
+
+        setTeamMembers(sortedTeam);
       } catch (err) {
         console.error("Public team fetch error:", err);
 
@@ -157,6 +193,10 @@ function OurTeam() {
     fetchTeam();
   }, []);
 
+  /* =========================================
+     TEAM IMAGE URL
+  ========================================= */
+
   const getImageURL = (member) => {
     const fileId = member?.profileImage?.fileId;
 
@@ -167,14 +207,16 @@ function OurTeam() {
     return `${API_URL}/team/image/${fileId}`;
   };
 
+  /* =========================================
+     RENDER
+  ========================================= */
+
   return (
     <>
       <Navbar />
 
       <main className="our-team-page">
-        {/* =========================
-            PAGE HEADER
-        ========================== */}
+        {/* PAGE HEADER */}
         <section className="our-team-header">
           <h1>OUR STAFF</h1>
 
@@ -187,9 +229,7 @@ function OurTeam() {
           </p>
         </section>
 
-        {/* =========================
-            LOADING
-        ========================== */}
+        {/* LOADING */}
         {loading && (
           <section className="our-team-state">
             <Loader2
@@ -205,9 +245,7 @@ function OurTeam() {
           </section>
         )}
 
-        {/* =========================
-            ERROR
-        ========================== */}
+        {/* ERROR */}
         {!loading && error && (
           <section className="our-team-state our-team-error">
             <div className="our-team-state-icon">
@@ -215,34 +253,27 @@ function OurTeam() {
             </div>
 
             <h2>Unable to Load Team</h2>
-
             <p>{error}</p>
           </section>
         )}
 
-        {/* =========================
-            EMPTY
-        ========================== */}
-        {!loading &&
-          !error &&
-          teamMembers.length === 0 && (
-            <section className="our-team-state">
-              <div className="our-team-state-icon">
-                <Users size={38} />
-              </div>
+        {/* EMPTY */}
+        {!loading && !error && teamMembers.length === 0 && (
+          <section className="our-team-state">
+            <div className="our-team-state-icon">
+              <Users size={38} />
+            </div>
 
-              <h2>No Team Members Yet</h2>
+            <h2>No Team Members Yet</h2>
 
-              <p>
-                Team members will appear here once they are added
-                from the admin panel.
-              </p>
-            </section>
-          )}
+            <p>
+              Team members will appear here once they are added
+              from the admin panel.
+            </p>
+          </section>
+        )}
 
-        {/* =========================
-            TEAM GRID
-        ========================= */}
+        {/* TEAM GRID */}
         {!loading &&
           !error &&
           teamMembers.length > 0 && (
@@ -252,14 +283,14 @@ function OurTeam() {
                   const imageURL = getImageURL(member);
 
                   return (
-                    <Link
+                    <article
                       key={member._id}
-                      to={`/team/${member.slug}`}
                       className="team-card"
                       style={{
                         "--card-delay": `${index * 0.08}s`,
                       }}
                     >
+                      {/* IMAGE IS NOT CLICKABLE */}
                       <div className="team-card-image">
                         {imageURL ? (
                           <img
@@ -274,12 +305,31 @@ function OurTeam() {
                         )}
                       </div>
 
+                      {/* NAME AND DESIGNATION */}
                       <div className="team-card-info">
                         <h2>{member.name}</h2>
 
                         <p>{member.designation}</p>
+
+                        {/* ONLY THIS LINK OPENS PROFILE */}
+                        <Link
+                          to={`/team/${member.slug}`}
+                          className="team-view-details"
+                          aria-label={`View full details of ${member.name}`}
+                        >
+                          <span className="team-view-details-text">
+                            Explore Profile
+                          </span>
+
+                          <span
+                            className="team-view-details-arrow"
+                            aria-hidden="true"
+                          >
+                            →
+                          </span>
+                        </Link>
                       </div>
-                    </Link>
+                    </article>
                   );
                 })}
               </div>

@@ -750,7 +750,7 @@ function Home() {
 
           <div className="home-team-grid">
             <Link
-              to="/team/shuraim/"
+              to="/team/m-shuraim/"
               className="home-team-card"
             >
               <div className="home-team-image">

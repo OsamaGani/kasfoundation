@@ -1,3 +1,4 @@
+
 /* =========================================
    GLOBAL PAGE FIX
 ========================================= */
@@ -43,33 +44,25 @@ body,
 
 .our-team-header h1 {
   margin: 0 0 28px;
-
   color: #050505;
-
   font-family: "Montserrat", sans-serif;
   font-size: 40px;
   line-height: 1.15;
   font-weight: 600;
-
   letter-spacing: -2px;
 }
 
 .our-team-header p {
   width: 100%;
   max-width: 760px;
-
   margin: 0 auto;
   padding: 0 10px;
-
   color: #35445a;
-
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.65;
   font-weight: 400;
-
   text-align: center;
-
   word-break: normal;
   overflow-wrap: normal;
   white-space: normal;
@@ -87,13 +80,9 @@ body,
 .our-team-grid {
   width: 100%;
   max-width: 1295px;
-
   margin: 0 auto;
-
   display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: 30px;
   row-gap: 34px;
 }
@@ -104,54 +93,48 @@ body,
 
 .team-card {
   width: 100%;
-
+  min-width: 0;
   display: block;
-
   color: inherit;
   text-decoration: none;
-
   animation: teamCardReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
-
   animation-delay: var(--card-delay);
-
   transition:
     transform 0.35s ease,
     opacity 0.35s ease;
 }
 
 .team-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
 }
 
 /* =========================================
    CARD IMAGE
+   Image is not a link
 ========================================= */
 
 .team-card-image {
   width: 100%;
   height: 400px;
-
   overflow: hidden;
-
   border-radius: 20px;
-
   background: #e9ebf5;
-
   position: relative;
+  cursor: default;
 }
 
 .team-card-image::after {
   content: "";
-
   position: absolute;
-
   inset: 0;
-
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent 35%);
-
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.08),
+    transparent 35%
+  );
   opacity: 0;
-
   transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .team-card:hover .team-card-image::after {
@@ -161,21 +144,27 @@ body,
 .team-card-image img {
   width: 100%;
   height: 100%;
-
   display: block;
-
   object-fit: cover;
   object-position: center top;
-
+  cursor: default;
   transition:
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.4s ease;
 }
 
 .team-card:hover .team-card-image img {
-  transform: scale(1.045);
-
+  transform: scale(1.035);
   filter: brightness(1.02);
+}
+
+.team-card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0637a5;
 }
 
 /* =========================================
@@ -188,29 +177,88 @@ body,
 
 .team-card-info h2 {
   margin: 0 0 9px;
-
   color: #050505;
-
   font-family: "Montserrat", sans-serif;
   font-size: 17px;
   line-height: 1.2;
   font-weight: 800;
-
   letter-spacing: -0.3px;
 }
 
 .team-card-info p {
   margin: 0;
-
   color: #35445a;
-
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.45;
   font-weight: 400;
-
   word-break: normal;
   overflow-wrap: normal;
+}
+
+/* =========================================
+   MODERN TEXT LINK
+========================================= */
+
+.team-view-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #0637a5;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+}
+
+.team-view-details-text {
+  position: relative;
+}
+
+.team-view-details-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.team-view-details-arrow {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.team-view-details:hover {
+  color: #111111;
+  gap: 11px;
+}
+
+.team-view-details:hover .team-view-details-text::after {
+  width: 100%;
+}
+
+.team-view-details:hover .team-view-details-arrow {
+  transform: translateX(3px);
+}
+
+.team-view-details:focus-visible {
+  outline: 2px solid #0637a5;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -230,22 +278,64 @@ body,
 }
 
 /* =========================================
+   LOADING / ERROR STATES
+========================================= */
+
+.our-team-state {
+  width: 100%;
+  min-height: 250px;
+  padding: 45px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #35445a;
+}
+
+.our-team-state h2 {
+  margin: 18px 0 8px;
+  color: #050505;
+  font-family: "Montserrat", sans-serif;
+}
+
+.our-team-state p {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+}
+
+.our-team-loading-icon {
+  color: #0637a5;
+  animation: teamSpinner 1s linear infinite;
+}
+
+.our-team-state-icon {
+  color: #0637a5;
+}
+
+.our-team-error .our-team-state-icon {
+  color: #b42318;
+}
+
+@keyframes teamSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
    FLOATING CONTACT
 ========================================= */
 
 .our-team-floating-contact {
   position: fixed;
-
   right: 20px;
   bottom: 20px;
-
   z-index: 8000;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   gap: 12px;
 }
 
@@ -253,19 +343,13 @@ body,
 .our-team-whatsapp {
   width: 54px;
   height: 54px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #ffffff;
-
   text-decoration: none;
-
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
-
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -282,7 +366,6 @@ body,
 .our-team-phone:hover,
 .our-team-whatsapp:hover {
   transform: scale(1.08);
-
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
@@ -318,8 +401,7 @@ body,
   }
 
   .our-team-grid {
-    grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 25px;
   }
 
@@ -335,21 +417,17 @@ body,
 @media (max-width: 800px) {
   .our-team-header {
     max-width: 720px;
-
     padding: 90px 25px 45px;
   }
 
   .our-team-header h1 {
     font-size: 46px;
-
     margin-bottom: 24px;
   }
 
   .our-team-header p {
     max-width: 680px;
-
     padding: 0 5px;
-
     font-size: 15px;
     line-height: 1.6;
   }
@@ -359,15 +437,13 @@ body,
   }
 
   .our-team-grid {
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 25px;
     row-gap: 35px;
   }
 
   .team-card-image {
     height: 430px;
-
     border-radius: 18px;
   }
 
@@ -395,29 +471,19 @@ body,
 
   .our-team-header h1 {
     font-size: 38px;
-
     line-height: 1.15;
-
     letter-spacing: -1px;
-
     margin-bottom: 22px;
   }
 
   .our-team-header p {
     width: 100%;
-
     max-width: 100%;
-
     padding: 0;
-
     font-size: 14px;
-
     line-height: 1.65;
-
     text-align: center;
-
     word-break: normal;
-
     overflow-wrap: normal;
   }
 
@@ -427,7 +493,6 @@ body,
 
   .our-team-grid {
     grid-template-columns: 1fr;
-
     gap: 38px;
   }
 
@@ -437,9 +502,7 @@ body,
 
   .team-card-image {
     width: 100%;
-
     height: 470px;
-
     border-radius: 18px;
   }
 
@@ -449,32 +512,28 @@ body,
 
   .team-card-info h2 {
     font-size: 16px;
-
     margin-bottom: 7px;
   }
 
   .team-card-info p {
     font-size: 14px;
-
     line-height: 1.5;
   }
 
-  /* =====================================
-     FLOATING BUTTONS
-  ===================================== */
+  .team-view-details {
+    margin-top: 12px;
+    font-size: 13px;
+  }
 
   .our-team-floating-contact {
     right: 12px;
-
     bottom: 15px;
-
     gap: 8px;
   }
 
   .our-team-phone,
   .our-team-whatsapp {
     width: 50px;
-
     height: 50px;
   }
 }
@@ -490,27 +549,20 @@ body,
 
   .our-team-header h1 {
     font-size: 30px;
-
     margin-top: 24px;
-
     line-height: 1.15;
   }
 
   .our-team-header p {
     width: 100%;
-
     max-width: 100%;
-
     padding: 0;
-
     font-size: 13px;
-
     line-height: 1.6;
   }
 
   .our-team-section {
     padding-left: 12px;
-
     padding-right: 12px;
   }
 
@@ -526,10 +578,13 @@ body,
     font-size: 13px;
   }
 
+  .team-view-details {
+    font-size: 12px;
+  }
+
   .our-team-phone,
   .our-team-whatsapp {
     width: 48px;
-
     height: 48px;
   }
 }
@@ -549,5 +604,15 @@ body,
 
   .team-card-image img {
     transition: none;
+  }
+
+  .team-view-details,
+  .team-view-details-arrow,
+  .team-view-details-text::after {
+    transition: none;
+  }
+
+  .our-team-loading-icon {
+    animation: none;
   }
 }

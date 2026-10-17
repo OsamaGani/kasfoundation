@@ -302,20 +302,15 @@
 
 .venue-info-content p {
   width: 100%;
-
   max-width: 575px;
-
   margin: 0;
-
   color: #414141;
-
   font-family: "Montserrat", sans-serif;
-
   font-size: 15px;
-
   font-weight: 400;
-
-  line-height: 1.5;
+  line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 
@@ -392,9 +387,9 @@
 
   font-family: "Montserrat", sans-serif;
 
-  font-size: clamp(28px, 2.7vw, 38px);
+  font-size: 32px;
 
-  font-weight: 500;
+  font-weight: 600;
 
   line-height: 1.05;
 
@@ -420,6 +415,8 @@
   font-weight: 400;
 
   line-height: 1.55;
+   text-align: justify;
+  text-justify: inter-word;
 }
 
 
@@ -841,7 +838,7 @@
 
     font-size: 22px;
 
-    font-weight: 500;
+    font-weight: 600;
   }
 
 

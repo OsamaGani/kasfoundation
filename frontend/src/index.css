@@ -3746,3 +3746,10 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar-thumb:hover {
   background: #052b82;
 }
+/* Smaller logo only on laptop and desktop */
+@media (min-width: 1181px) {
+  .navbar-logo img {
+    width: 175px;
+    max-height: 60px;
+  }
+}

@@ -176,11 +176,44 @@ const getTeamMembers = async (req, res) => {
       query.isActive = true;
     }
 
-    const teamMembers = await Team.find(
-      query
-    ).sort({
-      order: 1,
-      createdAt: -1,
+    const teamMembers = await Team.find(query).lean();
+
+    /*
+      SORTING FIX:
+
+      1. Positive order values first: 1, 2, 3...
+      2. Order 0 and negative values go to the end.
+      3. If orders are equal, newest member comes first.
+    */
+
+    teamMembers.sort((a, b) => {
+      const orderA = Number(a.order) || 0;
+      const orderB = Number(b.order) || 0;
+
+      // Put order 0 or negative values at the end.
+      if (orderA <= 0 && orderB > 0) {
+        return 1;
+      }
+
+      if (orderB <= 0 && orderA > 0) {
+        return -1;
+      }
+
+      // Sort positive orders numerically.
+      if (orderA !== orderB) {
+        return orderA - orderB;
+      }
+
+      // Same order: newest created member first.
+      const dateA = a.createdAt
+        ? new Date(a.createdAt).getTime()
+        : 0;
+
+      const dateB = b.createdAt
+        ? new Date(b.createdAt).getTime()
+        : 0;
+
+      return dateB - dateA;
     });
 
     return res.status(200).json({
